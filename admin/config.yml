@@ -1,0 +1,121 @@
+backend:
+  name: github
+  repo: drivennagency/drivennagency
+  branch: main
+  # LET OP: vul hier je eigen OAuth-proxy in (bv. een Cloudflare Worker),
+  # net zoals bij de svanwijksolutions-CMS. Zonder deze twee regels kun je
+  # niet inloggen op de CMS.
+  # base_url: https://JOUW-WORKER.workers.dev
+  # auth_endpoint: auth
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+site_url: https://www.drivennagency.nl
+display_url: https://www.drivennagency.nl
+logo_url: /assets/logo/logo-transparant-wit.png
+
+collections:
+  - name: ai
+    label: "AI-oplossingen"
+    label_singular: "AI-oplossing"
+    folder: content/ai
+    create: true
+    extension: json
+    format: json
+    slug: "{{fields.slug}}"
+    summary: "{{titel}}"
+    fields:
+      - { label: "URL-slug (geen spaties/hoofdletters, bv. offertes-genereren)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
+      - { label: "Categorie", name: categorie, widget: select, options: [ { label: "Documenten & administratie", value: documenten }, { label: "Tekst & data", value: tekst }, { label: "Klantcommunicatie", value: communicatie } ] }
+      - { label: "Titel", name: titel, widget: string }
+      - { label: "Korte samenvatting (voor de kaart)", name: samenvatting, widget: text }
+      - { label: "Prijs (bv. € 299) — leeg laten bij 'binnenkort'", name: prijs, widget: string, required: false }
+      - { label: "Prijs-toelichting (bv. eenmalig)", name: prijs_note, widget: string, required: false, default: "eenmalig" }
+      - { label: "Banner (Canva-afbeelding, vast formaat 16:9)", name: banner, widget: image, required: false }
+      - { label: "Gekoppelde applicaties (typ de app-naam, bv. WhatsApp, Gmail)", name: apps, widget: list, field: { label: "Applicatie", name: app, widget: string } }
+      - { label: "Vereiste (in één oogopslag, bv. 'Werkt met WhatsApp Business')", name: vereiste, widget: string, required: false }
+      - { label: "Binnenkort beschikbaar? (nog niet te koop)", name: binnenkort, widget: boolean, default: false }
+      - { label: "Volledige beschrijving", name: beschrijving, widget: markdown }
+      - { label: "Wat het je oplevert (voordelen)", name: voordelen, widget: list, field: { label: "Voordeel", name: voordeel, widget: string } }
+      - label: "Veelgestelde vragen"
+        name: faq
+        widget: list
+        required: false
+        fields:
+          - { label: "Vraag", name: v, widget: string }
+          - { label: "Antwoord", name: a, widget: text }
+
+  - name: blog
+    label: Blog
+    label_singular: Blogpost
+    folder: content/blog
+    create: true
+    extension: json
+    format: json
+    slug: "{{fields.slug}}"
+    summary: "{{nl.titel}} — {{date}}"
+    fields:
+      - { label: "URL-slug (geen spaties/hoofdletters, bv. mijn-artikel)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
+      - { label: "Datum", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD-MM-YYYY", time_format: false }
+      - { label: "Categorie (bv. Tips, SEO, Branche)", name: category, widget: string }
+      - { label: "Leestijd in minuten", name: reading_time_min, widget: number, default: 4, value_type: int }
+      - { label: "Afbeelding (zelfde foto voor alle talen)", name: image, widget: image }
+      - label: "Nederlands"
+        name: nl
+        widget: object
+        fields:
+          - { label: "Titel", name: titel, widget: string }
+          - { label: "Samenvatting", name: samenvatting, widget: text }
+          - { label: "Tekst", name: tekst, widget: markdown }
+      - label: "English"
+        name: en
+        widget: object
+        required: false
+        fields:
+          - { label: "Title", name: title, widget: string }
+          - { label: "Summary", name: summary, widget: text }
+          - { label: "Text", name: text, widget: markdown }
+      - label: "Deutsch"
+        name: de
+        widget: object
+        required: false
+        fields:
+          - { label: "Titel", name: titel, widget: string }
+          - { label: "Zusammenfassung", name: zusammenfassung, widget: text }
+          - { label: "Text", name: text, widget: markdown }
+
+  - name: cases
+    label: Cases
+    label_singular: Case
+    folder: content/cases
+    create: true
+    extension: json
+    format: json
+    slug: "{{fields.slug}}"
+    summary: "{{nl.titel}}"
+    fields:
+      - { label: "URL-slug (bv. waterfords-cocktails)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
+      - { label: "Afbeelding / screenshot", name: image, widget: image }
+      - { label: "Link naar de live website", name: link, widget: string }
+      - { label: "Categorie (bv. Website, Redesign)", name: categorie, widget: string, default: "Website" }
+      - label: "Nederlands"
+        name: nl
+        widget: object
+        fields:
+          - { label: "Titel", name: titel, widget: string }
+          - { label: "Beschrijving", name: beschrijving, widget: text }
+      - label: "English"
+        name: en
+        widget: object
+        required: false
+        fields:
+          - { label: "Titel", name: titel, widget: string }
+          - { label: "Beschrijving", name: beschrijving, widget: text }
+      - label: "Deutsch"
+        name: de
+        widget: object
+        required: false
+        fields:
+          - { label: "Titel", name: titel, widget: string }
+          - { label: "Beschrijving", name: beschrijving, widget: text }

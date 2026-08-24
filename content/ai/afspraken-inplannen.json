@@ -1,0 +1,19 @@
+{
+  "slug": "afspraken-inplannen",
+  "categorie": "communicatie",
+  "titel": "Afspraken automatisch inplannen",
+  "samenvatting": "Laat klanten zelf een afspraak inplannen op basis van jouw beschikbaarheid, met automatische bevestiging en herinnering. Binnenkort beschikbaar.",
+  "prijs": "",
+  "prijs_note": "",
+  "banner": "",
+  "apps": ["Google Agenda", "Gmail", "WhatsApp"],
+  "vereiste": "",
+  "binnenkort": true,
+  "beschrijving": "Deze automatisering laat klanten zelf een moment kiezen uit jouw beschikbare tijden, plant de afspraak automatisch in je agenda, stuurt een bevestiging en herinnert de klant er op tijd aan. We werken er op dit moment aan — laat je e-mailadres achter en je hoort het als hij beschikbaar is.",
+  "voordelen": [
+    "Klanten plannen zelf, jij houdt de regie",
+    "Automatische bevestiging en herinnering",
+    "Minder no-shows en heen-en-weer geappt"
+  ],
+  "faq": []
+}

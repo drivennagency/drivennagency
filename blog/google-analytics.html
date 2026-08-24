@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Analytics: ontdek wat bezoekers op jouw website echt doen | Drivenn Agency</title>
+  <meta name="description" content="Ontdek hoe Google Analytics inzicht geeft in het gedrag van bezoekers op je website. Leer welke gegevens je kunt analyseren, hoe je de tool instelt en hoe je deze inzichten gebruikt om betere resultaten te behalen.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="canonical" href="https://www.drivennagency.nl/blog/google-analytics.html">
+  <link rel="alternate" hreflang="nl" href="https://www.drivennagency.nl/blog/google-analytics.html">
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <meta property="og:title" content="Google Analytics: ontdek wat bezoekers op jouw website echt doen | Drivenn Agency">
+  <meta property="og:description" content="Ontdek hoe Google Analytics inzicht geeft in het gedrag van bezoekers op je website. Leer welke gegevens je kunt analyseren, hoe je de tool instelt en hoe je deze inzichten gebruikt om betere resultaten te behalen.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.drivennagency.nl/blog/google-analytics.html">
+  <meta property="og:image" content="https://www.drivennagency.nl/assets/images/uploads/set-up-GA4-blog-titlecards.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"Google Analytics: ontdek wat bezoekers op jouw website echt doen","description":"Ontdek hoe Google Analytics inzicht geeft in het gedrag van bezoekers op je website. Leer welke gegevens je kunt analyseren, hoe je de tool instelt en hoe je deze inzichten gebruikt om betere resultaten te behalen.","image":"https://www.drivennagency.nl/assets/images/uploads/set-up-GA4-blog-titlecards.png","author":{"@type":"Organization","name":"Drivenn Agency"},"publisher":{"@type":"Organization","name":"Drivenn Agency"},"datePublished":"2026-07-31"}
+  </script>
+</head>
+<body data-page="blog">
+<!--#HEADER#--><header id="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="/index.html" class="nav__logo" aria-label="Drivenn Agency — home">
+        <img src="/assets/logo/logo-transparant-wit.png" alt="Drivenn Agency" width="150" height="42" class="nav__logo-img">
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="/index.html" data-page="index">Home</a></li>
+        <li>
+          <a href="/websites.html" data-page="websites">Websites
+            <svg class="nav__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav__dd">
+            <a href="/websites.html#nieuw">
+              <span class="dd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></span>
+              <span><span class="dd-t">Nieuwe website</span><span class="dd-s">Op maat, snel en vindbaar</span></span>
+            </a>
+            <a href="/websites.html#redesign">
+              <span class="dd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></span>
+              <span><span class="dd-t">Redesign</span><span class="dd-s">Bestaande website vernieuwen</span></span>
+            </a>
+            <a href="/hosting.html">
+              <span class="dd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="7" rx="2"/><rect x="2" y="13" width="20" height="7" rx="2"/><path d="M6 7.5h.01M6 16.5h.01"/></svg></span>
+              <span><span class="dd-t">Hosting</span><span class="dd-s">Veilig, snel en onderhouden</span></span>
+            </a>
+            <div class="nav__dd-divider"></div>
+            <a href="/concept.html" class="dd-gratis">
+              <span class="dd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/></svg></span>
+              <span><span class="dd-t">Gratis website­concept</span><span class="dd-s">Vrijblijvend voorstel op maat</span></span>
+              <span class="dd-badge">Gratis</span>
+            </a>
+          </div>
+        </li>
+        <li><a href="/ai-oplossingen.html" data-page="ai">AI-oplossingen</a></li>
+        <li><a href="/cases.html" data-page="cases">Cases</a></li>
+        <li><a href="/blog.html" data-page="blog">Blog</a></li>
+        <li><a href="/over-ons.html" data-page="over-ons">Over ons</a></li>
+        <li><a href="/contact.html" data-page="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav__right">
+        <a href="/concept.html" class="nav__cta">Gratis concept</a>
+        <div class="lang-switch" aria-label="Taal wisselen">
+          <button class="lang-switch__current" aria-expanded="false" aria-haspopup="listbox" type="button">
+            <span class="flag-icon" aria-hidden="true"><svg viewBox="0 0 9 6"><rect width="9" height="2" fill="#AE1C28"/><rect y="2" width="9" height="2" fill="#FFF"/><rect y="4" width="9" height="2" fill="#21468B"/></svg></span>
+            <span class="lang-switch__code">NL</span><span class="lang-switch__chevron">▾</span>
+          </button>
+          <ul class="lang-switch__menu" role="listbox">
+            <li role="option"><a href="/index.html" data-lang="nl" class="lang-switch__option active"><span class="flag-icon"><svg viewBox="0 0 9 6"><rect width="9" height="2" fill="#AE1C28"/><rect y="2" width="9" height="2" fill="#FFF"/><rect y="4" width="9" height="2" fill="#21468B"/></svg></span><span>Nederlands</span></a></li>
+            <li role="option"><a href="/eng/index.html" data-lang="en" class="lang-switch__option"><span class="flag-icon"><svg viewBox="0 0 60 30"><clipPath id="en-d"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#en-d)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></span><span>English</span></a></li>
+            <li role="option"><a href="/de/index.html" data-lang="de" class="lang-switch__option"><span class="flag-icon"><svg viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg></span><span>Deutsch</span></a></li>
+          </ul>
+        </div>
+        <button class="nav__burger" aria-label="Menu openen" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-overlay" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mobile-overlay__close" aria-label="Menu sluiten">✕</button>
+  <nav>
+    <ul role="list">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/websites.html">Websites</a>
+        <div class="m-sub">
+          <a href="/websites.html#nieuw">Nieuwe website</a>
+          <a href="/websites.html#redesign">Redesign</a>
+          <a href="/hosting.html">Hosting</a>
+          <a href="/concept.html" class="m-gratis">Gratis websiteconcept &rarr;</a>
+        </div>
+      </li>
+      <li><a href="/ai-oplossingen.html">AI-oplossingen</a></li>
+      <li><a href="/cases.html">Cases</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/over-ons.html">Over ons</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+    <a href="/concept.html" class="announce-mobile-cta">Vraag een gratis websiteconcept aan</a>
+    <div class="lang-switch--mobile">
+      <button type="button" class="lang-switch__mobile-btn active" onclick="location.href='/index.html'"><span class="flag-icon"><svg viewBox="0 0 9 6"><rect width="9" height="2" fill="#AE1C28"/><rect y="2" width="9" height="2" fill="#FFF"/><rect y="4" width="9" height="2" fill="#21468B"/></svg></span><span>NL</span></button>
+      <button type="button" class="lang-switch__mobile-btn" onclick="location.href='/eng/index.html'"><span class="flag-icon"><svg viewBox="0 0 60 30"><clipPath id="en-m"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#en-m)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></span><span>EN</span></button>
+      <button type="button" class="lang-switch__mobile-btn" onclick="location.href='/de/index.html'"><span class="flag-icon"><svg viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg></span><span>DE</span></button>
+    </div>
+  </nav>
+</div><!--#HEADER-END#-->
+<main>
+  <article>
+    <section class="article-hero" style="background-image:linear-gradient(rgba(10,26,48,.82),rgba(14,35,64,.9)),url('/assets/images/uploads/set-up-GA4-blog-titlecards.png');background-size:cover;background-position:center">
+      <div class="container">
+        <a href="/blog.html" class="article-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Terug naar blog</a>
+        <span class="article-hero__cat">Google Analytics</span>
+        <h1>Google Analytics: ontdek wat bezoekers op jouw website echt doen</h1>
+        <div class="article-hero__meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 31 juli 2026</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 4 min lezen</span>
+        </div>
+      </div>
+    </section>
+    <section class="section" style="padding-top:0">
+      <div class="article-body">
+        <p>Een website is veel meer dan een online visitekaartje. Om het maximale uit je website te halen, is het belangrijk om te begrijpen hoe bezoekers zich gedragen. Welke pagina's worden het meest bekeken? Waar komen bezoekers vandaan? En waarom verlaten sommige mensen de website zonder contact op te nemen? Met Google Analytics krijg je antwoord op deze vragen.</p>
+<h3>Wat is Google Analytics?</h3>
+<p>Google Analytics is een gratis analysetool van Google waarmee je inzicht krijgt in het gedrag van bezoekers op je website. De software verzamelt gegevens over het gebruik van je website en zet deze om in duidelijke rapportages. Hierdoor kun je onderbouwde keuzes maken om je website en marketing te verbeteren.</p>
+<p>Of je nu een bedrijfswebsite, portfolio of webshop hebt, Google Analytics helpt je om beter te begrijpen wat goed werkt en waar nog kansen liggen.</p>
+<h3>Wat kun je allemaal zien?</h3>
+<p>Google Analytics verzamelt een grote hoeveelheid gegevens. Enkele voorbeelden zijn:</p>
+<ul><li>Het aantal bezoekers per dag, week of maand</li><li>Hoe bezoekers op je website terechtkomen, bijvoorbeeld via Google, sociale media of een advertentie</li><li>Welke pagina's het populairst zijn</li><li>Hoelang bezoekers gemiddeld op een pagina blijven</li><li>Op welke knop of link bezoekers klikken</li><li>Met welk apparaat bezoekers je website bekijken</li><li>Uit welke landen of steden bezoekers komen</li><li>Op welk moment bezoekers de website verlaten</li></ul>
+<p>Door deze informatie te combineren ontstaat een compleet beeld van het gedrag van je bezoekers.</p>
+<h3>Waar helpt Google Analytics bij?</h3>
+<p>De verzamelde gegevens zijn waardevol voor iedere website eigenaar. Je kunt bijvoorbeeld ontdekken welke pagina's veel bezoekers trekken, maar weinig aanvragen opleveren. Ook zie je welke marketingcampagnes succesvol zijn en welke minder goed presteren.</p>
+<p>Heb je een webshop? Dan kun je analyseren welke producten populair zijn en waar klanten afhaken tijdens het bestelproces. Voor zakelijke websites kun je meten hoeveel offerte aanvragen, telefoongesprekken of contactformulieren daadwerkelijk worden ingevuld.</p>
+<p>Hierdoor neem je beslissingen op basis van feiten in plaats van aannames.</p>
+<h3>Op verschillende manieren in te stellen</h3>
+<p>Google Analytics kan op verschillende manieren worden gekoppeld aan een website.</p>
+<p>De meest eenvoudige methode is het rechtstreeks plaatsen van de Google Analytics code in de website.</p>
+<p>Veel bedrijven kiezen voor Google Tag Manager. Hiermee beheer je niet alleen Google Analytics, maar ook andere meetcodes vanuit één centrale omgeving. Hierdoor hoef je minder vaak wijzigingen in de website zelf aan te brengen.</p>
+<p>Werk je met een CMS zoals WordPress? Dan kun je vaak gebruikmaken van een plugin waarmee de koppeling binnen enkele minuten is gemaakt.</p>
+<p>Voor grotere organisaties is het mogelijk om aangepaste gebeurtenissen en conversies in te stellen. Zo kun je precies meten wanneer iemand een offerte aanvraagt, een brochure downloadt, een video bekijkt of een aankoop afrondt.</p>
+<h3>Welke inzichten haal je eruit?</h3>
+<p>De echte kracht van Google Analytics zit in de inzichten die je uit de gegevens haalt.</p>
+<p>Misschien ontdek je dat bezoekers vooral via mobiele telefoons op je website komen. In dat geval kun je extra aandacht besteden aan de mobiele gebruikerservaring.</p>
+<p>Het kan ook zijn dat een bepaalde pagina veel bezoekers trekt via Google. Door deze pagina verder uit te breiden vergroot je de kans op nog meer organisch verkeer.</p>
+<p>Daarnaast kun je precies zien welke campagnes zorgen voor nieuwe klanten. Zo besteed je jouw marketingbudget effectiever.</p>
+<h3>Waarom is dit belangrijk?</h3>
+<p>Een mooie website is een goed begin, maar zonder data weet je niet of de website ook daadwerkelijk resultaat oplevert.</p>
+<p>Google Analytics helpt je om bezoekers beter te begrijpen, kansen te ontdekken en continu verbeteringen door te voeren. Hierdoor groeit niet alleen het aantal bezoekers, maar vergroot je ook de kans dat bezoekers daadwerkelijk klant worden.</p>
+<p>Door regelmatig de statistieken te analyseren en verbeteringen door te voeren, wordt je website stap voor stap effectiever en waardevoller voor jouw organisatie.</p>
+        <div class="article-cta">
+          <h3>Hulp nodig met jouw website of automatisering?</h3>
+          <p>Vraag een gratis websiteconcept aan of laat ons meedenken over de juiste AI-oplossing.</p>
+          <div class="btn-row center" style="margin-top:16px"><a href="/concept.html" class="btn btn--gold">Gratis concept</a><a href="/ai-oplossingen.html" class="btn btn--outline">AI-oplossingen</a></div>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+<!--#FOOTER#--><footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="/assets/logo/logo-transparant-wit.png" alt="Drivenn Agency" height="38">
+        <p>Wij helpen bedrijven slimmer, sneller en toekomstbestendig te worden — met moderne websites en slimme AI-automatiseringen.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Websites</h5>
+        <ul>
+          <li><a href="/websites.html#nieuw">Nieuwe website</a></li>
+          <li><a href="/websites.html#redesign">Redesign</a></li>
+          <li><a href="/hosting.html">Hosting</a></li>
+          <li><a href="/concept.html">Gratis concept</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>AI &amp; meer</h5>
+        <ul>
+          <li><a href="/ai-oplossingen.html">AI-oplossingen</a></li>
+          <li><a href="/cases.html">Cases</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+          <li><a href="/over-ons.html">Over ons</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:info@drivennagency.nl">info@drivennagency.nl</a></li>
+          <li><a href="tel:+31681835935">+31 6 81 83 59 35</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Westland+Nederland" target="_blank" rel="noopener">Regio Westland, NL</a></li>
+          <li><a href="/contact.html">Contactformulier</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> Drivenn Agency · KvK 86749439</span>
+      <span><a href="/privacy.html">Privacyverklaring</a> · <a href="/sitemap.xml">Sitemap</a></span>
+    </div>
+  </div>
+</footer><!--#FOOTER-END#-->
+<script src="/js/main.js"></script>
+</body>
+</html>

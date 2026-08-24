@@ -1,0 +1,32 @@
+name: Build content
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'components/**'
+      - 'scripts/build_content.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Genereer statische pagina's
+        run: python3 scripts/build_content.py
+      - name: Commit gegenereerde bestanden
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: regenereer statische pagina's uit content"
+            git push
+          else
+            echo "Geen wijzigingen om te committen."
+          fi

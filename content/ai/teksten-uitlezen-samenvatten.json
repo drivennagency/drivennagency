@@ -1,0 +1,24 @@
+{
+  "slug": "teksten-uitlezen-samenvatten",
+  "categorie": "tekst",
+  "titel": "Grote hoeveelheden tekst slim uitlezen & samenvatten",
+  "samenvatting": "Laat lange documenten, e-mails of rapporten automatisch uitlezen, sorteren en samenvatten tot heldere kernpunten. Ideaal als je door de bomen het bos niet meer ziet.",
+  "prijs": "€ 199",
+  "prijs_note": "eenmalig",
+  "banner": "",
+  "apps": ["Gmail", "PDF", "Google Sheets", "Notion"],
+  "vereiste": "Werkt met een gratis Make-account; voor grote volumes een betaald AI-abonnement",
+  "binnenkort": false,
+  "beschrijving": "Krijg je dagelijks tientallen e-mails, offertes of rapporten binnen en kost het lezen ervan te veel tijd? Deze automatisering leest teksten automatisch uit, haalt de belangrijkste punten eruit en zet ze overzichtelijk op een rij — bijvoorbeeld in een spreadsheet of als korte samenvatting in je inbox.\n\nZo zie je in één oogopslag wat belangrijk is, zonder alles woord voor woord te hoeven doorlezen. Handig voor het verwerken van klantvragen, het scannen van lange documenten of het bijhouden van binnenkomende aanvragen.",
+  "voordelen": [
+    "Lange documenten in seconden samengevat tot kernpunten",
+    "Automatisch sorteren op onderwerp, urgentie of afzender",
+    "Minder leeswerk, sneller de juiste beslissing",
+    "Samenvattingen netjes verzameld op één plek"
+  ],
+  "faq": [
+    {"v": "In welke talen werkt dit?", "a": "De automatisering werkt onder andere met Nederlands, Engels en Duits. Andere talen zijn vaak ook mogelijk."},
+    {"v": "Blijft mijn informatie vertrouwelijk?", "a": "Ja. We richten de automatisering zo in dat je gegevens zorgvuldig worden verwerkt. Bij de installatie leggen we precies uit hoe de gegevensstroom loopt."},
+    {"v": "Hoeveel tekst kan het aan?", "a": "Voor kleine volumes volstaat een gratis opzet. Verwerk je grote hoeveelheden, dan is een betaald AI-abonnement nodig — dat staat duidelijk bij de vereisten."}
+  ]
+}
