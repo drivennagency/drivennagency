@@ -67,6 +67,29 @@ APP_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wi
 # ---------------------------------------------------------------------------
 # component injection
 # ---------------------------------------------------------------------------
+def relativize(t, depth):
+    """Zet lokale absolute paden (/assets, /pagina.html, url('/...)) om naar
+    diepte-correcte relatieve paden, zodat de site zowel op een project-subpad
+    (github.io/<repo>/) als op de eigen domein-root werkt. Idempotent: al
+    relatieve paden en volledige https-URL's (canonical/og/hreflang) en SVG
+    url(#id)-referenties blijven ongemoeid."""
+    prefix = "../" * depth
+    t = re.sub(r'(href|src|poster|data-src)="/(?!/)',
+               lambda m: f'{m.group(1)}="{prefix}', t)
+    t = re.sub(r"url\((\s*['\"]?)/(?!/)",
+               lambda m: f"url({m.group(1)}{prefix}", t)
+    return t
+
+def relativize_all():
+    """Laatste build-stap: alle gegenereerde pagina's diepte-correct maken."""
+    pages = list(ROOT.glob("*.html"))
+    for sub in ("blog", "ai-oplossingen"):
+        if (ROOT/sub).exists():
+            pages += list((ROOT/sub).glob("*.html"))
+    for p in pages:
+        depth = len(p.relative_to(ROOT).parts) - 1
+        write(p, relativize(read(p), depth))
+
 def inject_components():
     header = read(ROOT/"components/header.html").strip()
     footer = read(ROOT/"components/footer.html").strip()
@@ -365,4 +388,5 @@ if __name__ == "__main__":
     cases = build_cases()
     inject_components()   # after content is generated, so blog/ai pages get header/footer too
     build_sitemap(posts, sols, cases)
+    relativize_all()      # laatste stap: alle paden diepte-correct relatief maken
     print(f"Gegenereerd: {len(posts)} blogposts, {len(sols)} AI-oplossingen, {len(cases)} cases.")
