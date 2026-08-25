@@ -551,15 +551,15 @@ p{margin:0 0 1rem}
 /* Header-CTA: gouden knop met een duidelijke streep die om de rand blijft lopen */
 @property --cta-angle{syntax:"<angle>";inherits:false;initial-value:0deg}
 @keyframes ctaSpin{to{--cta-angle:360deg}}
-.nav__cta{padding:9px 22px;position:relative;isolation:isolate}
-.nav__cta::before{content:"";position:absolute;inset:-4px;border-radius:12px;padding:2px;z-index:-1;
+.nav__cta{padding:9px 22px;position:relative;isolation:isolate;border-radius:6px}
+.nav__cta::before{content:"";position:absolute;inset:-2px;border-radius:8px;padding:2px;z-index:-1;
   background:conic-gradient(from var(--cta-angle),var(--gold-2) 0deg,#FFF7D6 60deg,var(--gold-2) 130deg,var(--gold-2) 360deg);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
   mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
   animation:ctaSpin 3s linear infinite}
 /* Zelfde lopende gouden streep om het gratis-websiteconcept item in de dropdown */
 .nav__dd a.dd-gratis{position:relative;isolation:isolate}
-.nav__dd a.dd-gratis::before{content:"";position:absolute;inset:-3px;border-radius:12px;padding:2px;z-index:-1;
+.nav__dd a.dd-gratis::before{content:"";position:absolute;inset:-2px;border-radius:11px;padding:2px;z-index:-1;
   background:conic-gradient(from var(--cta-angle),var(--gold-2) 0deg,#FFF7D6 60deg,var(--gold-2) 130deg,var(--gold-2) 360deg);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
   mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;

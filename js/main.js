@@ -87,13 +87,14 @@
       }
       function run(el) {
         var target = parseFloat(el.getAttribute('data-count'));
+        var startVal = parseFloat(el.getAttribute('data-start') || '0');
         var pre = el.getAttribute('data-prefix') || '', suf = el.getAttribute('data-suffix') || '';
         var dur = 1600, start = null;
         function step(ts) {
           if (!start) start = ts;
           var p = Math.min((ts - start) / dur, 1);
           var eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = pre + fmt(Math.round(target * eased)) + suf;
+          el.textContent = pre + fmt(Math.round(startVal + (target - startVal) * eased)) + suf;
           if (p < 1) requestAnimationFrame(step); else setFinal(el);
         }
         requestAnimationFrame(step);
