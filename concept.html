@@ -4,18 +4,308 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gratis websiteconcept aanvragen | Drivenn Agency</title>
-  <meta name="description" content="Vraag een gratis, vrijblijvend websiteconcept aan. Binnen vijf werkdagen ontvang je een voorstel op maat voor jouw bedrijf — zonder enige verplichting.">
+  <meta name="description" content="Vertel ons over je bedrijf en wensen. Binnen 5 werkdagen ontvang je een professioneel, vrijblijvend websiteconcept op maat in je inbox.">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="canonical" href="https://www.drivennagency.nl/concept.html">
   <link rel="alternate" hreflang="nl" href="https://www.drivennagency.nl/concept.html">
-  <link rel="alternate" hreflang="en" href="https://www.drivennagency.nl/eng/concept.html">
-  <link rel="alternate" hreflang="de" href="https://www.drivennagency.nl/de/concept.html">
-  <link rel="alternate" hreflang="x-default" href="https://www.drivennagency.nl/concept.html">
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
   <meta property="og:title" content="Gratis websiteconcept aanvragen | Drivenn Agency">
+  <meta property="og:description" content="Binnen 5 werkdagen een professioneel, vrijblijvend websiteconcept op maat.">
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.drivennagency.nl/concept.html">
+  <meta property="og:locale" content="nl_NL">
+  <style>
+
+/* ── Brug: oude formulier-tokens -> Drivenn palet (navy/goud) ── */
+:root{
+  --clr-white:#fff;
+  --clr-light:var(--off);
+  --clr-soft:var(--gold-soft);
+  --clr-border:var(--line);
+  --clr-muted:var(--ink-faint);
+  --clr-text:var(--ink-soft);
+  --clr-heading:var(--ink);
+  --clr-accent:var(--gold);
+  --clr-accent-h:var(--gold-2);
+  --clr-teal:#14b8a6;
+  --clr-primary:var(--navy);
+  --radius-lg:16px;
+  --radius-md:12px;
+  --shadow-md:var(--shadow);
+}
+.btn--primary{background:var(--gold);color:var(--navy);box-shadow:var(--shadow-gold)}
+.btn--primary:hover{background:var(--gold-2);transform:translateY(-2px)}
+.form-optional{color:var(--ink-faint);font-weight:400;font-size:.8rem}
+.page-hero .tag{display:inline-block;background:rgba(201,162,39,.18);color:var(--gold);font-family:var(--head);font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:18px}
+
+/* ── Stap indicator ── */
+.concept-wrapper{max-width:780px;margin-inline:auto;}
+.concept-steps{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:34px;padding:10px 4px 0;position:relative;}
+.concept-step{display:flex;flex-direction:column;align-items:center;gap:9px;flex:1;position:relative;z-index:2;}
+.concept-step__num{width:40px;height:40px;border-radius:50%;background:var(--clr-white);border:2px solid var(--clr-border);color:var(--clr-muted);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.92rem;flex-shrink:0;transition:background .3s,color .3s,border-color .3s,box-shadow .3s;}
+.concept-step.active .concept-step__num{background:var(--clr-accent);border-color:var(--clr-accent);color:#fff;box-shadow:0 0 0 4px rgba(201,162,39,.15);}
+.concept-step.active .concept-step__label{color:var(--clr-accent);}
+.concept-step.completed .concept-step__num{background:var(--clr-teal);border-color:var(--clr-teal);color:#fff;}
+.concept-step.completed .concept-step__label{color:var(--clr-heading);}
+.concept-step__label{font-size:.8rem;font-weight:600;color:var(--clr-muted);transition:color .3s;text-align:center;}
+/* Verbindingslijn achter de cirkels */
+.concept-step__line{position:absolute;top:30px;height:2px;background:var(--clr-border);z-index:1;transition:background .3s;}
+.concept-step__line--1{left:16.66%;right:50%;}
+.concept-step__line--2{left:50%;right:16.66%;}
+.concept-step__line.is-done{background:var(--clr-teal);}
+@media(max-width:420px){.concept-step__num{width:36px;height:36px;font-size:.85rem;}.concept-step__label{font-size:.72rem;}.concept-step__line{top:28px;}}
+/* ── Form stap ── */
+.form-step{animation:fadeInUp .3s ease;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.step-content{background:var(--clr-white);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-sm);margin-bottom:20px;}
+@media(max-width:560px){.step-content{padding:22px 16px;}}
+.step-content h2{font-size:clamp(1.3rem,3vw,1.75rem);margin-bottom:6px;}
+.step-subtitle{font-size:.9rem;color:var(--clr-muted);margin-bottom:28px!important;}
+.form-group{margin-bottom:22px;}
+.form-group label,.form-group .lbl{display:block;font-weight:600;font-size:.88rem;color:var(--clr-heading);margin-bottom:7px;}
+.form-group input[type=text],.form-group input[type=email],.form-group input[type=tel],.form-group input[type=url],.form-group textarea,.form-group select{width:100%;padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.9rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s,box-shadow .2s;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--clr-accent);box-shadow:0 0 0 3px rgba(201,162,39,.12);background:#fff;}
+.form-group textarea{resize:vertical;min-height:88px;}
+.form-hint{font-size:.78rem;color:var(--clr-muted);margin-top:5px;display:block;font-weight:400;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:480px){.form-row{grid-template-columns:1fr;}}
+/* ── Branche zoekbalk ── */
+.branche-search-wrap{position:relative;}
+.branche-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--clr-muted);font-size:1rem;padding:4px;line-height:1;display:none;}
+.branche-suggestions{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--clr-white);border:1.5px solid var(--clr-accent);border-radius:var(--radius-sm);box-shadow:var(--shadow-md);z-index:50;max-height:220px;overflow-y:auto;display:none;}
+.branche-suggestions li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;cursor:pointer;font-size:.88rem;color:var(--clr-text);transition:background .15s,color .15s;list-style:none;border-bottom:1px solid var(--clr-border);}
+.branche-suggestions li:last-child{border-bottom:none;}
+.branche-suggestions li:hover,.branche-suggestions li.focused{background:var(--clr-soft);color:var(--clr-accent);}
+.branche-suggestions li>span:first-child{font-weight:600;}
+.branche-suggestions li .sug-cat{font-size:.72rem;color:var(--clr-muted);font-weight:500;white-space:nowrap;flex-shrink:0;}
+.branche-suggestions li:hover .sug-cat,.branche-suggestions li.focused .sug-cat{color:var(--clr-accent);opacity:.7;}
+.branche-suggestions li.sug-custom{display:block;font-weight:400;color:var(--clr-muted);background:var(--clr-light);}
+.branche-suggestions li.sug-custom:hover,.branche-suggestions li.sug-custom.focused{background:var(--clr-soft);color:var(--clr-accent);}
+.branche-suggestions li.sug-custom strong{color:var(--clr-accent);}
+.branche-tag{display:inline-flex;align-items:center;gap:8px;background:var(--clr-soft);color:var(--clr-accent);border:1.5px solid var(--clr-accent);border-radius:24px;padding:7px 8px 7px 14px;font-size:.82rem;font-weight:600;margin-top:10px;}
+.branche-tag button{display:flex;align-items:center;justify-content:center;width:20px;height:20px;background:var(--clr-accent);border:none;border-radius:50%;cursor:pointer;color:#fff;font-size:.75rem;line-height:1;padding:0;transition:background .2s;}
+.branche-tag button:hover{background:var(--clr-accent-h);}
+/* ── Pagina voorstel banner ── */
+.pagina-voorstel-banner{background:linear-gradient(135deg,var(--clr-soft) 0%,#f0fdf4 100%);border:1.5px solid var(--clr-accent);border-radius:var(--radius-md);padding:16px 18px;margin-bottom:18px;display:none;}
+.pagina-voorstel-banner.visible{display:block;animation:fadeInUp .3s ease;}
+.pagina-voorstel-banner p{font-size:.83rem;margin:0;color:var(--clr-text);}
+/* ── Pagina items ── */
+.paginas-label{font-weight:700;font-size:.95rem;color:var(--clr-heading);display:block;margin-bottom:4px;}
+.paginas-sublabel{font-size:.82rem;color:var(--clr-muted);margin:0 0 14px;line-height:1.5;}
+.pagina-item{border:1.5px solid var(--clr-border);border-radius:var(--radius-md);margin-bottom:10px;overflow:hidden;transition:border-color .2s;}
+.pagina-item.is-recommended{border-color:var(--clr-accent);}
+.pagina-item__header{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;background:var(--clr-light);transition:background .2s;}
+.pagina-item__header:hover{background:var(--clr-soft);}
+.pagina-item.is-recommended .pagina-item__header{background:var(--clr-soft);}
+.pagina-item__header input[type=checkbox]{width:18px;height:18px;accent-color:var(--clr-accent);flex-shrink:0;cursor:pointer;}
+.pagina-item__naam{flex:1;font-weight:600;font-size:.9rem;color:var(--clr-heading);}
+.pagina-item__badge{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:20px;background:var(--clr-soft);color:var(--clr-accent);white-space:nowrap;flex-shrink:0;}
+.pagina-item__badge.badge-aanbevolen{background:var(--clr-accent);color:#fff;}
+.pagina-item__why{font-size:.78rem;color:var(--clr-muted);padding:0 16px 12px 46px;background:var(--clr-soft);display:none;line-height:1.6;}
+.pagina-item.is-recommended .pagina-item__why{display:block;}
+.pagina-item__toggle{background:var(--clr-soft);border:1.5px solid var(--clr-border);cursor:pointer;color:var(--clr-accent);font-size:.78rem;font-weight:700;padding:8px 14px;line-height:1;flex-shrink:0;margin-left:auto;display:flex;align-items:center;gap:6px;border-radius:20px;transition:background .2s,border-color .2s;font-family:'Poppins',sans-serif;}
+.pagina-item__toggle:hover{background:var(--clr-accent);color:#fff;border-color:var(--clr-accent);}
+.pagina-item__toggle:hover .pagina-item__toggle-arrow{color:#fff;}
+.pagina-item__toggle-arrow{font-size:.85rem;transition:transform .2s;}
+.pagina-item__toggle[aria-expanded="true"] .pagina-item__toggle-arrow{transform:rotate(180deg);}
+@media(max-width:400px){.pagina-item__toggle-txt{display:none;}}
+.pagina-item__detail{padding:16px 16px 16px 46px;border-top:1px solid var(--clr-border);background:var(--clr-white);}
+.pagina-elementen{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.pagina-elementen__label{display:block;font-size:.78rem;font-weight:700;color:var(--clr-accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+.pagina-elementen label{display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--clr-text);cursor:pointer;}
+.pagina-elementen label input{accent-color:var(--clr-accent);}
+.pagina-item__detail textarea{width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:60px;transition:border-color .2s;}
+.pagina-item__detail textarea:focus{outline:none;border-color:var(--clr-accent);}
+/* ── Type knoppen ── */
+.concept-type-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:480px){.concept-type-btns{grid-template-columns:1fr;}}
+.type-btn{position:relative;border:1.5px solid var(--clr-border);border-radius:var(--radius-md);padding:16px 44px 16px 18px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--clr-white);display:block;}
+.type-btn input[type=radio]{position:absolute;opacity:0;pointer-events:none;}
+.type-btn span{display:block;}
+.type-btn span strong{display:block;font-size:.94rem;color:var(--clr-heading);margin-bottom:3px;}
+.type-btn span small{font-size:.8rem;color:var(--clr-muted);line-height:1.4;}
+/* Custom radio-indicator rechtsboven */
+.type-btn::after{content:'';position:absolute;top:50%;right:16px;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;border:2px solid var(--clr-border);transition:border-color .2s,background .2s;background:var(--clr-white);}
+.type-btn::before{content:'';position:absolute;top:50%;right:22px;transform:translateY(-50%) scale(0);width:8px;height:8px;border-radius:50%;background:#fff;z-index:1;transition:transform .2s;}
+.type-btn:hover{border-color:var(--clr-accent);background:var(--clr-light);}
+.type-btn:has(input:checked){border-color:var(--clr-accent);background:var(--clr-soft);}
+.type-btn:has(input:checked)::after{border-color:var(--clr-accent);background:var(--clr-accent);}
+.type-btn:has(input:checked)::before{transform:translateY(-50%) scale(1);}
+.type-btn:has(input:focus-visible){box-shadow:0 0 0 3px rgba(201,162,39,.25);}
+.type-btn--error{border-color:#ef4444!important;}
+/* ── Stijl kaarten ── */
+.stijl-kaarten{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:460px){.stijl-kaarten{grid-template-columns:1fr;}}
+.stijl-kaart{position:relative;border:1.5px solid var(--clr-border);border-radius:var(--radius-md);padding:12px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--clr-white);display:block;overflow:hidden;}
+.stijl-kaart input{position:absolute;opacity:0;pointer-events:none;}
+.stijl-kaart>span{display:block;}
+.stijl-kaart__preview{position:relative;width:100%;height:52px;border-radius:8px;display:block;margin-bottom:10px;}
+/* Vinkje in de hoek van de preview bij selectie */
+.stijl-kaart__preview::after{content:'\2713';position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:50%;background:var(--clr-accent);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.5);transition:opacity .2s,transform .2s;}
+.stijl-kaart__preview--min{background:linear-gradient(135deg,#f1f5f9,#cbd5e1);}
+.stijl-kaart__preview--spe{background:linear-gradient(135deg,#fde68a,#f9a8d4);}
+.stijl-kaart__preview--lux{background:linear-gradient(135deg,#1e1b4b,#5b21b6);}
+.stijl-kaart__preview--kra{background:linear-gradient(135deg,#0f172a,#1e40af);}
+.stijl-kaart strong{display:block;font-size:.88rem;color:var(--clr-heading);margin-bottom:2px;}
+.stijl-kaart small{display:block;font-size:.76rem;color:var(--clr-muted);line-height:1.4;}
+.stijl-kaart:hover{border-color:var(--clr-accent);}
+.stijl-kaart:has(input:checked){border-color:var(--clr-accent);background:var(--clr-soft);}
+.stijl-kaart:has(input:checked) .stijl-kaart__preview::after{opacity:1;transform:scale(1);}
+.stijl-kaart:has(input:focus-visible){box-shadow:0 0 0 3px rgba(201,162,39,.25);}
+/* ── Talen ── */
+.taal-selectie{display:flex;flex-direction:column;gap:10px;}
+.taal-tags{display:flex;flex-wrap:wrap;gap:7px;min-height:36px;align-items:center;}
+.taal-tag{display:inline-flex;align-items:center;gap:5px;background:var(--clr-soft);color:var(--clr-accent);border-radius:20px;padding:5px 11px;font-size:.78rem;font-weight:600;}
+.taal-tag__vlag{border-radius:2px;vertical-align:middle;}
+.taal-tag--fixed{opacity:.75;}
+.taal-tag__remove{background:none;border:none;cursor:pointer;color:var(--clr-accent);font-size:1.05rem;padding:0 0 0 2px;line-height:1;}
+.taal-input-wrap{display:flex;flex-wrap:wrap;gap:8px;}
+.taal-dropdown,.taal-eigen{flex:1;min-width:160px;padding:9px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.85rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s;}
+.taal-dropdown:focus,.taal-eigen:focus{outline:none;border-color:var(--clr-accent);}
+.taal-eigen-btn{padding:9px 16px;background:var(--clr-accent);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer;font-family:'Poppins',sans-serif;font-size:.84rem;font-weight:600;transition:background .2s;white-space:nowrap;}
+.taal-eigen-btn:hover{background:var(--clr-accent-h);}
+/* ── Kleuren ── */
+.kleur-rij{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--clr-border);flex-wrap:wrap;}
+.kleur-rij:last-of-type{border-bottom:none;}
+.kleur-rij label{font-size:.85rem;font-weight:600;color:var(--clr-heading);flex:1 1 180px;margin-bottom:0;}
+.kleur-rij label small{display:block;font-weight:400;color:var(--clr-muted);font-size:.75rem;margin-top:2px;}
+.kleur-input-wrap{display:flex;align-items:center;gap:8px;}
+input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);border-radius:8px;padding:2px;cursor:pointer;background:#fff;}
+.hex-field{width:96px;padding:9px 10px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s;}
+.hex-field:focus{outline:none;border-color:var(--clr-accent);}
+.eyedropper-btn{background:var(--clr-soft);border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);padding:8px 11px;cursor:pointer;font-size:.78rem;color:var(--clr-accent);font-weight:600;transition:background .2s,border-color .2s;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.eyedropper-btn:hover{background:var(--clr-accent);color:#fff;border-color:var(--clr-accent);}
+.eyedropper-btn.hidden{display:none;}
+.kleur-swatch-preview{display:flex;gap:6px;margin-bottom:18px;}
+.kleur-swatch{width:36px;height:36px;border-radius:8px;border:1.5px solid var(--clr-border);flex-shrink:0;transition:background .2s,border-color .2s;position:relative;}
+.kleur-swatch--leeg{background:repeating-linear-gradient(45deg,#f1f5f9,#f1f5f9 4px,#e2e8f0 4px,#e2e8f0 8px);border-style:dashed;}
+/* ── Pakketten ── */
+.pakket-item{border:1.5px solid var(--clr-border);border-radius:var(--radius-md);padding:18px 16px;margin-bottom:12px;background:var(--clr-light);position:relative;}
+.pakket-header{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start;padding-right:32px;}
+.pakket-nummer{width:28px;height:28px;background:var(--clr-accent);color:#fff;border-radius:50%;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.pakket-title-wrap{flex:1;}
+.pakket-title-wrap input{width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:600;color:var(--clr-heading);background:var(--clr-white);transition:border-color .2s;}
+.pakket-title-wrap input:focus{outline:none;border-color:var(--clr-accent);}
+.pakket-body textarea{width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-white);resize:vertical;min-height:70px;transition:border-color .2s;}
+.pakket-body textarea:focus{outline:none;border-color:var(--clr-accent);}
+.pakket-prijs-rij{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap;}
+.pakket-prijs-rij__label{font-size:.82rem;font-weight:600;color:var(--clr-heading);flex-shrink:0;}
+.pakket-prijs-select{padding:8px 12px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.83rem;color:var(--clr-text);background:var(--clr-white);cursor:pointer;transition:border-color .2s;}
+.pakket-prijs-select:focus{outline:none;border-color:var(--clr-accent);}
+.pakket-prijs-val{flex:1;min-width:140px;padding:8px 12px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s;}
+.pakket-prijs-val:focus{outline:none;border-color:var(--clr-accent);}
+.pakket-remove{position:absolute;top:12px;right:12px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;background:var(--clr-white);border:1.5px solid var(--clr-border);border-radius:50%;cursor:pointer;color:var(--clr-muted);padding:0;transition:background .15s,color .15s,border-color .15s;}
+.pakket-remove:hover{background:#fee2e2;color:#dc2626;border-color:#fca5a5;}
+.pakket-add-btn{width:100%;padding:12px;border:2px dashed var(--clr-border);border-radius:var(--radius-md);background:transparent;color:var(--clr-accent);font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:border-color .2s,background .2s;}
+.pakket-add-btn:hover{border-color:var(--clr-accent);background:var(--clr-soft);}
+/* ── Inbegrepen box ── */
+.inbegrepen-box{background:var(--clr-soft);border-radius:var(--radius-md);padding:18px 20px;margin-bottom:24px;}
+.inbegrepen-box__title{font-size:.82rem;font-weight:700;color:var(--clr-accent);margin-bottom:10px;}
+.inbegrepen-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+@media(max-width:480px){.inbegrepen-list{grid-template-columns:1fr;}}
+.inbegrepen-list li{font-size:.83rem;color:var(--clr-text);display:flex;align-items:center;gap:8px;}
+.incl-icon{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;color:var(--clr-accent);flex-shrink:0;}
+.incl-icon svg{width:16px;height:16px;}
+/* ── Logo opties ── */
+.logo-optie-box{background:var(--clr-soft);border-radius:var(--radius-md);padding:20px;margin-top:8px;}
+#f-logoidee:focus{outline:none;border-color:var(--clr-accent);box-shadow:0 0 0 3px rgba(201,162,39,.12);background:#fff;}
+.logo-optie-box__title{font-weight:700;font-size:.9rem;color:var(--clr-heading);margin-bottom:6px;}
+.logo-optie-box__sub{font-size:.83rem;color:var(--clr-muted);margin-bottom:12px;}
+.logo-optie-box__naam{font-size:.8rem;color:var(--clr-muted);margin-bottom:6px;}
+.logo-vraag-label{display:block;font-size:.85rem;font-weight:600;color:var(--clr-heading);margin-bottom:10px;}
+.logo-type-opties{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:480px){.logo-type-opties{grid-template-columns:1fr;}}
+.logo-type-optie{position:relative;display:flex;align-items:center;gap:10px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);padding:11px 12px;cursor:pointer;background:var(--clr-white);transition:border-color .2s,background .2s,box-shadow .2s;}
+.logo-type-optie input{position:absolute;opacity:0;pointer-events:none;}
+.logo-type-optie__icon{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:var(--clr-soft);display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:700;color:var(--clr-accent);}
+.logo-type-optie strong{display:block;font-size:.82rem;color:var(--clr-heading);}
+.logo-type-optie small{display:block;font-size:.72rem;color:var(--clr-muted);line-height:1.3;}
+.logo-type-optie:hover{border-color:var(--clr-accent);}
+.logo-type-optie:has(input:checked){border-color:var(--clr-accent);background:var(--clr-soft);box-shadow:0 2px 8px rgba(201,162,39,.1);}
+.logo-type-optie:has(input:checked) .logo-type-optie__icon{background:var(--clr-accent);color:#fff;}
+.logo-stijl-chips{display:flex;flex-wrap:wrap;gap:7px;}
+.logo-chip{padding:6px 13px;border-radius:20px;border:1.5px solid var(--clr-border);background:var(--clr-white);color:var(--clr-text);font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;transition:var(--tr);}
+.logo-chip--active{border-color:var(--clr-accent);background:var(--clr-accent);color:#fff;}
+.logo-chip--kleur{border-left:4px solid var(--chip-clr,var(--clr-border));}
+/* ── Extra rij ── */
+.extra-row{display:flex;align-items:flex-start;gap:12px;border:1.5px solid var(--clr-border);border-radius:var(--radius-md);padding:14px 16px;cursor:pointer;transition:var(--tr);background:var(--clr-light);}
+.extra-row input[type=checkbox]{accent-color:var(--clr-accent);margin-top:3px;flex-shrink:0;width:17px;height:17px;}
+.extra-row:has(input:checked){border-color:var(--clr-accent);background:var(--clr-soft);}
+.extra-row strong{display:block;font-size:.88rem;color:var(--clr-heading);}
+.extra-row small{font-size:.78rem;color:var(--clr-muted);}
+.extra-row__price{margin-left:auto;font-size:.88rem;font-weight:700;color:var(--clr-accent);white-space:nowrap;}
+/* ── Social media ── */
+.social-inputs{display:flex;flex-direction:column;gap:8px;}
+.social-input-row{display:flex;align-items:center;gap:10px;}
+.social-input-icon{width:34px;height:34px;border-radius:8px;background:var(--clr-primary);color:#fff;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.social-input-row input{flex:1;padding:9px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s;}
+.social-input-row input:focus{outline:none;border-color:var(--clr-accent);}
+/* ── Checkbox label ── */
+.checkbox-label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.87rem;color:var(--clr-text);}
+.checkbox-label input[type=checkbox]{margin-top:3px;accent-color:var(--clr-accent);flex-shrink:0;width:17px;height:17px;}
+.checkbox-label a{color:var(--clr-accent);}
+.checkbox-error{outline:2px solid #ef4444;border-radius:3px;}
+/* ── Prijs footer ── */
+.price-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.price-footer--nav-only{justify-content:flex-end;}
+.price-footer__info{text-align:center;}
+.price-footer__label{font-size:.72rem;color:var(--clr-muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
+.price-footer__amount{font-size:1.3rem;font-weight:800;color:var(--clr-accent);}
+/* ── Success overlay ── */
+.success-overlay{display:none;position:fixed;inset:0;background:rgba(15,10,46,.8);backdrop-filter:blur(6px);z-index:2000;align-items:center;justify-content:center;}
+.success-overlay.show{display:flex;}
+.success-card{background:var(--clr-white);border-radius:var(--radius-lg);padding:48px 40px;max-width:460px;width:90%;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.3);animation:popIn .4s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden;}
+@keyframes popIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.success-rockets{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.rocket-particle{position:absolute;top:-30px;animation:rocketUp linear forwards;}
+@keyframes rocketUp{to{transform:translateY(110vh) rotate(20deg);opacity:0}}
+.success-icon{width:80px;height:80px;margin:0 auto 20px;}
+.success-icon svg .success-circle{stroke-dasharray:240;stroke-dashoffset:240;}
+.success-icon svg .success-check{stroke-dasharray:60;stroke-dashoffset:60;}
+.success-icon.animate svg .success-circle{animation:drawCircle .6s ease forwards;}
+.success-icon.animate svg .success-check{animation:drawCheck .4s ease .5s forwards;}
+@keyframes drawCircle{to{stroke-dashoffset:0}}
+@keyframes drawCheck{to{stroke-dashoffset:0}}
+.success-title{font-size:1.4rem;color:var(--clr-heading);margin-bottom:10px;}
+.success-sub{font-size:.88rem;color:var(--clr-muted);margin-bottom:20px;}
+.success-details{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
+.success-detail-item{display:flex;align-items:center;gap:10px;font-size:.84rem;color:var(--clr-text);text-align:left;}
+.success-close-btn{background:var(--clr-accent);color:#fff;border:none;padding:13px 28px;border-radius:var(--radius-sm);cursor:pointer;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;transition:background .2s;}
+.success-close-btn:hover{background:var(--clr-accent-h);}
+/* ── Bedankt paneel ── */
+.concept-bedankt{background:var(--clr-white);border-radius:var(--radius-lg);padding:52px 40px;text-align:center;box-shadow:var(--shadow-sm);}
+.concept-bedankt__icon{width:72px;height:72px;margin:0 auto 20px;}
+.concept-bedankt__details{display:flex;flex-direction:column;gap:10px;margin:24px 0 28px;}
+.concept-bedankt__details div{display:flex;align-items:center;justify-content:center;gap:10px;font-size:.9rem;color:var(--clr-text);}
+/* ── WeTransfer ── */
+.wetransfer-link{display:inline-flex;align-items:center;gap:8px;background:#1ACCA1;color:#fff;border-radius:var(--radius-sm);padding:11px 20px;font-weight:700;font-size:.86rem;text-decoration:none;margin-top:10px;transition:filter .2s;}
+.wetransfer-link:hover{filter:brightness(1.08);}
+/* ── Sectie divider ── */
+.form-section-divider{display:flex;align-items:center;gap:12px;margin:28px 0 22px;}
+.form-section-divider span{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--clr-muted);white-space:nowrap;}
+.form-section-divider::before,.form-section-divider::after{content:'';flex:1;height:1px;background:var(--clr-border);}
+
+/* ── Portaal advies / uitleg (stap 2) ── */
+.portaal-advies,.portaal-uitleg,.crm-advies{display:flex;gap:12px;align-items:flex-start;border-radius:var(--radius-md);padding:16px 18px;margin-bottom:16px;animation:fadeInUp .3s ease;}
+.crm-advies{background:var(--clr-soft);border:1.5px solid var(--clr-accent);margin-top:16px;}
+.crm-advies__icon{font-size:1.2rem;flex-shrink:0;line-height:1.4;}
+.crm-advies strong{display:block;font-size:.88rem;color:var(--clr-heading);margin-bottom:4px;}
+.crm-advies p{font-size:.82rem;color:var(--clr-text);margin:0;line-height:1.6;}
+.portaal-advies{background:var(--clr-soft);border:1.5px solid var(--clr-accent);}
+.portaal-uitleg{background:var(--clr-light);border:1.5px solid var(--clr-border);}
+.portaal-advies__icon,.portaal-uitleg__icon{font-size:1.2rem;flex-shrink:0;line-height:1.4;}
+.portaal-advies strong,.portaal-uitleg strong{display:block;font-size:.88rem;color:var(--clr-heading);margin-bottom:4px;}
+.portaal-advies p,.portaal-uitleg p{font-size:.82rem;color:var(--clr-text);margin:0;line-height:1.6;}
+/* ── Prijs samenvatting (stap 3) ── */
+.prijs-samenvatting{background:var(--clr-soft);border:1.5px solid var(--clr-accent);border-radius:var(--radius-lg);padding:24px 26px;margin-top:8px;}
+.prijs-samenvatting__label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--clr-accent-h);margin-bottom:6px;}
+.prijs-samenvatting__amount{font-size:2.1rem;font-weight:800;line-height:1;color:var(--clr-heading);}
+.prijs-samenvatting__note{font-size:.8rem;color:var(--clr-text);opacity:.9;margin:16px 0 0;line-height:1.6;}
+  
+  </style>
 </head>
 <body data-page="concept">
 <!--#HEADER#--><header id="site-header">
@@ -106,52 +396,596 @@
   </nav>
 </div><!--#HEADER-END#-->
 <main>
-  <section class="page-hero">
-    <div class="container">
-      <p class="page-hero__crumb"><a href="index.html">Home</a> / Gratis concept</p>
-      <h1>Vraag je gratis websiteconcept aan</h1>
-      <p class="lead">Benieuwd hoe jouw nieuwe website eruit kan zien? Wij maken vrijblijvend een concept op maat. Binnen vijf werkdagen zie je precies wat er mogelijk is — geheel gratis en zonder verplichting.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="split" style="align-items:start">
-        <div>
-          <span class="eyebrow">Waarom een concept?</span>
-          <h2>Eerst zien, dan pas beslissen</h2>
-          <p class="lead">In plaats van dure beloftes laten we je gewoon zien wat we voor je kunnen betekenen. Zo weet je precies waar je aan toe bent.</p>
-          <ul class="feature-list">
-            <li><span class="fl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/></svg></span><span><b>100% gratis &amp; vrijblijvend</b>Geen kleine lettertjes, geen verplichtingen achteraf.</span></li>
-            <li><span class="fl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5"/></svg></span><span><b>Op maat voor jouw branche</b>We verdiepen ons eerst in je bedrijf en doelgroep.</span></li>
-            <li><span class="fl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span><b>Binnen 5 werkdagen klaar</b>Snel duidelijkheid, geen wekenlange trajecten.</span></li>
-          </ul>
-        </div>
-        <div>
-          <div class="form-card">
-            <form data-form action="#" novalidate>
-              <div class="form-grid">
-                <div class="form-group"><label for="c-naam">Naam *</label><input id="c-naam" name="naam" type="text" required></div>
-                <div class="form-group"><label for="c-bedrijf">Bedrijf</label><input id="c-bedrijf" name="bedrijf" type="text"></div>
-                <div class="form-group"><label for="c-email">E-mailadres *</label><input id="c-email" name="email" type="email" required></div>
-                <div class="form-group"><label for="c-tel">Telefoon</label><input id="c-tel" name="telefoon" type="tel"></div>
-                <div class="form-group full"><label for="c-site">Huidige website (indien aanwezig)</label><input id="c-site" name="website" type="text" placeholder="www.voorbeeld.nl"></div>
-                <div class="form-group full"><label for="c-bericht">Vertel kort over je bedrijf en wensen</label><textarea id="c-bericht" name="bericht" placeholder="Wat voor bedrijf heb je, en wat wil je met je website bereiken?"></textarea></div>
+    <section class="page-hero">
+      <div class="container">
+        <span class="tag">100% GRATIS</span>
+        <h1>Ontvang jouw gratis<br>website concept</h1>
+        <p>Vertel ons over jouw bedrijf en wensen. Binnen 5 werkdagen ontvang je een professioneel concept op maat, zonder verplichtingen.</p>
+      </div>
+    </section>
+    <section class="section section--alt">
+      <div class="container">
+        <div class="concept-wrapper">
+          <form id="conceptForm" action="https://formspree.io/f/mbdplbjk" method="POST" novalidate>
+            <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="_subject" value="Gratis concept aanvraag via drivennagency.nl">
+            <input type="hidden" name="Indicatieve prijs" id="hiddenPriceOnce" value="&#8364;649,95">
+            <input type="hidden" name="Geselecteerde paginas" id="hiddenPages" value="">
+            <input type="hidden" name="Talen" id="hiddenTalen" value="Nederlands">
+            <input type="hidden" name="Bedrijfstype" id="hiddenBranche" value="">
+            <input type="hidden" name="Pakketten" id="hiddenPakketten" value="">
+            <input type="hidden" name="Prijsopbouw" id="hiddenPriceOpbouw" value="">
+            <!-- Stap indicator -->
+            <div class="concept-steps" id="stepIndicator">
+              <div class="concept-step__line concept-step__line--1" id="stepLine1"></div>
+              <div class="concept-step__line concept-step__line--2" id="stepLine2"></div>
+              <div class="concept-step active" data-step="1">
+                <span class="concept-step__num">1</span>
+                <span class="concept-step__label">Je bedrijf</span>
               </div>
-              <button type="submit" class="btn btn--gold" style="width:100%">Gratis concept aanvragen</button>
-              <p class="form-note">We nemen binnen één werkdag contact op. Je gegevens gebruiken we uitsluitend om je aanvraag te behandelen.</p>
-            </form>
-            <div class="form-success">
-              <div class="fs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="30" height="30"><path d="M20 6 9 17l-5-5"/></svg></div>
-              <h3>Bedankt voor je aanvraag!</h3>
-              <p>We hebben je bericht ontvangen en nemen binnen één werkdag contact met je op om je gratis concept te bespreken.</p>
+              <div class="concept-step" data-step="2">
+                <span class="concept-step__num">2</span>
+                <span class="concept-step__label">Je website</span>
+              </div>
+              <div class="concept-step" data-step="3">
+                <span class="concept-step__num">3</span>
+                <span class="concept-step__label">Afronden</span>
+              </div>
             </div>
+            <!-- STAP 1 -->
+            <div class="form-step" id="step1">
+              <div class="step-content">
+                <h2>Vertel ons over je bedrijf</h2>
+                <p class="step-subtitle">Hoe meer je deelt, hoe beter het concept aansluit op wat je echt nodig hebt.</p>
+                <div class="form-group">
+                  <label for="brancheZoek">Wat voor soort bedrijf heb je? <span style="color:#ef4444">*</span></label>
+                  <div class="branche-search-wrap">
+                    <input type="text" id="brancheZoek" placeholder="Begin te typen, bijv. kapper, bouwbedrijf, coach..." autocomplete="off">
+                    <button type="button" class="branche-clear" id="brancheClear" aria-label="Wissen">&#10005;</button>
+                    <ul class="branche-suggestions" id="brancheSuggestions" role="listbox"></ul>
+                  </div>
+                  <div id="brancheTagWrap"></div>
+                  <span class="form-hint">Staat je branche er niet bij? Typ dan gewoon hoe je het zelf zou omschrijven.</span>
+                </div>
+                <div class="form-group">
+                  <label>Type project <span style="color:#ef4444">*</span></label>
+                  <div class="concept-type-btns">
+                    <label class="type-btn">
+                      <input type="radio" name="Type project" value="Nieuwe website" required>
+                      <span><strong>Nieuwe website</strong><small>Ik heb nog geen website</small></span>
+                    </label>
+                    <label class="type-btn">
+                      <input type="radio" name="Type project" value="Redesign">
+                      <span><strong>Redesign</strong><small>Mijn huidige site moet moderner</small></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group" id="huidigeUrlWrap" style="display:none;">
+                  <label for="c-url">URL van je huidige website</label>
+                  <input type="url" id="c-url" name="Huidige website URL" placeholder="https://www.jouwsite.nl">
+                </div>
+                <div class="form-group">
+                  <label for="c-bedrijf">Bedrijfsnaam <span style="color:#ef4444">*</span></label>
+                  <input type="text" id="c-bedrijf" name="Bedrijfsnaam" placeholder="Jansen &amp; Zo" required autocomplete="organization">
+                </div>
+                <div class="form-group">
+                  <label for="c-doelgroep">Wie zijn jullie klanten? <span style="color:#ef4444">*</span></label>
+                  <textarea id="c-doelgroep" name="Doelgroep" rows="3" placeholder="Bijv. particulieren in de regio, MKB-bedrijven, jonge gezinnen..." required></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Gewenste uitstraling <span class="form-optional">(meerdere mogelijk)</span></label>
+                  <div class="stijl-kaarten">
+                    <label class="stijl-kaart"><input type="checkbox" name="Gewenste stijl" value="Minimalistisch"><span><span class="stijl-kaart__preview stijl-kaart__preview--min"></span><strong>Minimalistisch</strong><small>Clean, witruimte, rustig</small></span></label>
+                    <label class="stijl-kaart"><input type="checkbox" name="Gewenste stijl" value="Speels en creatief"><span><span class="stijl-kaart__preview stijl-kaart__preview--spe"></span><strong>Speels en creatief</strong><small>Kleurrijk, dynamisch</small></span></label>
+                    <label class="stijl-kaart"><input type="checkbox" name="Gewenste stijl" value="Luxe en elegant"><span><span class="stijl-kaart__preview stijl-kaart__preview--lux"></span><strong>Luxe en elegant</strong><small>Donker, verfijnd, premium</small></span></label>
+                    <label class="stijl-kaart"><input type="checkbox" name="Gewenste stijl" value="Krachtig en zakelijk"><span><span class="stijl-kaart__preview stijl-kaart__preview--kra"></span><strong>Krachtig en zakelijk</strong><small>Sterk, direct, professioneel</small></span></label>
+                  </div>
+                </div>
+                <div id="logo-optie-wrap" style="display:none;">
+                  <div class="logo-optie-box">
+                    <p class="logo-optie-box__title">Logo nodig?</p>
+                    <p class="logo-optie-box__sub">Een logo kan altijd later nog besproken en toegevoegd worden aan je website, dus je hoeft er nu nog niets over te weten. Wil je alvast aangeven dat je hier gebruik van wilt maken?</p>
+                    <label class="extra-row" style="margin-top:12px;">
+                      <input type="checkbox" name="Logo gewenst" value="Ja, logo laten ontwerpen" id="logoOptie">
+                      <div><strong>Ja, ik wil een logo laten ontwerpen</strong><small>We bespreken de details later samen, geheel vrijblijvend</small></div>
+                    </label>
+                    <div id="logoStijlWrap" style="display:none;margin-top:14px;">
+                      <label for="f-logoidee" style="font-size:.85rem;font-weight:600;display:block;margin-bottom:6px;color:var(--clr-heading);">Heb je al een idee hoe het eruit moet komen te zien? <span class="form-optional">(optioneel)</span></label>
+                      <textarea id="f-logoidee" name="Logo idee" rows="3" placeholder="Laat het gerust weten: een stijl, kleur, symbool of voorbeeld dat je aanspreekt..." style="width:100%;padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.9rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:80px;transition:border-color .2s,box-shadow .2s;"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="price-footer price-footer--nav-only" style="margin-top:16px;">
+                <button type="button" class="btn btn--primary" id="step1Next">Volgende stap</button>
+              </div>
+            </div>
+            <!-- STAP 2 -->
+            <div class="form-step" id="step2" style="display:none;">
+              <div class="step-content">
+                <h2>Je website samenstellen</h2>
+                <p class="step-subtitle">Op basis van je bedrijfstype hebben we alvast een voorstel gemaakt. Pas het gerust aan naar wat bij jou past.</p>
+                <div class="inbegrepen-box">
+                  <div class="inbegrepen-box__title">Altijd inbegrepen</div>
+                  <ul class="inbegrepen-list">
+                    <li><span class="incl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></span> Design op maat</li>
+                    <li><span class="incl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span> SEO-optimalisatie</li>
+                    <li><span class="incl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span> Vloeiende animaties</li>
+                    <li><span class="incl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span> Google Maps integratie</li>
+                    <li><span class="incl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="M22 6l-10 7L2 6"></path></svg></span> Contactformulier</li>
+                    <li><span class="incl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"></rect><line x1="11" y1="18" x2="13" y2="18"></line></svg></span> Volledig responsive</li>
+                  </ul>
+                </div>
+                <div class="pagina-voorstel-banner" id="paginaVoorstelBanner">
+                  <p id="paginaVoorstelTekst"></p>
+                </div>
+                <span class="paginas-label">Stap 1: welke pagina's wil je?</span>
+                <p class="paginas-sublabel">We hebben op basis van je bedrijfstype alvast pagina's aangevinkt. Vink gerust aan of uit wat je zelf wilt. Klik bij elke pagina op <strong>“Onderdelen kiezen”</strong> om te bepalen wat er precies op die pagina komt te staan.</p>
+                <div id="paginasLijst">
+                  <!-- HOME -->
+                  <div class="pagina-item is-recommended" id="pi-home">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="Homepagina" class="pagina-check" checked>
+                      <span class="pagina-item__naam">Homepagina</span>
+                      <span class="pagina-item__badge badge-aanbevolen">Aanbevolen</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__why">De basis van je online aanwezigheid. Eerste indruk, jouw verhaal en een duidelijke call-to-action voor nieuwe bezoekers.</div>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <div class="pagina-elementen">
+                        <span class="pagina-elementen__label">Stap 2: welke onderdelen moeten op deze pagina?</span>
+                        <label><input type="checkbox" name="Homepagina elementen" value="Hero banner met tekst" checked> Hero / banner met tekst</label>
+                        <label><input type="checkbox" name="Homepagina elementen" value="Over ons snippet"> Over ons snippet</label>
+                        <label><input type="checkbox" name="Homepagina elementen" value="Diensten overzicht"> Diensten overzicht</label>
+                        <label><input type="checkbox" name="Homepagina elementen" value="Testimonials en reviews"> Testimonials / reviews</label>
+                        <label><input type="checkbox" name="Homepagina elementen" value="Call-to-action sectie"> Call-to-action sectie</label>
+                        <label><input type="checkbox" name="Homepagina elementen" value="Stats en cijfers blok"> Stats / cijfers blok</label>
+                        <label><input type="checkbox" name="Homepagina elementen" value="Video sectie"> Video sectie</label>
+                      </div>
+                      <textarea name="Homepagina extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)"></textarea>
+                    </div>
+                  </div>
+                  <!-- OVER ONS -->
+                  <div class="pagina-item" id="pi-overons">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="Over Ons" class="pagina-check">
+                      <span class="pagina-item__naam">Over ons</span>
+                      <span class="pagina-item__badge">Optioneel</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__why" style="display:none;"></div>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <div class="pagina-elementen">
+                        <span class="pagina-elementen__label">Welke onderdelen moeten op deze pagina?</span>
+                        <label><input type="checkbox" name="Over Ons elementen" value="Portretfoto en bio"> Portretfoto en bio</label>
+                        <label><input type="checkbox" name="Over Ons elementen" value="Missie en visie"> Missie en visie</label>
+                        <label><input type="checkbox" name="Over Ons elementen" value="Tijdlijn bedrijfsgeschiedenis"> Tijdlijn bedrijfsgeschiedenis</label>
+                        <label><input type="checkbox" name="Over Ons elementen" value="Certificaten en awards"> Certificaten en awards</label>
+                        <label><input type="checkbox" name="Over Ons elementen" value="Kernwaarden blok"> Kernwaarden blok</label>
+                        <label><input type="checkbox" name="Over Ons elementen" value="Team sectie"> Team sectie</label>
+                      </div>
+                      <textarea name="Over Ons extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)"></textarea>
+                    </div>
+                  </div>
+                  <!-- DIENSTEN -->
+                  <div class="pagina-item" id="pi-diensten">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="Diensten" class="pagina-check">
+                      <span class="pagina-item__naam">Diensten</span>
+                      <span class="pagina-item__badge">Optioneel</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__why" style="display:none;"></div>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <div class="pagina-elementen">
+                        <span class="pagina-elementen__label">Welke onderdelen moeten op deze pagina?</span>
+                        <label><input type="checkbox" name="Diensten elementen" value="Overzicht van alle diensten"> Overzicht van alle diensten</label>
+                        <label><input type="checkbox" name="Diensten elementen" value="Werkproces stappen"> Werkproces stappen</label>
+                        <label><input type="checkbox" name="Diensten elementen" value="FAQ sectie"> FAQ sectie</label>
+                        <label><input type="checkbox" name="Diensten elementen" value="Call-to-action"> Call-to-action</label>
+                      </div>
+                      <textarea name="Diensten extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)"></textarea>
+                    </div>
+                  </div>
+                  <!-- BEHANDELINGEN -->
+                  <div class="pagina-item" id="pi-behandelingen">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="Behandelingen en aanbod" class="pagina-check">
+                      <span class="pagina-item__naam">Behandelingen / aanbod</span>
+                      <span class="pagina-item__badge">Optioneel</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__why" style="display:none;"></div>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <div class="pagina-elementen">
+                        <span class="pagina-elementen__label">Welke onderdelen moeten op deze pagina?</span>
+                        <label><input type="checkbox" name="Behandelingen elementen" value="Uitleg per behandeling"> Uitleg per behandeling</label>
+                        <label><input type="checkbox" name="Behandelingen elementen" value="Fotos van resultaten"> Foto's van resultaten</label>
+                        <label><input type="checkbox" name="Behandelingen elementen" value="Duur per behandeling"> Duur per behandeling</label>
+                        <label><input type="checkbox" name="Behandelingen elementen" value="Online afspraakmogelijkheid"> Online afspraakmogelijkheid</label>
+                      </div>
+                      <textarea name="Behandelingen extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)"></textarea>
+                    </div>
+                  </div>
+                  <!-- PORTFOLIO -->
+                  <div class="pagina-item" id="pi-portfolio">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="Portfolio en projecten" class="pagina-check">
+                      <span class="pagina-item__naam">Portfolio / projecten</span>
+                      <span class="pagina-item__badge">Optioneel</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__why" style="display:none;"></div>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <div class="pagina-elementen">
+                        <span class="pagina-elementen__label">Welke onderdelen moeten op deze pagina?</span>
+                        <label><input type="checkbox" name="Portfolio elementen" value="Galerij of grid"> Galerij / grid</label>
+                        <label><input type="checkbox" name="Portfolio elementen" value="Voor en na vergelijking"> Voor en na vergelijking</label>
+                        <label><input type="checkbox" name="Portfolio elementen" value="Filter op categorie"> Filter op categorie</label>
+                        <label><input type="checkbox" name="Portfolio elementen" value="Beschrijving per project"> Beschrijving per project</label>
+                        <label><input type="checkbox" name="Portfolio elementen" value="Klantlogos referenties"> Klantlogo's / referenties</label>
+                      </div>
+                      <textarea name="Portfolio extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)"></textarea>
+                    </div>
+                  </div>
+                  <!-- PRIJZEN -->
+                  <div class="pagina-item" id="pi-prijzen">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="Prijzen" class="pagina-check">
+                      <span class="pagina-item__naam">Prijzen</span>
+                      <span class="pagina-item__badge">Optioneel</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__why" style="display:none;"></div>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <p style="font-size:.82rem;color:var(--clr-muted);margin-bottom:14px;">Stel hier je pakketten of tarieven samen. Per pakket vul je een titel, omschrijving en optioneel een prijs in.</p>
+                      <div id="pakketten-wrap"></div>
+                      <button type="button" class="pakket-add-btn" id="pakketAddBtn">+ Pakket toevoegen</button>
+                      <div style="margin-top:14px;">
+                        <label style="display:flex;align-items:center;gap:8px;font-size:.83rem;cursor:pointer;">
+                          <input type="checkbox" name="Prijzen elementen" value="Vergelijkingstabel" style="accent-color:var(--clr-accent);"> Voeg ook een vergelijkingstabel toe
+                        </label>
+                      </div>
+                      <textarea name="Prijzen extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)" style="margin-top:12px;width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:60px;"></textarea>
+                    </div>
+                  </div>
+                  <!-- BLOG -->
+                  <div class="pagina-item" id="pi-blog">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="Blog" class="pagina-check">
+                      <span class="pagina-item__naam">Blog / nieuws</span>
+                      <span class="pagina-item__badge">Optioneel</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__why" style="display:none;"></div>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <div class="pagina-elementen">
+                        <span class="pagina-elementen__label">Welke onderdelen moeten op deze pagina?</span>
+                        <label><input type="checkbox" name="Blog elementen" value="Artikel overzicht"> Artikel overzicht</label>
+                        <label><input type="checkbox" name="Blog elementen" value="Categorieen"> Categorie&#235;n</label>
+                        <label><input type="checkbox" name="Blog elementen" value="Zoekfunctie"> Zoekfunctie</label>
+                        <label><input type="checkbox" name="Blog elementen" value="Uitgelicht artikel"> Uitgelicht artikel bovenaan</label>
+                      </div>
+                      <textarea name="Blog extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)"></textarea>
+                    </div>
+                  </div>
+                  <!-- FAQ -->
+                  <div class="pagina-item" id="pi-faq">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="FAQ" class="pagina-check">
+                      <span class="pagina-item__naam">Veelgestelde vragen (FAQ)</span>
+                      <span class="pagina-item__badge">Optioneel</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__why" style="display:none;"></div>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <div class="pagina-elementen">
+                        <span class="pagina-elementen__label">Welke onderdelen moeten op deze pagina?</span>
+                        <label><input type="checkbox" name="FAQ elementen" value="Uitklapbare vragen"> Uitklapbare vragen (accordeon)</label>
+                        <label><input type="checkbox" name="FAQ elementen" value="Zoekfunctie vragen"> Zoekfunctie door vragen</label>
+                        <label><input type="checkbox" name="FAQ elementen" value="Link naar contact"> Link naar contactformulier</label>
+                      </div>
+                      <textarea name="FAQ extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)"></textarea>
+                    </div>
+                  </div>
+                  <!-- REVIEWS -->
+                  <div class="pagina-item" id="pi-reviews">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="Reviews" class="pagina-check">
+                      <span class="pagina-item__naam">Reviews / testimonials</span>
+                      <span class="pagina-item__badge">Optioneel</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__why" style="display:none;"></div>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <div class="pagina-elementen">
+                        <span class="pagina-elementen__label">Welke onderdelen moeten op deze pagina?</span>
+                        <label><input type="checkbox" name="Reviews elementen" value="Google reviews widget"> Google reviews widget</label>
+                        <label><input type="checkbox" name="Reviews elementen" value="Handmatige quotes"> Handmatige klantquotes</label>
+                        <label><input type="checkbox" name="Reviews elementen" value="Sterren beoordeling"> Sterren beoordeling</label>
+                      </div>
+                      <textarea name="Reviews extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)"></textarea>
+                    </div>
+                  </div>
+                  <!-- VACATURES -->
+                  <div class="pagina-item" id="pi-vacatures">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="Vacatures" class="pagina-check">
+                      <span class="pagina-item__naam">Vacatures</span>
+                      <span class="pagina-item__badge">Optioneel</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__why" style="display:none;"></div>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <div class="pagina-elementen">
+                        <span class="pagina-elementen__label">Welke onderdelen moeten op deze pagina?</span>
+                        <label><input type="checkbox" name="Vacatures elementen" value="Vacature overzicht"> Vacature overzicht</label>
+                        <label><input type="checkbox" name="Vacatures elementen" value="Sollicitatieformulier"> Sollicitatieformulier</label>
+                        <label><input type="checkbox" name="Vacatures elementen" value="Werken bij cultuurpagina"> Werken bij / cultuurpagina</label>
+                      </div>
+                      <textarea name="Vacatures extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)"></textarea>
+                    </div>
+                  </div>
+                  <!-- CONTACT -->
+                  <div class="pagina-item" id="pi-contact">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="Contact" class="pagina-check">
+                      <span class="pagina-item__naam">Contact</span>
+                      <span class="pagina-item__badge">Optioneel</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__why" style="display:none;"></div>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <div class="pagina-elementen">
+                        <span class="pagina-elementen__label">Welke onderdelen moeten op deze pagina?</span>
+                        <label><input type="checkbox" name="Contact elementen" value="Contactformulier"> Contactformulier</label>
+                        <label><input type="checkbox" name="Contact elementen" value="Google Maps kaart"> Google Maps kaart</label>
+                        <label><input type="checkbox" name="Contact elementen" value="Openingstijden"> Openingstijden</label>
+                        <label><input type="checkbox" name="Contact elementen" value="WhatsApp knop"> WhatsApp knop</label>
+                        <label><input type="checkbox" name="Contact elementen" value="Telefoonnummer en email"> Telefoonnummer en e-mail</label>
+                        <label><input type="checkbox" name="Contact elementen" value="Social media links" id="socialCheck"> Social media links</label>
+                      </div>
+                      <div id="socialLinksWrap" style="display:none;margin-top:12px;">
+                        <p style="font-size:.8rem;color:var(--clr-muted);margin-bottom:10px;font-weight:600;">Plak de links naar je social media profielen:</p>
+                        <div class="social-inputs">
+                          <div class="social-input-row"><span class="social-input-icon" style="background:#e1306c;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></span><input type="url" name="Instagram URL" placeholder="https://www.instagram.com/jouwpagina"></div>
+                          <div class="social-input-row"><span class="social-input-icon" style="background:#1877f2;">f</span><input type="url" name="Facebook URL" placeholder="https://www.facebook.com/jouwpagina"></div>
+                          <div class="social-input-row"><span class="social-input-icon" style="background:#0077b5;">in</span><input type="url" name="LinkedIn URL" placeholder="https://www.linkedin.com/company/jouwbedrijf"></div>
+                          <div class="social-input-row"><span class="social-input-icon" style="background:#010101;">&#9835;</span><input type="url" name="TikTok URL" placeholder="https://www.tiktok.com/@jouwaccount"></div>
+                          <div class="social-input-row"><span class="social-input-icon" style="background:#ff0000;">&#9654;</span><input type="url" name="YouTube URL" placeholder="https://www.youtube.com/@jouwkanaal"></div>
+                        </div>
+                      </div>
+                      <textarea name="Contact extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)" style="margin-top:12px;width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:60px;"></textarea>
+                    </div>
+                  </div>
+                  <!-- ANDERE PAGINA -->
+                  <div class="pagina-item" id="pi-anders">
+                    <label class="pagina-item__header">
+                      <input type="checkbox" name="Paginas" value="Andere paginas" class="pagina-check" id="andersCheck">
+                      <span class="pagina-item__naam">Andere pagina's</span>
+                      <span class="pagina-item__badge">Zelf toevoegen</span>
+                      <button type="button" class="pagina-item__toggle" aria-expanded="false"><span class="pagina-item__toggle-txt">Onderdelen kiezen</span> <span class="pagina-item__toggle-arrow">&#9662;</span></button>
+                    </label>
+                    <div class="pagina-item__detail" style="display:none;">
+                      <textarea name="Andere paginas omschrijving" rows="3" placeholder="Omschrijf welke extra pagina's je nog nodig hebt..."></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CRM advies bij Portfolio/Vacatures -->
+                <div class="crm-advies" id="crmAdvies" style="display:none;">
+                  <div class="crm-advies__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"></path></svg></div>
+                  <div>
+                    <strong>Ons advies: een eigen beheerportaal</strong>
+                    <p id="crmAdviesTekst">Omdat je hebt gekozen voor deze pagina's, raden we een eigen beheerportaal sterk aan. Daarmee voeg je later zelf nieuwe projecten of vacatures toe, zonder ons erbij nodig te hebben.</p>
+                  </div>
+                </div>
+
+                <!-- Kleuren -->
+                <div class="form-section-divider"><span>Kleuren</span></div>
+                <div class="form-group">
+                  <label>Merkkleur(en) <span class="form-optional">(optioneel)</span></label>
+                  <p style="font-size:.8rem;color:var(--clr-muted);margin-bottom:14px;">Kies zelf je kleuren: klik op een kleurvlak, typ een HEX-code, of pik een kleur op van je scherm (Chrome/Edge). We vullen hier bewust niets vooraf in, zodat de kleuren echt van jou zijn.</p>
+                  <div class="kleur-swatch-preview" aria-hidden="true">
+                    <span class="kleur-swatch kleur-swatch--leeg" id="swatch1"></span>
+                    <span class="kleur-swatch kleur-swatch--leeg" id="swatch2"></span>
+                    <span class="kleur-swatch kleur-swatch--leeg" id="swatch3"></span>
+                  </div>
+                  <div class="kleur-rij">
+                    <label for="kleur1">Hoofdkleur <small>je merkkleur of accentkleur</small></label>
+                    <div class="kleur-input-wrap">
+                      <input type="color" id="kleur1" name="Kleur 1 hoofdkleur" value="#CCCCCC" data-touched="false">
+                      <input type="text" class="hex-field" id="hex1" value="" maxlength="7" placeholder="Nog niet gekozen">
+                      <button type="button" class="eyedropper-btn" id="eye1"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l4 4-9.5 9.5-2.5.5.5-2.5L12 2z"/><line x1="15" y1="5" x2="19" y2="9"/></svg> Oppikken</button>
+                    </div>
+                  </div>
+                  <div class="kleur-rij">
+                    <label for="kleur2">Ondersteunende kleur <small>bijv. een achtergrond of secondaire kleur</small></label>
+                    <div class="kleur-input-wrap">
+                      <input type="color" id="kleur2" name="Kleur 2 ondersteunend" value="#CCCCCC" data-touched="false">
+                      <input type="text" class="hex-field" id="hex2" value="" maxlength="7" placeholder="Nog niet gekozen">
+                      <button type="button" class="eyedropper-btn" id="eye2"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l4 4-9.5 9.5-2.5.5.5-2.5L12 2z"/><line x1="15" y1="5" x2="19" y2="9"/></svg> Oppikken</button>
+                    </div>
+                  </div>
+                  <div class="kleur-rij">
+                    <label for="kleur3">Extra kleur <small>optioneel accentkleur</small></label>
+                    <div class="kleur-input-wrap">
+                      <input type="color" id="kleur3" name="Kleur 3 extra" value="#CCCCCC" data-touched="false">
+                      <input type="text" class="hex-field" id="hex3" value="" maxlength="7" placeholder="Nog niet gekozen">
+                      <button type="button" class="eyedropper-btn" id="eye3"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l4 4-9.5 9.5-2.5.5.5-2.5L12 2z"/><line x1="15" y1="5" x2="19" y2="9"/></svg> Oppikken</button>
+                    </div>
+                  </div>
+                  <input type="text" name="Kleuren vermijden" placeholder="Zijn er kleuren die je liever niet gebruikt? (optioneel)" style="width:100%;margin-top:14px;padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.9rem;color:var(--clr-text);background:var(--clr-light);">
+                </div>
+                <!-- Talen -->
+                <div class="form-section-divider"><span>Talen</span></div>
+                <div class="form-group">
+                  <label>In welke talen moet de website beschikbaar zijn?</label>
+                  <p style="font-size:.8rem;color:var(--clr-muted);margin-bottom:12px;">Kies zelf welke talen de website moet ondersteunen — er staat nog niets vooraf geselecteerd.</p>
+                  <div class="taal-selectie">
+                    <div class="taal-tags" id="taalTags">
+                      
+                    </div>
+                    <div class="taal-input-wrap">
+                      <select id="taalDropdown" class="taal-dropdown">
+                        <option value="">+ Selecteer een taal...</option><option value="Nederlands">Nederlands</option>
+                        <option value="Engels">Engels</option><option value="Duits">Duits</option><option value="Frans">Frans</option>
+                        <option value="Spaans">Spaans</option><option value="Italiaans">Italiaans</option><option value="Portugees">Portugees</option>
+                        <option value="Pools">Pools</option><option value="Turks">Turks</option><option value="Arabisch">Arabisch</option>
+                        <option value="Chinees">Chinees</option><option value="Russisch">Russisch</option><option value="Oekraiens">Oekra&#239;ens</option>
+                        <option value="Grieks">Grieks</option><option value="Zweeds">Zweeds</option><option value="Noors">Noors</option>
+                        <option value="Deens">Deens</option><option value="Fins">Fins</option><option value="Japans">Japans</option>
+                        <option value="Koreaans">Koreaans</option><option value="Hindi">Hindi</option><option value="Roemeens">Roemeens</option>
+                        <option value="Hongaars">Hongaars</option><option value="Tsjechisch">Tsjechisch</option><option value="Slowaaks">Slowaaks</option>
+                        <option value="Bulgaars">Bulgaars</option><option value="Kroatisch">Kroatisch</option><option value="Servisch">Servisch</option>
+                        <option value="Vietnamees">Vietnamees</option><option value="Thai">Thai</option><option value="Indonesisch">Indonesisch</option>
+                        <option value="Maleis">Maleis</option><option value="Hebreeuws">Hebreeuws</option><option value="Swahili">Swahili</option>
+                      </select>
+                      <div style="display:flex;gap:8px;flex:1;min-width:200px;">
+                        <input type="text" id="taalEigen" class="taal-eigen" placeholder="Of type zelf een taal..." maxlength="40" style="flex:1;">
+                        <button type="button" id="taalEigenAdd" class="taal-eigen-btn">Toevoegen</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Inspiratie -->
+                <div class="form-section-divider"><span>Inspiratie</span></div>
+                <div class="form-group">
+                  <label for="c-refs">Websites die je mooi vindt <span class="form-optional">(optioneel)</span></label>
+                  <textarea id="c-refs" name="Referentiesites" rows="3" placeholder="Plak hier 1 of meer URL's van sites die je aanspreken, ook van andere branches..."></textarea>
+                </div>
+                <!-- Zelf beheren -->
+                <div class="form-section-divider"><span>Zelf beheren</span></div>
+                <div class="form-group" style="margin-bottom:14px;">
+                  <label>Wilt u zelf de controle houden over onderdelen die aangepast kunnen worden?</label>
+                  <p style="font-size:.8rem;color:var(--clr-muted);margin-bottom:12px;">Denk aan het zelf toevoegen van projecten, vacatures, teksten of foto's, zonder dat u daarvoor een developer nodig heeft.</p>
+                  <div class="concept-type-btns" style="grid-template-columns:1fr;">
+                    <label class="type-btn">
+                      <input type="radio" name="Zelf aanpassen" value="Ja, zelf aanpassen">
+                      <span><strong>Ja, ik wil zelf de controle houden</strong><small>Wij adviseren hiervoor een eigen klantportaal</small></span>
+                    </label>
+                    <label class="type-btn">
+                      <input type="radio" name="Zelf aanpassen" value="Nee, niet nodig">
+                      <span><strong>Nee, niet nodig</strong><small>Aanpassingen laat ik aan jullie over</small></span>
+                    </label>
+                    <label class="type-btn">
+                      <input type="radio" name="Zelf aanpassen" value="Weet ik nog niet">
+                      <span><strong>Weet ik nog niet</strong><small>Vertel me er meer over</small></span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Advies bij 'Ja' -->
+                <div class="portaal-advies" id="portaalAdvies" style="display:none;">
+                  <div class="portaal-advies__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"></path></svg></div>
+                  <div>
+                    <strong>Ons advies: een eigen klantportaal</strong>
+                    <p>Omdat je zelf de controle wilt houden, raden we een klantportaal sterk aan. Daarmee beheer je teksten, foto's en pagina's helemaal zelf, zonder ons of een developer nodig te hebben. We hebben dit alvast voor je genoteerd.</p>
+                  </div>
+                </div>
+
+                <!-- Uitleg bij 'Weet ik nog niet' -->
+                <div class="portaal-uitleg" id="portaalUitleg" style="display:none;">
+                  <div class="portaal-uitleg__icon">&#8505;&#65039;</div>
+                  <div>
+                    <strong>Wat is een klantportaal?</strong>
+                    <p>Een klantportaal is een eenvoudige, beveiligde omgeving waar je zelf kunt inloggen om je website bij te werken. Je past teksten aan, wisselt foto's, of plaatst een nieuwe vacature of project, precies wanneer jij dat wilt. Zonder technische kennis en zonder dat je ons hoeft in te schakelen. Handig als je website regelmatig verandert.</p>
+                  </div>
+                </div>
+
+                <!-- Verborgen, functioneel: wordt automatisch gezet op basis van de keuze hierboven -->
+                <input type="checkbox" name="Klantportaal gewenst" value="Ja" id="portaalOptie" style="display:none;" aria-hidden="true" tabindex="-1">
+              </div>
+              <div class="price-footer" style="margin-top:16px;">
+                <button type="button" class="btn btn--outline" id="step2Back">Terug</button>
+                <button type="button" class="btn btn--primary" id="step2Next">Volgende stap</button>
+              </div>
+            </div>
+            <!-- STAP 3 -->
+            <div class="form-step" id="step3" style="display:none;">
+              <div class="step-content">
+                <h2>Bijna klaar!</h2>
+                <p class="step-subtitle">Waar mogen we je gratis concept naartoe sturen?</p>
+                <div class="form-row">
+                  <div class="form-group"><label for="c-voornaam">Voornaam <span style="color:#ef4444">*</span></label><input type="text" id="c-voornaam" name="Voornaam" placeholder="Jan" required autocomplete="given-name"></div>
+                  <div class="form-group"><label for="c-achternaam">Achternaam <span style="color:#ef4444">*</span></label><input type="text" id="c-achternaam" name="Achternaam" placeholder="Jansen" required autocomplete="family-name"></div>
+                </div>
+                <div class="form-group"><label for="c-email">E-mailadres <span style="color:#ef4444">*</span></label><input type="email" id="c-email" name="E-mailadres" placeholder="jan@jouwbedrijf.nl" required autocomplete="email"></div>
+                <div class="form-group"><label for="c-telefoon">Telefoonnummer <span style="color:#ef4444">*</span></label><input type="tel" id="c-telefoon" name="Telefoonnummer" placeholder="+31 6 00 000 000" required autocomplete="tel"></div>
+                <div class="form-group">
+                  <label for="c-wensen">Aanvullende wensen <span class="form-optional">(optioneel)</span></label>
+                  <textarea id="c-wensen" name="Aanvullende wensen" rows="4" placeholder="Bijv. een online afsprakensysteem, donkere stijl met groene accenten..."></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Logo en foto's <span class="form-optional">(optioneel)</span></label>
+                  <div style="background:var(--clr-soft);border-radius:var(--radius-md);padding:16px 18px;">
+                    <p style="font-size:.85rem;color:var(--clr-text);margin-bottom:8px;">Heb je al een logo of foto's? Stuur ze via WeTransfer naar <strong>info@drivennagency.nl</strong>, of plak hieronder een link naar Google Drive of Dropbox.</p>
+                    <a href="https://wetransfer.com" target="_blank" rel="noopener noreferrer" class="wetransfer-link">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                      Bestanden sturen via WeTransfer
+                    </a>
+                    <input type="url" name="Bestanden link" placeholder="Of plak hier een link (optioneel)" style="width:100%;margin-top:10px;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:#fff;">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="Privacy akkoord" id="privacyCheck" value="ja" required>
+                    <span>Ik ga akkoord met de <a href="privacy.html" target="_blank">privacyverklaring</a> van Drivenn Agency.</span>
+                  </label>
+                </div>
+              </div>
+              <div class="prijs-samenvatting" id="prijsSamenvatting">
+                <div class="prijs-samenvatting__label">Indicatie eenmalig</div>
+                <div class="prijs-samenvatting__amount" id="priceDisplay">&#8364;750,00</div>
+                <p class="prijs-samenvatting__note">Dit is een richtprijs op basis van je keuzes. De definitieve prijs stemmen we samen af in je concept. Heb je meerdere projecten? Dan bespreken we graag een passende korting.</p>
+              </div>
+              <div class="price-footer price-footer--final" style="margin-top:16px;">
+                <button type="button" class="btn btn--outline" id="step3Back">Terug</button>
+                <button type="submit" class="btn btn--primary" id="submitBtn">Verstuur aanvraag</button>
+              </div>
+            </div>
+          </form>
+          <!-- Bedankt paneel -->
+          <div class="concept-bedankt" id="conceptBedankt" style="display:none;">
+            <div class="concept-bedankt__icon">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="38" stroke="#0E2340" stroke-width="3"/>
+                <path d="M22 40 L34 52 L58 28" stroke="#14b8a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2>Bedankt voor je aanvraag!</h2>
+            <p>Wij hebben alles goed ontvangen. Binnen <strong>5 werkdagen</strong> ontvang je een professioneel concept op maat in je inbox.</p>
+            <div class="concept-bedankt__details">
+              <div><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M4 4h16v16H4z"></path><path d="M22 6l-10 7L2 6"></path></svg></span> Bevestiging onderweg naar je inbox</div>
+              <div><span>&#8987;&#65039;</span> Reactie binnen 5 werkdagen</div>
+              <div><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"></path></svg></span> Volledig op maat, zonder verplichtingen</div>
+            </div>
+            <a href="index.html" class="btn btn--primary">Terug naar de homepagina</a>
           </div>
         </div>
       </div>
+    </section>
+  </main>
+  <!-- Success overlay -->
+  <div class="success-overlay" id="successOverlay" role="dialog" aria-modal="true" aria-label="Aanvraag verzonden">
+    <div class="success-card">
+      <div class="success-rockets" id="successRockets" aria-hidden="true"></div>
+      <div class="success-icon" id="successIcon">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="38" stroke="#0E2340" stroke-width="3" class="success-circle"/>
+          <path d="M22 40 L34 52 L58 28" stroke="#14b8a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="success-check"/>
+        </svg>
+      </div>
+      <h2 class="success-title">Aanvraag ontvangen!</h2>
+      <p class="success-sub">Wij gaan er direct mee aan de slag. Binnen <strong>5 werkdagen</strong> ontvang je een professioneel concept in je inbox.</p>
+      <div class="success-details">
+        <div class="success-detail-item"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M4 4h16v16H4z"></path><path d="M22 6l-10 7L2 6"></path></svg></span><span>Bevestiging onderweg naar je inbox</span></div>
+        <div class="success-detail-item"><span>&#8987;&#65039;</span><span>Reactie binnen 5 werkdagen</span></div>
+        <div class="success-detail-item"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"></path></svg></span><span>Volledig op maat, zonder verplichtingen</span></div>
+      </div>
+      <button class="success-close-btn" id="successClose">Super, bedankt!</button>
     </div>
-  </section>
-</main>
+  </div>
 <!--#FOOTER#--><footer class="site-footer">
   <div class="container">
     <div class="footer-top">
@@ -199,6 +1033,6 @@
   </div>
 </footer><!--#FOOTER-END#-->
 <script src="js/main.js"></script>
-<script src="js/form.js"></script>
+<script src="js/concept.js"></script>
 </body>
 </html>
