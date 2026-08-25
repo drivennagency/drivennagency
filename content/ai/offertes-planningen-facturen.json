@@ -9,7 +9,7 @@
   "apps": ["Google Sheets", "Gmail", "Google Agenda", "PDF"],
   "vereiste": "Werkt met een gratis Make-account en een Google-account",
   "binnenkort": false,
-  "beschrijving": "Stop met het handmatig overtypen van gegevens in offertes en facturen. Deze automatisering pakt de gegevens die jij invoert (bijvoorbeeld in een simpel formulier of spreadsheet) en maakt daar automatisch een nette offerte van, plant de klus in je agenda zodra de klant akkoord geeft, en verstuurt na afronding automatisch de factuur — inclusief btw-berekening en een betaallink.\n\nJe houdt volledige controle: elke stap kun je desgewenst eerst laten goedkeuren voordat er iets de deur uitgaat. Zo combineer je de snelheid van automatisering met de zekerheid dat er niets ongewenst wordt verstuurd.",
+  "beschrijving": "Stop met het handmatig overtypen van gegevens in offertes en facturen. Deze automatisering pakt de gegevens die jij invoert (bijvoorbeeld in een simpel formulier of spreadsheet) en maakt daar automatisch een nette offerte van, plant de klus in je agenda zodra de klant akkoord geeft, en verstuurt na afronding automatisch de factuur, inclusief btw-berekening en een betaallink.\n\nJe houdt volledige controle: elke stap kun je desgewenst eerst laten goedkeuren voordat er iets de deur uitgaat. Zo combineer je de snelheid van automatisering met de zekerheid dat er niets ongewenst wordt verstuurd.",
   "voordelen": [
     "Uren tijdwinst per week doordat je niets meer overtypt",
     "Consistente, professionele opmaak in elke offerte en factuur",

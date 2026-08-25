@@ -9,7 +9,7 @@
   "apps": ["WhatsApp", "Google Sheets"],
   "vereiste": "Werkt met een WhatsApp Business-account",
   "binnenkort": false,
-  "beschrijving": "Veel klanten stellen dezelfde vragen: openingstijden, prijzen, beschikbaarheid, adres. Deze automatisering herkent dat soort vragen en beantwoordt ze automatisch via WhatsApp — met jouw eigen antwoorden, in jouw eigen toon.\n\nKomt er een vraag binnen die te specifiek is? Dan geeft de automatisering die netjes aan jou door, zodat je persoonlijk kunt reageren. Zo krijgen klanten altijd snel antwoord, ook buiten kantooruren, terwijl jij alleen nog de echt belangrijke berichten zelf hoeft te beantwoorden.",
+  "beschrijving": "Veel klanten stellen dezelfde vragen: openingstijden, prijzen, beschikbaarheid, adres. Deze automatisering herkent dat soort vragen en beantwoordt ze automatisch via WhatsApp, met jouw eigen antwoorden, in jouw eigen toon.\n\nKomt er een vraag binnen die te specifiek is? Dan geeft de automatisering die netjes aan jou door, zodat je persoonlijk kunt reageren. Zo krijgen klanten altijd snel antwoord, ook buiten kantooruren, terwijl jij alleen nog de echt belangrijke berichten zelf hoeft te beantwoorden.",
   "voordelen": [
     "Klanten krijgen direct antwoord, óók buiten kantooruren",
     "Veelgestelde vragen worden automatisch afgehandeld",
