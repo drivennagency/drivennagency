@@ -247,16 +247,14 @@ AI_PAGE = """<!DOCTYPE html>
           {faq}
         </div>
         <aside>
-          <div class="form-card" style="position:sticky;top:100px">
+          <div class="form-card ai-buy" style="position:sticky;top:100px">
             {price_block}
-            <div class="ai-apps" style="margin-bottom:14px">{apps}</div>
-            {req}
             {buy}
-            <div class="install-banner" style="margin-top:18px;padding:18px 20px">
-              <div class="ib-ico" style="width:44px;height:44px">{install_ico}</div>
-              <div class="install-banner__txt"><h4 style="font-size:1rem">Laat het ons installeren</h4><p style="font-size:.85rem">Liever niet zelf opzetten? Wij komen het bij je bedrijf inrichten.</p></div>
-            </div>
-            <a href="/contact.html" class="btn btn--outline" style="width:100%;margin-top:12px">Vraag installatie aan</a>
+            <div class="ai-buy__sep"></div>
+            <div class="ai-buy__apps"><span class="ai-buy__lbl">Werkt met</span><div class="ai-apps">{apps}</div></div>
+            {req}
+            <p class="ai-buy__install">Liever niet zelf opzetten? Wij komen het bij je bedrijf installeren en uitleggen.</p>
+            <a href="/contact.html" class="btn btn--outline" style="width:100%">Vraag installatie aan</a>
           </div>
         </aside>
       </div>

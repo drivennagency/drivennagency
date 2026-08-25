@@ -66,7 +66,7 @@
 .step-subtitle{font-size:.9rem;color:var(--clr-muted);margin-bottom:28px!important;}
 .form-group{margin-bottom:22px;}
 .form-group label,.form-group .lbl{display:block;font-weight:600;font-size:.88rem;color:var(--clr-heading);margin-bottom:7px;}
-.form-group input[type=text],.form-group input[type=email],.form-group input[type=tel],.form-group input[type=url],.form-group textarea,.form-group select{width:100%;padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.9rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s,box-shadow .2s;}
+.form-group input[type=text],.form-group input[type=email],.form-group input[type=tel],.form-group input[type=url],.form-group textarea,.form-group select{width:100%;padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.9rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s,box-shadow .2s;}
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--clr-accent);box-shadow:0 0 0 3px rgba(201,162,39,.12);background:#fff;}
 .form-group textarea{resize:vertical;min-height:88px;}
 .form-hint{font-size:.78rem;color:var(--clr-muted);margin-top:5px;display:block;font-weight:400;}
@@ -106,7 +106,7 @@
 .pagina-item__badge.badge-aanbevolen{background:var(--clr-accent);color:#fff;}
 .pagina-item__why{font-size:.78rem;color:var(--clr-muted);padding:0 16px 12px 46px;background:var(--clr-soft);display:none;line-height:1.6;}
 .pagina-item.is-recommended .pagina-item__why{display:block;}
-.pagina-item__toggle{background:var(--clr-soft);border:1.5px solid var(--clr-border);cursor:pointer;color:var(--clr-accent);font-size:.78rem;font-weight:700;padding:8px 14px;line-height:1;flex-shrink:0;margin-left:auto;display:flex;align-items:center;gap:6px;border-radius:20px;transition:background .2s,border-color .2s;font-family:'Poppins',sans-serif;}
+.pagina-item__toggle{background:var(--clr-soft);border:1.5px solid var(--clr-border);cursor:pointer;color:var(--clr-accent);font-size:.78rem;font-weight:700;padding:8px 14px;line-height:1;flex-shrink:0;margin-left:auto;display:flex;align-items:center;gap:6px;border-radius:20px;transition:background .2s,border-color .2s;font-family:var(--body);}
 .pagina-item__toggle:hover{background:var(--clr-accent);color:#fff;border-color:var(--clr-accent);}
 .pagina-item__toggle:hover .pagina-item__toggle-arrow{color:#fff;}
 .pagina-item__toggle-arrow{font-size:.85rem;transition:transform .2s;}
@@ -117,7 +117,7 @@
 .pagina-elementen__label{display:block;font-size:.78rem;font-weight:700;color:var(--clr-accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
 .pagina-elementen label{display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--clr-text);cursor:pointer;}
 .pagina-elementen label input{accent-color:var(--clr-accent);}
-.pagina-item__detail textarea{width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:60px;transition:border-color .2s;}
+.pagina-item__detail textarea{width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.84rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:60px;transition:border-color .2s;}
 .pagina-item__detail textarea:focus{outline:none;border-color:var(--clr-accent);}
 /* ── Type knoppen ── */
 .concept-type-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
@@ -163,9 +163,9 @@
 .taal-tag--fixed{opacity:.75;}
 .taal-tag__remove{background:none;border:none;cursor:pointer;color:var(--clr-accent);font-size:1.05rem;padding:0 0 0 2px;line-height:1;}
 .taal-input-wrap{display:flex;flex-wrap:wrap;gap:8px;}
-.taal-dropdown,.taal-eigen{flex:1;min-width:160px;padding:9px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.85rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s;}
+.taal-dropdown,.taal-eigen{flex:1;min-width:160px;padding:9px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.85rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s;}
 .taal-dropdown:focus,.taal-eigen:focus{outline:none;border-color:var(--clr-accent);}
-.taal-eigen-btn{padding:9px 16px;background:var(--clr-accent);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer;font-family:'Poppins',sans-serif;font-size:.84rem;font-weight:600;transition:background .2s;white-space:nowrap;}
+.taal-eigen-btn{padding:9px 16px;background:var(--clr-accent);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer;font-family:var(--body);font-size:.84rem;font-weight:600;transition:background .2s;white-space:nowrap;}
 .taal-eigen-btn:hover{background:var(--clr-accent-h);}
 /* ── Kleuren ── */
 .kleur-rij{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--clr-border);flex-wrap:wrap;}
@@ -187,19 +187,19 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
 .pakket-header{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start;padding-right:32px;}
 .pakket-nummer{width:28px;height:28px;background:var(--clr-accent);color:#fff;border-radius:50%;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
 .pakket-title-wrap{flex:1;}
-.pakket-title-wrap input{width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:600;color:var(--clr-heading);background:var(--clr-white);transition:border-color .2s;}
+.pakket-title-wrap input{width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.88rem;font-weight:600;color:var(--clr-heading);background:var(--clr-white);transition:border-color .2s;}
 .pakket-title-wrap input:focus{outline:none;border-color:var(--clr-accent);}
-.pakket-body textarea{width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-white);resize:vertical;min-height:70px;transition:border-color .2s;}
+.pakket-body textarea{width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.84rem;color:var(--clr-text);background:var(--clr-white);resize:vertical;min-height:70px;transition:border-color .2s;}
 .pakket-body textarea:focus{outline:none;border-color:var(--clr-accent);}
 .pakket-prijs-rij{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap;}
 .pakket-prijs-rij__label{font-size:.82rem;font-weight:600;color:var(--clr-heading);flex-shrink:0;}
-.pakket-prijs-select{padding:8px 12px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.83rem;color:var(--clr-text);background:var(--clr-white);cursor:pointer;transition:border-color .2s;}
+.pakket-prijs-select{padding:8px 12px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.83rem;color:var(--clr-text);background:var(--clr-white);cursor:pointer;transition:border-color .2s;}
 .pakket-prijs-select:focus{outline:none;border-color:var(--clr-accent);}
-.pakket-prijs-val{flex:1;min-width:140px;padding:8px 12px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s;}
+.pakket-prijs-val{flex:1;min-width:140px;padding:8px 12px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.84rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s;}
 .pakket-prijs-val:focus{outline:none;border-color:var(--clr-accent);}
 .pakket-remove{position:absolute;top:12px;right:12px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;background:var(--clr-white);border:1.5px solid var(--clr-border);border-radius:50%;cursor:pointer;color:var(--clr-muted);padding:0;transition:background .15s,color .15s,border-color .15s;}
 .pakket-remove:hover{background:#fee2e2;color:#dc2626;border-color:#fca5a5;}
-.pakket-add-btn{width:100%;padding:12px;border:2px dashed var(--clr-border);border-radius:var(--radius-md);background:transparent;color:var(--clr-accent);font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:border-color .2s,background .2s;}
+.pakket-add-btn{width:100%;padding:12px;border:2px dashed var(--clr-border);border-radius:var(--radius-md);background:transparent;color:var(--clr-accent);font-family:var(--body);font-size:.88rem;font-weight:600;cursor:pointer;transition:border-color .2s,background .2s;}
 .pakket-add-btn:hover{border-color:var(--clr-accent);background:var(--clr-soft);}
 /* ── Inbegrepen box ── */
 .inbegrepen-box{background:var(--clr-soft);border-radius:var(--radius-md);padding:18px 20px;margin-bottom:24px;}
@@ -227,7 +227,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
 .logo-type-optie:has(input:checked){border-color:var(--clr-accent);background:var(--clr-soft);box-shadow:0 2px 8px rgba(201,162,39,.1);}
 .logo-type-optie:has(input:checked) .logo-type-optie__icon{background:var(--clr-accent);color:#fff;}
 .logo-stijl-chips{display:flex;flex-wrap:wrap;gap:7px;}
-.logo-chip{padding:6px 13px;border-radius:20px;border:1.5px solid var(--clr-border);background:var(--clr-white);color:var(--clr-text);font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;transition:var(--tr);}
+.logo-chip{padding:6px 13px;border-radius:20px;border:1.5px solid var(--clr-border);background:var(--clr-white);color:var(--clr-text);font-family:var(--body);font-size:.78rem;font-weight:600;cursor:pointer;transition:var(--tr);}
 .logo-chip--active{border-color:var(--clr-accent);background:var(--clr-accent);color:#fff;}
 .logo-chip--kleur{border-left:4px solid var(--chip-clr,var(--clr-border));}
 /* ── Extra rij ── */
@@ -241,7 +241,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
 .social-inputs{display:flex;flex-direction:column;gap:8px;}
 .social-input-row{display:flex;align-items:center;gap:10px;}
 .social-input-icon{width:34px;height:34px;border-radius:8px;background:var(--clr-primary);color:#fff;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.social-input-row input{flex:1;padding:9px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s;}
+.social-input-row input{flex:1;padding:9px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.84rem;color:var(--clr-text);background:var(--clr-light);transition:border-color .2s;}
 .social-input-row input:focus{outline:none;border-color:var(--clr-accent);}
 /* ── Checkbox label ── */
 .checkbox-label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.87rem;color:var(--clr-text);}
@@ -273,7 +273,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
 .success-sub{font-size:.88rem;color:var(--clr-muted);margin-bottom:20px;}
 .success-details{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
 .success-detail-item{display:flex;align-items:center;gap:10px;font-size:.84rem;color:var(--clr-text);text-align:left;}
-.success-close-btn{background:var(--clr-accent);color:#fff;border:none;padding:13px 28px;border-radius:var(--radius-sm);cursor:pointer;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;transition:background .2s;}
+.success-close-btn{background:var(--clr-accent);color:#fff;border:none;padding:13px 28px;border-radius:var(--radius-sm);cursor:pointer;font-family:var(--body);font-weight:700;font-size:.9rem;transition:background .2s;}
 .success-close-btn:hover{background:var(--clr-accent-h);}
 /* ── Bedankt paneel ── */
 .concept-bedankt{background:var(--clr-white);border-radius:var(--radius-lg);padding:52px 40px;text-align:center;box-shadow:var(--shadow-sm);}
@@ -350,7 +350,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
       </ul>
 
       <div class="nav__right">
-        <a href="concept.html" class="nav__cta">Gratis concept</a>
+        <a href="concept.html" class="nav__cta">Gratis website concept</a>
         <div class="lang-switch" aria-label="Taal wisselen">
           <button class="lang-switch__current" aria-expanded="false" aria-haspopup="listbox" type="button">
             <span class="flag-icon" aria-hidden="true"><svg viewBox="0 0 9 6"><rect width="9" height="2" fill="#AE1C28"/><rect y="2" width="9" height="2" fill="#FFF"/><rect y="4" width="9" height="2" fill="#21468B"/></svg></span>
@@ -491,7 +491,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
                     </label>
                     <div id="logoStijlWrap" style="display:none;margin-top:14px;">
                       <label for="f-logoidee" style="font-size:.85rem;font-weight:600;display:block;margin-bottom:6px;color:var(--clr-heading);">Heb je al een idee hoe het eruit moet komen te zien? <span class="form-optional">(optioneel)</span></label>
-                      <textarea id="f-logoidee" name="Logo idee" rows="3" placeholder="Laat het gerust weten: een stijl, kleur, symbool of voorbeeld dat je aanspreekt..." style="width:100%;padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.9rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:80px;transition:border-color .2s,box-shadow .2s;"></textarea>
+                      <textarea id="f-logoidee" name="Logo idee" rows="3" placeholder="Laat het gerust weten: een stijl, kleur, symbool of voorbeeld dat je aanspreekt..." style="width:100%;padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.9rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:80px;transition:border-color .2s,box-shadow .2s;"></textarea>
                     </div>
                   </div>
                 </div>
@@ -646,7 +646,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
                           <input type="checkbox" name="Prijzen elementen" value="Vergelijkingstabel" style="accent-color:var(--clr-accent);"> Voeg ook een vergelijkingstabel toe
                         </label>
                       </div>
-                      <textarea name="Prijzen extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)" style="margin-top:12px;width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:60px;"></textarea>
+                      <textarea name="Prijzen extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)" style="margin-top:12px;width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.84rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:60px;"></textarea>
                     </div>
                   </div>
                   <!-- BLOG -->
@@ -755,7 +755,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
                           <div class="social-input-row"><span class="social-input-icon" style="background:#ff0000;">&#9654;</span><input type="url" name="YouTube URL" placeholder="https://www.youtube.com/@jouwkanaal"></div>
                         </div>
                       </div>
-                      <textarea name="Contact extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)" style="margin-top:12px;width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:60px;"></textarea>
+                      <textarea name="Contact extra wensen" rows="2" placeholder="Wil je hier iets aan toevoegen dat niet in het lijstje staat? Typ het hier (optioneel)" style="margin-top:12px;width:100%;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.84rem;color:var(--clr-text);background:var(--clr-light);resize:vertical;min-height:60px;"></textarea>
                     </div>
                   </div>
                   <!-- ANDERE PAGINA -->
@@ -815,7 +815,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
                       <button type="button" class="eyedropper-btn" id="eye3"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l4 4-9.5 9.5-2.5.5.5-2.5L12 2z"/><line x1="15" y1="5" x2="19" y2="9"/></svg> Oppikken</button>
                     </div>
                   </div>
-                  <input type="text" name="Kleuren vermijden" placeholder="Zijn er kleuren die je liever niet gebruikt? (optioneel)" style="width:100%;margin-top:14px;padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.9rem;color:var(--clr-text);background:var(--clr-light);">
+                  <input type="text" name="Kleuren vermijden" placeholder="Zijn er kleuren die je liever niet gebruikt? (optioneel)" style="width:100%;margin-top:14px;padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.9rem;color:var(--clr-text);background:var(--clr-light);">
                 </div>
                 <!-- Talen -->
                 <div class="form-section-divider"><span>Talen</span></div>
@@ -924,7 +924,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                       Bestanden sturen via WeTransfer
                     </a>
-                    <input type="url" name="Bestanden link" placeholder="Of plak hier een link (optioneel)" style="width:100%;margin-top:10px;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--clr-text);background:#fff;">
+                    <input type="url" name="Bestanden link" placeholder="Of plak hier een link (optioneel)" style="width:100%;margin-top:10px;padding:10px 13px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:var(--body);font-size:.84rem;color:var(--clr-text);background:#fff;">
                   </div>
                 </div>
                 <div class="form-group">
