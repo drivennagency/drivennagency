@@ -472,8 +472,8 @@ def relativize_all():
 # sitemap (alle talen + hreflang)
 # ---------------------------------------------------------------------------
 def build_sitemap(all_posts, all_sols, all_cases):
-    static = ["index.html","websites.html","hosting.html","ai-oplossingen.html","concept.html",
-              "cases.html","blog.html","over-ons.html","contact.html"]
+    static = ["index.html","websites.html","nieuwe-website.html","redesign.html","hosting.html",
+              "ai-oplossingen.html","concept.html","cases.html","blog.html","over-ons.html","contact.html"]
     entries = []  # (loc, {lang:loc})
     def loc(lang, page):
         pre = lp(lang)
