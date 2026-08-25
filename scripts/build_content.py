@@ -295,7 +295,7 @@ def build_ai():
         else:
             faq = ""
         apps = "".join(app_chip(a) for a in d.get("apps",[]))
-        req = f'<div class="ai-req">{ICON_CHECK_SMALL}<span>{html.escape(d["vereiste"])}</span></div>' if d.get("vereiste") else ""
+        req = f'<div class="ai-req">{ICON_CHECK_SMALL}<span><strong>Is dit iets voor jou?</strong>{html.escape(d["vereiste"])}</span></div>' if d.get("vereiste") else ""
         if d.get("binnenkort"):
             price_block = '<div style="text-align:center;margin-bottom:16px"><span class="ai-card__soon" style="position:static;display:inline-block">Binnenkort beschikbaar</span></div>'
             buy = '<a href="/ai-oplossingen.html#updates" class="btn btn--navy" style="width:100%">Houd mij op de hoogte</a>'
@@ -319,7 +319,7 @@ def build_ai():
             bannerhtml = '<div class="ai-card__banner"><span class="ph">DRIVENN · AI</span>'
         soon = '<span class="ai-card__soon">Binnenkort</span>' if d.get("binnenkort") else ''
         apps = "".join(app_chip(a) for a in d.get("apps",[]))
-        req = f'<div class="ai-req">{ICON_CHECK_SMALL}<span>{html.escape(d["vereiste"])}</span></div>' if d.get("vereiste") else ''
+        req = f'<div class="ai-req">{ICON_CHECK_SMALL}<span><strong>Is dit iets voor jou?</strong>{html.escape(d["vereiste"])}</span></div>' if d.get("vereiste") else ''
         if d.get("binnenkort"):
             foot = f'<div class="ai-card__foot"><span class="ai-price" style="font-size:1rem;color:var(--ink-faint)">In ontwikkeling</span><a href="/ai-oplossingen/{slug}.html" class="btn btn--outline">Bekijk</a></div>'
         else:
@@ -331,8 +331,7 @@ def build_ai():
     <h3>{html.escape(title)}</h3>
     <p>{html.escape(summary)}</p>
     <div class="ai-apps">{apps}</div>
-    {req}
-    {foot}
+    <div class="ai-card__bottom">{req}{foot}</div>
   </div>
 </div>'''
 

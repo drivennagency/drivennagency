@@ -119,8 +119,8 @@ p{margin:0 0 1rem}
 .nav__dd a:hover{background:var(--off)}
 .nav__dd .dd-ico{flex:0 0 34px;height:34px;border-radius:8px;background:var(--off);display:grid;place-items:center;color:var(--navy)}
 .nav__dd a:hover .dd-ico{background:var(--gold-soft)}
-.nav__dd .dd-t{font-family:var(--head);font-weight:600;font-size:.9rem;color:var(--ink);display:block;line-height:1.3}
-.nav__dd .dd-s{font-size:.78rem;color:var(--ink-faint);display:block}
+.nav__dd .dd-t{font-family:var(--head);font-weight:600;font-size:.82rem;color:var(--ink);display:block;line-height:1.3}
+.nav__dd .dd-s{font-size:.72rem;color:var(--ink-faint);display:block}
 .nav__dd-divider{height:1px;background:var(--line);margin:8px 6px}
 .nav__dd a.dd-gratis{background:linear-gradient(135deg,var(--gold),var(--gold-2));margin-top:2px}
 .nav__dd a.dd-gratis:hover{filter:brightness(1.05)}
@@ -310,7 +310,7 @@ p{margin:0 0 1rem}
 .ai-app svg,.ai-app img{width:15px;height:15px}
 .ai-req{display:flex;gap:8px;align-items:flex-start;background:var(--gold-soft);border-radius:9px;padding:10px 13px;font-size:.8rem;color:#7a5f12;margin-bottom:18px}
 .ai-req svg{flex:none;width:16px;height:16px;margin-top:2px}
-.ai-card__foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid var(--line)}
+.ai-card__foot{margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid var(--line)}
 .ai-price{font-family:var(--head);font-weight:800;font-size:1.35rem;color:var(--navy)}
 .ai-price small{font-weight:500;font-size:.72rem;color:var(--ink-faint);display:block;margin-top:-2px}
 .ai-empty{display:none;text-align:center;padding:60px 20px;color:var(--ink-faint)}
@@ -453,7 +453,10 @@ p{margin:0 0 1rem}
 .footer-col li{margin-bottom:10px}
 .footer-col a{font-size:.9rem;transition:var(--tr)}
 .footer-col a:hover{color:var(--gold)}
-.footer-bottom{border-top:1px solid var(--navy-line);padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.83rem}
+.footer-bottom{border-top:1px solid var(--navy-line);padding:22px 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;font-size:.83rem}
+.footer-bottom>:nth-child(1){justify-self:start}
+.footer-bottom>:nth-child(2){justify-self:center}
+.footer-bottom>:nth-child(3){justify-self:end}
 .footer-bottom a:hover{color:var(--gold)}
 
 /* ============================================================
@@ -483,7 +486,7 @@ p{margin:0 0 1rem}
   .footer-top{grid-template-columns:1fr}
   .hero__stats{gap:24px}
   .form-grid{grid-template-columns:1fr}
-  .footer-bottom{flex-direction:column;text-align:center}
+  .footer-bottom{grid-template-columns:1fr;justify-items:center;text-align:center;gap:10px}
   .install-banner{flex-direction:column;text-align:center}
   .install-banner__txt{text-align:center}
 }
@@ -492,3 +495,41 @@ p{margin:0 0 1rem}
   .marquee__track{animation:none}
   html{scroll-behavior:auto}
 }
+
+/* ============================================================
+   AANPASSINGEN — ronde 2
+============================================================ */
+/* Bredere container voor blog- en case-grids (minder witruimte aan de zijkant) */
+.container--wide{max-width:1520px}
+
+/* Een btn-row die zelf .center heeft, centreert nu ook (o.a. AI-help knop) */
+.btn-row.center{justify-content:center}
+
+/* Uitgelichte AI-oplossing: afbeelding i.p.v. mock (afbeelding volgt later) */
+.uitgelicht-media{position:relative}
+.uitgelicht-media img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover}
+.uitgelicht-media__ph{aspect-ratio:16/10;background:linear-gradient(135deg,var(--navy),var(--navy-2));color:rgba(255,255,255,.55);display:grid;place-items:center;gap:12px;text-align:center;padding:24px;font-family:var(--head);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.82rem}
+.uitgelicht-media__ph svg{width:38px;height:38px;color:rgba(201,162,39,.7)}
+
+/* Websites-kaarten: twee knoppen onderin (gratis concept + contact) */
+.svc-btns{margin-top:auto;display:flex;flex-direction:column;gap:10px}
+.svc-btns .btn{width:100%;justify-content:center;padding:12px 20px;font-size:.9rem}
+
+/* AI-kaart: gekleurd 'wat je nodig hebt'-blok altijd onderaan uitgelijnd */
+.ai-card__bottom{margin-top:auto;display:flex;flex-direction:column}
+.ai-req{min-height:70px}
+.ai-req span strong{display:block;font-family:var(--head);font-weight:700;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:#7a5f12;margin-bottom:3px}
+
+/* Contact: modernere opzet — info in navy-paneel, formulier met gouden accent */
+.contact-panel{background:linear-gradient(150deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--radius);padding:36px 32px;box-shadow:var(--shadow-sm);height:100%}
+.contact-panel .eyebrow{color:var(--gold)}
+.contact-panel h2{color:#fff}
+.contact-panel .lead{color:rgba(255,255,255,.72)}
+.contact-panel .contact-item:last-child{margin-bottom:0}
+.contact-panel .contact-item .ci-ico{background:rgba(201,162,39,.18);color:var(--gold)}
+.contact-panel .contact-item b{color:#fff}
+.contact-panel .contact-item a,.contact-panel .contact-item span{color:rgba(255,255,255,.8)}
+.contact-card{border-top:3px solid var(--gold)}
+.form-card__head{margin-bottom:22px}
+.form-card__head h3{font-size:1.3rem;margin-bottom:4px}
+.form-card__head p{font-size:.9rem;color:var(--ink-soft);margin:0}

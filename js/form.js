@@ -5,6 +5,8 @@
     document.querySelectorAll('form[data-form]').forEach(function (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        // Alle (verplichte) velden moeten geldig zijn voordat we versturen.
+        if (!form.checkValidity()) { form.reportValidity(); return; }
         var success = form.parentElement.querySelector('.form-success');
         var endpoint = form.getAttribute('action');
         function done() {

@@ -76,6 +76,35 @@
     }
     window.addEventListener('load', initHeroVideo);
 
+    /* hero stats: count up when they scroll into view */
+    (function () {
+      var nums = document.querySelectorAll('.hero__stat .n[data-count]');
+      if (!nums.length) return;
+      function fmt(n) { return n.toLocaleString('nl-NL'); }
+      function setFinal(el) {
+        var pre = el.getAttribute('data-prefix') || '', suf = el.getAttribute('data-suffix') || '';
+        el.textContent = pre + fmt(parseFloat(el.getAttribute('data-count'))) + suf;
+      }
+      function run(el) {
+        var target = parseFloat(el.getAttribute('data-count'));
+        var pre = el.getAttribute('data-prefix') || '', suf = el.getAttribute('data-suffix') || '';
+        var dur = 1600, start = null;
+        function step(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = pre + fmt(Math.round(target * eased)) + suf;
+          if (p < 1) requestAnimationFrame(step); else setFinal(el);
+        }
+        requestAnimationFrame(step);
+      }
+      if (reduce || !('IntersectionObserver' in window)) { nums.forEach(setFinal); return; }
+      var io2 = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { run(en.target); io2.unobserve(en.target); } });
+      }, { threshold: 0.6 });
+      nums.forEach(function (el) { io2.observe(el); });
+    })();
+
     /* marquee: duplicate track for seamless loop */
     document.querySelectorAll('.marquee').forEach(function (m) {
       var track = m.querySelector('.marquee__track');
