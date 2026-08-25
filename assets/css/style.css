@@ -618,13 +618,9 @@ p{margin:0 0 1rem}
   mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
   animation:ctaSpin 3s linear infinite}
 
-/* Op de telefoon alle teksten een tikje kleiner + footer gestapeld en gecentreerd */
+/* Op de telefoon alle teksten een tikje kleiner + onderste footer-regel gestapeld/gecentreerd */
 @media(max-width:600px){
   html{font-size:15px}
   body{font-size:15px}
-  .footer-top{grid-template-columns:1fr;text-align:center;justify-items:center;gap:30px}
-  .footer-brand img{margin-left:auto;margin-right:auto}
-  .footer-brand p{margin-left:auto;margin-right:auto}
-  .footer-social{justify-content:center}
   .footer-bottom{grid-template-columns:1fr;justify-items:center;text-align:center;gap:10px}
 }
