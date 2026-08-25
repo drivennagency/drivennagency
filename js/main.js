@@ -89,7 +89,7 @@
         var target = parseFloat(el.getAttribute('data-count'));
         var startVal = parseFloat(el.getAttribute('data-start') || '0');
         var pre = el.getAttribute('data-prefix') || '', suf = el.getAttribute('data-suffix') || '';
-        var dur = 1600, start = null;
+        var dur = 2000, start = null;
         function step(ts) {
           if (!start) start = ts;
           var p = Math.min((ts - start) / dur, 1);
@@ -102,7 +102,7 @@
       if (reduce || !('IntersectionObserver' in window)) { nums.forEach(setFinal); return; }
       var io2 = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) { if (en.isIntersecting) { run(en.target); io2.unobserve(en.target); } });
-      }, { threshold: 0.6 });
+      }, { threshold: 0.3 });
       nums.forEach(function (el) { io2.observe(el); });
     })();
 
