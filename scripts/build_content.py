@@ -17,7 +17,7 @@ SITE = "https://www.drivennagency.nl"
 
 # Welke talen nu live gebouwd worden. Zet op ["nl","en"] / ["nl","en","de"]
 # zodra de betreffende pagina's compleet zijn (voorkomt 404's op halve talenbomen).
-ACTIVE = ["nl", "en"]
+ACTIVE = ["nl", "en", "de"]
 
 MONTHS = {
     "nl": ["januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december"],
