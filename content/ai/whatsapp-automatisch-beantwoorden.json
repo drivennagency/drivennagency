@@ -5,6 +5,7 @@
   "samenvatting": "Laat veelgestelde vragen via WhatsApp automatisch beantwoorden, dag en nacht. Jouw klanten krijgen direct antwoord, jij houdt tijd over.",
   "prijs": "€ 249",
   "prijs_note": "eenmalig",
+  "stripe_link": "",
   "banner": "",
   "apps": [
     "WhatsApp",

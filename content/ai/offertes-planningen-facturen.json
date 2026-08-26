@@ -5,6 +5,7 @@
   "samenvatting": "Laat offertes, planningen en facturen automatisch opmaken en versturen op basis van je eigen gegevens. Bespaart uren administratie per week.",
   "prijs": "€ 299",
   "prijs_note": "eenmalig",
+  "stripe_link": "",
   "banner": "",
   "apps": [
     "Google Sheets",

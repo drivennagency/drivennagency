@@ -5,6 +5,7 @@
   "samenvatting": "Laat lange documenten, e-mails of rapporten automatisch uitlezen, sorteren en samenvatten tot heldere kernpunten. Ideaal als je door de bomen het bos niet meer ziet.",
   "prijs": "€ 199",
   "prijs_note": "eenmalig",
+  "stripe_link": "",
   "banner": "",
   "apps": [
     "Gmail",

@@ -5,6 +5,7 @@
   "samenvatting": "Laat klanten zelf een afspraak inplannen op basis van jouw beschikbaarheid, met automatische bevestiging en herinnering. Binnenkort beschikbaar.",
   "prijs": "",
   "prijs_note": "",
+  "stripe_link": "",
   "banner": "",
   "apps": [
     "Google Agenda",

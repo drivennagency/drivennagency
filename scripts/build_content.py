@@ -100,15 +100,15 @@ PAGE_NAMES = {
   "nl": {"index.html":"Home","websites.html":"Websites","nieuwe-website.html":"Nieuwe website",
          "redesign.html":"Redesign","hosting.html":"Hosting","ai-oplossingen.html":"AI-oplossingen",
          "cases.html":"Cases","blog.html":"Blog","over-ons.html":"Over ons","contact.html":"Contact",
-         "concept.html":"Gratis websiteconcept","privacy.html":"Privacyverklaring","404.html":"404"},
+         "concept.html":"Gratis websiteconcept","privacy.html":"Privacyverklaring","404.html":"404","bedankt.html":"Bedankt"},
   "en": {"index.html":"Home","websites.html":"Websites","nieuwe-website.html":"New website",
          "redesign.html":"Redesign","hosting.html":"Hosting","ai-oplossingen.html":"AI solutions",
          "cases.html":"Cases","blog.html":"Blog","over-ons.html":"About","contact.html":"Contact",
-         "concept.html":"Free website concept","privacy.html":"Privacy policy","404.html":"404"},
+         "concept.html":"Free website concept","privacy.html":"Privacy policy","404.html":"404","bedankt.html":"Thank you"},
   "de": {"index.html":"Home","websites.html":"Websites","nieuwe-website.html":"Neue Website",
          "redesign.html":"Redesign","hosting.html":"Hosting","ai-oplossingen.html":"KI-Lösungen",
          "cases.html":"Referenzen","blog.html":"Blog","over-ons.html":"Über uns","contact.html":"Kontakt",
-         "concept.html":"Kostenloses Website-Konzept","privacy.html":"Datenschutz","404.html":"404"},
+         "concept.html":"Kostenloses Website-Konzept","privacy.html":"Datenschutz","404.html":"404","bedankt.html":"Danke"},
 }
 
 def read(p): return pathlib.Path(p).read_text(encoding="utf-8")
@@ -410,7 +410,9 @@ def build_ai(lang):
             buy = f'<a href="{L}ai-oplossingen.html#updates" class="btn btn--navy" style="width:100%">{u["ai_keepposted"]}</a>'
         else:
             price_block = f'<div class="ai-price" style="font-size:1.9rem;text-align:center;margin-bottom:4px">{html.escape(d.get("prijs",""))}<small style="text-align:center">{html.escape(o.get("prijs_note",""))}</small></div>'
-            buy = f'<a href="{L}contact.html" class="btn btn--gold" style="width:100%">{u["ai_buy"]}</a><p class="form-note" style="text-align:center">{u["ai_buy_note"]}</p>'
+            stripe = (d.get("stripe_link") or "").strip()
+            buy_href = html.escape(stripe, quote=True) if stripe else f'{L}contact.html'
+            buy = f'<a href="{buy_href}" class="btn btn--gold" style="width:100%">{u["ai_buy"]}</a><p class="form-note" style="text-align:center">{u["ai_buy_note"]}</p>'
         page = AI_PAGE.format(code=u["code"], title=html.escape(title,quote=True), title_suffix=u["ai_title_suffix"],
             summary=html.escape(summary,quote=True), canon=canon, hreflang=hreflang_block(paths),
             L=L, home=u["home"], crumb_ai=u["crumb_ai"], cat=cat, body=body, ai_what=u["ai_what"],
