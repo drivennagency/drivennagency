@@ -1,10 +1,7 @@
 {
   "slug": "offertes-planningen-facturen",
   "categorie": "documenten",
-  "titel": "Offertes, planningen & facturen automatisch genereren",
-  "samenvatting": "Laat offertes, planningen en facturen automatisch opmaken en versturen op basis van je eigen gegevens. Bespaart uren administratie per week.",
   "prijs": "€ 299",
-  "prijs_note": "eenmalig",
   "stripe_link": "",
   "banner": "",
   "apps": [
@@ -13,30 +10,35 @@
     "Google Agenda",
     "PDF"
   ],
-  "vereiste": "Werkt met een gratis Make-account en een Google-account",
   "binnenkort": false,
-  "beschrijving": "Stop met het handmatig overtypen van gegevens in offertes en facturen. Deze automatisering pakt de gegevens die jij invoert (bijvoorbeeld in een simpel formulier of spreadsheet) en maakt daar automatisch een nette offerte van, plant de klus in je agenda zodra de klant akkoord geeft, en verstuurt na afronding automatisch de factuur, inclusief btw-berekening en een betaallink.\n\nJe houdt volledige controle: elke stap kun je desgewenst eerst laten goedkeuren voordat er iets de deur uitgaat. Zo combineer je de snelheid van automatisering met de zekerheid dat er niets ongewenst wordt verstuurd.",
-  "voordelen": [
-    "Uren tijdwinst per week doordat je niets meer overtypt",
-    "Consistente, professionele opmaak in elke offerte en factuur",
-    "Automatische btw-berekening en betaallink in de factuur",
-    "Klus wordt automatisch in je agenda gezet na akkoord",
-    "Optioneel: elke stap eerst laten goedkeuren"
-  ],
-  "faq": [
-    {
-      "v": "Werkt dit met mijn boekhoudprogramma?",
-      "a": "In veel gevallen wel. De automatisering is te koppelen aan de meest gebruikte pakketten. Twijfel je of jouw software erbij zit? Neem even contact op, dan checken we het."
-    },
-    {
-      "v": "Moet ik technisch onderlegd zijn?",
-      "a": "Nee. Je ontvangt een stap-voor-stap handleiding. En wil je het liever helemaal uit handen geven, dan komen wij het voor je installeren."
-    },
-    {
-      "v": "Kan ik zien wat er wordt verstuurd voordat het weg is?",
-      "a": "Ja. Je kunt instellen dat elke offerte of factuur eerst ter goedkeuring aan jou wordt voorgelegd."
-    }
-  ],
+  "nl": {
+    "titel": "Offertes, planningen & facturen automatisch genereren",
+    "samenvatting": "Laat offertes, planningen en facturen automatisch opmaken en versturen op basis van je eigen gegevens. Bespaart uren administratie per week.",
+    "prijs_note": "eenmalig",
+    "vereiste": "Werkt met een gratis Make-account en een Google-account",
+    "beschrijving": "Stop met het handmatig overtypen van gegevens in offertes en facturen. Deze automatisering pakt de gegevens die jij invoert (bijvoorbeeld in een simpel formulier of spreadsheet) en maakt daar automatisch een nette offerte van, plant de klus in je agenda zodra de klant akkoord geeft, en verstuurt na afronding automatisch de factuur, inclusief btw-berekening en een betaallink.\n\nJe houdt volledige controle: elke stap kun je desgewenst eerst laten goedkeuren voordat er iets de deur uitgaat. Zo combineer je de snelheid van automatisering met de zekerheid dat er niets ongewenst wordt verstuurd.",
+    "voordelen": [
+      "Uren tijdwinst per week doordat je niets meer overtypt",
+      "Consistente, professionele opmaak in elke offerte en factuur",
+      "Automatische btw-berekening en betaallink in de factuur",
+      "Klus wordt automatisch in je agenda gezet na akkoord",
+      "Optioneel: elke stap eerst laten goedkeuren"
+    ],
+    "faq": [
+      {
+        "v": "Werkt dit met mijn boekhoudprogramma?",
+        "a": "In veel gevallen wel. De automatisering is te koppelen aan de meest gebruikte pakketten. Twijfel je of jouw software erbij zit? Neem even contact op, dan checken we het."
+      },
+      {
+        "v": "Moet ik technisch onderlegd zijn?",
+        "a": "Nee. Je ontvangt een stap-voor-stap handleiding. En wil je het liever helemaal uit handen geven, dan komen wij het voor je installeren."
+      },
+      {
+        "v": "Kan ik zien wat er wordt verstuurd voordat het weg is?",
+        "a": "Ja. Je kunt instellen dat elke offerte of factuur eerst ter goedkeuring aan jou wordt voorgelegd."
+      }
+    ]
+  },
   "en": {
     "titel": "Automatically generate quotes, scheduling & invoices",
     "samenvatting": "Have quotes, scheduling and invoices drawn up and sent automatically based on your own data. Saves hours of admin every week.",

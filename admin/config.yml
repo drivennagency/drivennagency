@@ -2,120 +2,120 @@ backend:
   name: github
   repo: drivennagency/drivennagency
   branch: main
-  # LET OP: vul hier je eigen OAuth-proxy in (bv. een Cloudflare Worker),
-  # net zoals bij de svanwijksolutions-CMS. Zonder deze twee regels kun je
-  # niet inloggen op de CMS.
-  # base_url: https://JOUW-WORKER.workers.dev
-  # auth_endpoint: auth
-
-media_folder: "assets/images/uploads"
-public_folder: "/assets/images/uploads"
+  base_url: https://www.drivennagency.nl
+  auth_endpoint: api/auth
 
 site_url: https://www.drivennagency.nl
 display_url: https://www.drivennagency.nl
-logo_url: /assets/logo/logo-transparant-wit.png
+logo_url: https://www.drivennagency.nl/assets/logo/logo-transparant-zwart.png
+
+# Geüploade afbeeldingen komen in deze map en worden zo naar de site gelinkt.
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+# Meertaligheid: NL is de basis, EN en DE zijn vertalingen.
+i18n:
+  structure: single_file
+  locales: [nl, en, de]
+  default_locale: nl
 
 collections:
+  # ------------------------------------------------------------------ BLOG
+  - name: blog
+    label: "Blog"
+    label_singular: "Blogartikel"
+    description: "Blogartikelen maken, aanpassen of verwijderen (in NL, EN en DE)."
+    folder: "content/blog"
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{fields.slug}}"
+    identifier_field: slug
+    summary: "{{fields.slug}}  ·  {{date}}"
+    i18n: true
+    fields:
+      - { name: slug, label: "Slug (in de URL)", widget: string, i18n: duplicate, hint: "Alleen kleine letters en streepjes, bijv. website-voor-horeca" }
+      - { name: date, label: "Datum", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", i18n: duplicate }
+      - { name: category, label: "Categorie", widget: string, i18n: duplicate, hint: "Bijv. SEO, Branche, Tips" }
+      - { name: image, label: "Afbeelding", widget: image, required: false, i18n: duplicate }
+      - { name: reading_time_min, label: "Leestijd (minuten)", widget: number, required: false, default: 4, value_type: int, i18n: duplicate }
+      - { name: titel, label: "Titel", widget: string, i18n: true }
+      - { name: samenvatting, label: "Samenvatting", widget: text, i18n: true }
+      - { name: tekst, label: "Tekst", widget: markdown, i18n: true }
+
+  # ---------------------------------------------------------- AI-OPLOSSINGEN
   - name: ai
     label: "AI-oplossingen"
     label_singular: "AI-oplossing"
-    folder: content/ai
+    description: "Producten toevoegen, aanpassen of verwijderen. Vul per product de prijs en de Stripe-betaallink in."
+    folder: "content/ai"
     create: true
+    delete: true
     extension: json
     format: json
     slug: "{{fields.slug}}"
-    summary: "{{titel}}"
+    identifier_field: slug
+    summary: "{{fields.slug}}  ·  {{fields.prijs}}"
+    i18n: true
     fields:
-      - { label: "URL-slug (geen spaties/hoofdletters, bv. offertes-genereren)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
-      - { label: "Categorie", name: categorie, widget: select, options: [ { label: "Documenten & administratie", value: documenten }, { label: "Tekst & data", value: tekst }, { label: "Klantcommunicatie", value: communicatie } ] }
-      - { label: "Titel", name: titel, widget: string }
-      - { label: "Korte samenvatting (voor de kaart)", name: samenvatting, widget: text }
-      - { label: "Prijs (bv. € 299) — leeg laten bij 'binnenkort'", name: prijs, widget: string, required: false }
-      - { label: "Prijs-toelichting (bv. eenmalig)", name: prijs_note, widget: string, required: false, default: "eenmalig" }
-      - { label: "Banner (Canva-afbeelding, vast formaat 16:9)", name: banner, widget: image, required: false }
-      - { label: "Gekoppelde applicaties (typ de app-naam, bv. WhatsApp, Gmail)", name: apps, widget: list, field: { label: "Applicatie", name: app, widget: string } }
-      - { label: "Vereiste (in één oogopslag, bv. 'Werkt met WhatsApp Business')", name: vereiste, widget: string, required: false }
-      - { label: "Binnenkort beschikbaar? (nog niet te koop)", name: binnenkort, widget: boolean, default: false }
-      - { label: "Volledige beschrijving", name: beschrijving, widget: markdown }
-      - { label: "Wat het je oplevert (voordelen)", name: voordelen, widget: list, field: { label: "Voordeel", name: voordeel, widget: string } }
-      - label: "Veelgestelde vragen"
-        name: faq
+      - { name: slug, label: "Slug (in de URL)", widget: string, i18n: duplicate, hint: "Alleen kleine letters en streepjes, bijv. offertes-planningen-facturen" }
+      - name: categorie
+        label: "Categorie"
+        widget: select
+        i18n: duplicate
+        options:
+          - { label: "Documenten & administratie", value: documenten }
+          - { label: "Tekst & data", value: tekst }
+          - { label: "Klantcommunicatie", value: communicatie }
+      - { name: prijs, label: "Prijs", widget: string, required: false, i18n: duplicate, hint: "Bijv. € 299 — leeg laten bij 'binnenkort'" }
+      - { name: stripe_link, label: "Stripe-betaallink", widget: string, required: false, i18n: duplicate, hint: "Plak je Stripe Payment Link, bijv. https://buy.stripe.com/xxxxx" }
+      - { name: banner, label: "Bannerafbeelding", widget: image, required: false, i18n: duplicate }
+      - name: apps
+        label: "Werkt met (apps)"
         widget: list
         required: false
-        fields:
-          - { label: "Vraag", name: v, widget: string }
-          - { label: "Antwoord", name: a, widget: text }
-
-  - name: blog
-    label: Blog
-    label_singular: Blogpost
-    folder: content/blog
-    create: true
-    extension: json
-    format: json
-    slug: "{{fields.slug}}"
-    summary: "{{nl.titel}} — {{date}}"
-    fields:
-      - { label: "URL-slug (geen spaties/hoofdletters, bv. mijn-artikel)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
-      - { label: "Datum", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD-MM-YYYY", time_format: false }
-      - { label: "Categorie (bv. Tips, SEO, Branche)", name: category, widget: string }
-      - { label: "Leestijd in minuten", name: reading_time_min, widget: number, default: 4, value_type: int }
-      - { label: "Afbeelding (zelfde foto voor alle talen)", name: image, widget: image }
-      - label: "Nederlands"
-        name: nl
-        widget: object
-        fields:
-          - { label: "Titel", name: titel, widget: string }
-          - { label: "Samenvatting", name: samenvatting, widget: text }
-          - { label: "Tekst", name: tekst, widget: markdown }
-      - label: "English"
-        name: en
-        widget: object
+        i18n: duplicate
+        field: { name: app, label: "App", widget: string }
+      - { name: binnenkort, label: "Binnenkort beschikbaar (nog niet te koop)", widget: boolean, default: false, i18n: duplicate }
+      - { name: titel, label: "Titel", widget: string, i18n: true }
+      - { name: samenvatting, label: "Samenvatting", widget: text, i18n: true }
+      - { name: prijs_note, label: "Prijs-notitie", widget: string, required: false, i18n: true, hint: "Bijv. eenmalig" }
+      - { name: beschrijving, label: "Beschrijving", widget: markdown, i18n: true }
+      - name: voordelen
+        label: "Voordelen"
+        widget: list
         required: false
-        fields:
-          - { label: "Title", name: title, widget: string }
-          - { label: "Summary", name: summary, widget: text }
-          - { label: "Text", name: text, widget: markdown }
-      - label: "Deutsch"
-        name: de
-        widget: object
+        i18n: true
+        field: { name: voordeel, label: "Voordeel", widget: string }
+      - { name: vereiste, label: "Vereiste ('Is dit iets voor jou?')", widget: string, required: false, i18n: true }
+      - name: faq
+        label: "Veelgestelde vragen"
+        widget: list
         required: false
+        i18n: true
         fields:
-          - { label: "Titel", name: titel, widget: string }
-          - { label: "Zusammenfassung", name: zusammenfassung, widget: text }
-          - { label: "Text", name: text, widget: markdown }
+          - { name: v, label: "Vraag", widget: string }
+          - { name: a, label: "Antwoord", widget: text }
 
+  # ------------------------------------------------------------------ CASES
   - name: cases
-    label: Cases
-    label_singular: Case
-    folder: content/cases
+    label: "Cases / Referenties"
+    label_singular: "Case"
+    description: "Projecten/cases toevoegen, aanpassen of verwijderen."
+    folder: "content/cases"
     create: true
+    delete: true
     extension: json
     format: json
     slug: "{{fields.slug}}"
-    summary: "{{nl.titel}}"
+    identifier_field: slug
+    summary: "{{fields.slug}}"
+    i18n: true
     fields:
-      - { label: "URL-slug (bv. waterfords-cocktails)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
-      - { label: "Afbeelding / screenshot", name: image, widget: image }
-      - { label: "Link naar de live website", name: link, widget: string }
-      - { label: "Categorie (bv. Website, Redesign)", name: categorie, widget: string, default: "Website" }
-      - label: "Nederlands"
-        name: nl
-        widget: object
-        fields:
-          - { label: "Titel", name: titel, widget: string }
-          - { label: "Beschrijving", name: beschrijving, widget: text }
-      - label: "English"
-        name: en
-        widget: object
-        required: false
-        fields:
-          - { label: "Titel", name: titel, widget: string }
-          - { label: "Beschrijving", name: beschrijving, widget: text }
-      - label: "Deutsch"
-        name: de
-        widget: object
-        required: false
-        fields:
-          - { label: "Titel", name: titel, widget: string }
-          - { label: "Beschrijving", name: beschrijving, widget: text }
+      - { name: slug, label: "Slug (in de URL)", widget: string, i18n: duplicate }
+      - { name: image, label: "Afbeelding", widget: image, required: false, i18n: duplicate }
+      - { name: link, label: "Link naar de live website", widget: string, required: false, i18n: duplicate }
+      - { name: categorie, label: "Categorie", widget: string, required: false, i18n: duplicate, hint: "Bijv. Website" }
+      - { name: titel, label: "Titel", widget: string, i18n: true }
+      - { name: beschrijving, label: "Beschrijving", widget: text, i18n: true }

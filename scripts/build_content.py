@@ -372,10 +372,11 @@ def app_chip(name):
     return f'<span class="ai-app">{APP_ICON}{html.escape(name)}</span>'
 
 def _aifields(d, lang):
-    """Basis is NL (platte velden); overschrijf met d[lang] indien aanwezig."""
-    o = dict(d)
-    tr = d.get(lang)
-    if isinstance(tr, dict): o.update(tr)
+    """Basis is de NL-vertaling (d['nl']); overschrijf met d[lang] indien aanwezig."""
+    o = dict(d.get("nl", {}))
+    if lang != "nl":
+        tr = d.get(lang)
+        if isinstance(tr, dict): o.update(tr)
     return o
 
 def build_ai(lang):
