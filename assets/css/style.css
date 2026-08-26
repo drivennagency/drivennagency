@@ -102,7 +102,8 @@ p{margin:0 0 1rem}
 #site-header{position:fixed;top:0;left:0;right:0;z-index:100;transition:var(--tr);padding:16px 0}
 #site-header.scrolled{background:rgba(14,35,64,.92);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.2);padding:10px 0}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.nav__logo-img{height:46px;width:auto;transition:var(--tr)}
+.nav__logo{flex:none}
+.nav__logo-img{height:46px;width:auto;max-width:none;transition:var(--tr)}
 #site-header.scrolled .nav__logo-img{height:39px}
 .nav__links{display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:0}
 .nav__links>li{position:relative}
@@ -130,7 +131,7 @@ p{margin:0 0 1rem}
 .nav__dd a.dd-gratis .dd-s{color:rgba(14,35,64,.7)}
 .dd-badge{margin-left:auto;align-self:center;background:var(--navy);color:#fff;font-family:var(--head);font-weight:700;font-size:.62rem;letter-spacing:.06em;padding:3px 8px;border-radius:20px;text-transform:uppercase}
 
-.nav__right{display:flex;align-items:center;gap:14px}
+.nav__right{display:flex;align-items:center;gap:14px;flex:none}
 .nav__cta{background:var(--gold);color:var(--navy);font-family:var(--head);font-weight:600;font-size:.9rem;padding:11px 20px;border-radius:8px;transition:var(--tr);box-shadow:var(--shadow-gold);white-space:nowrap}
 .nav__cta:hover{background:var(--gold-2);transform:translateY(-2px)}
 
@@ -474,7 +475,7 @@ p{margin:0 0 1rem}
 ============================================================ */
 /* Bredere talen (DE) passen niet altijd op één regel in de desktop-nav;
    klap daarom iets eerder in tot het hamburgermenu i.p.v. te laten afbreken. */
-@media(max-width:1100px){
+@media(max-width:1150px){
   .nav__links,.nav__cta{display:none}
   .nav__burger{display:flex}
 }
