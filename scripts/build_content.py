@@ -589,6 +589,9 @@ def inject_analytics(lang):
                  '<script src="/js/consent.js" defer></script><!--/ANALYTICS-->')
         t = re.sub(r'<!--ANALYTICS-->.*?<!--/ANALYTICS-->', '', t, flags=re.S)
         t = t.replace('</head>', '  ' + block + '\n</head>', 1)
+        # Zorg dat pagina's met een formulier ook js/form.js laden (Web3Forms).
+        if 'data-form' in t and 'js/form.js' not in t:
+            t = t.replace('</body>', '<script src="/js/form.js"></script>\n</body>', 1)
         write(p, t)
 
 # ---------------------------------------------------------------------------

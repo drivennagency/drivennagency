@@ -1066,7 +1066,7 @@ document.addEventListener('DOMContentLoaded', function () {
     bundelVoorMail();
 
     // Onderwerp persoonlijker maken
-    var subject = form.querySelector('[name="_subject"]');
+    var subject = form.querySelector('[name="subject"]');
     var bn = (bedrijfInput && bedrijfInput.value.trim()) ? bedrijfInput.value.trim() : 'onbekend bedrijf';
     var bt = (hiddenBranche && hiddenBranche.value.trim()) ? hiddenBranche.value.trim() : '';
     if (subject) subject.value = 'Nieuwe conceptaanvraag \u2014 ' + bn + (bt ? ' (' + bt + ')' : '');
