@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Analytics: Understand What Your Website Visitors Are Really Doing | Drivenn Agency</title>
+  <meta name="description" content="Discover how Google Analytics helps you understand visitor behavior on your website. Learn what data you can analyze, how to set it up, and how to use these insights to improve your online performance.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="canonical" href="https://www.drivennagency.nl/eng/blog/google-analytics.html">
+  <link rel="alternate" hreflang="nl" href="https://www.drivennagency.nl/blog/google-analytics.html">
+  <link rel="alternate" hreflang="en" href="https://www.drivennagency.nl/eng/blog/google-analytics.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.drivennagency.nl/blog/google-analytics.html">
+  <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+  <meta property="og:title" content="Google Analytics: Understand What Your Website Visitors Are Really Doing | Drivenn Agency">
+  <meta property="og:description" content="Discover how Google Analytics helps you understand visitor behavior on your website. Learn what data you can analyze, how to set it up, and how to use these insights to improve your online performance.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.drivennagency.nl/eng/blog/google-analytics.html">
+  <meta property="og:image" content="https://www.drivennagency.nl/assets/images/uploads/set-up-GA4-blog-titlecards.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":"Google Analytics: Understand What Your Website Visitors Are Really Doing","description":"Discover how Google Analytics helps you understand visitor behavior on your website. Learn what data you can analyze, how to set it up, and how to use these insights to improve your online performance.","image":"https://www.drivennagency.nl/assets/images/uploads/set-up-GA4-blog-titlecards.png","author":{"@type":"Organization","name":"Drivenn Agency"},"publisher":{"@type":"Organization","name":"Drivenn Agency"},"datePublished":"2026-07-31"}
+  </script>
+</head>
+<body data-page="blog">
+<!--#HEADER#--><header id="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="../../eng/index.html" class="nav__logo" aria-label="Drivenn Agency, home">
+        <img src="../../assets/logo/logo-transparant-wit.png" alt="Drivenn Agency" width="150" height="42" class="nav__logo-img">
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="../../eng/index.html" data-page="index">Home</a></li>
+        <li>
+          <a href="../../eng/websites.html" data-page="websites">Websites
+            <svg class="nav__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav__dd">
+            <a href="../../eng/nieuwe-website.html">
+              <span><span class="dd-t">New website</span><span class="dd-s">Custom-built, fast and findable</span></span>
+            </a>
+            <a href="../../eng/redesign.html">
+              <span><span class="dd-t">Redesign</span><span class="dd-s">Renew your existing website</span></span>
+            </a>
+            <a href="../../eng/hosting.html">
+              <span><span class="dd-t">Hosting</span><span class="dd-s">Secure, fast and maintained</span></span>
+            </a>
+            <div class="nav__dd-divider"></div>
+            <a href="../../eng/concept.html" class="dd-gratis">
+              <span><span class="dd-t">Free website concept</span><span class="dd-s">A tailored proposal, no obligation</span></span>
+              <span class="dd-badge">Free</span>
+            </a>
+          </div>
+        </li>
+        <li><a href="../../eng/ai-oplossingen.html" data-page="ai">AI solutions</a></li>
+        <li><a href="../../eng/cases.html" data-page="cases">Cases</a></li>
+        <li><a href="../../eng/blog.html" data-page="blog">Blog</a></li>
+        <li><a href="../../eng/over-ons.html" data-page="over-ons">About</a></li>
+        <li><a href="../../eng/contact.html" data-page="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav__right">
+        <a href="../../eng/concept.html" class="nav__cta">Free website concept</a>
+        <div class="lang-switch" aria-label="Change language">
+          <button class="lang-switch__current" aria-expanded="false" aria-haspopup="listbox" type="button">
+            <span class="flag-icon" aria-hidden="true"><svg viewBox="0 0 60 30"><clipPath id="en-c"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#en-c)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></span>
+            <span class="lang-switch__code">EN</span><span class="lang-switch__chevron">▾</span>
+          </button>
+          <ul class="lang-switch__menu" role="listbox">
+            <li role="option"><a href="../../index.html" data-lang="nl" class="lang-switch__option"><span class="flag-icon"><svg viewBox="0 0 9 6"><rect width="9" height="2" fill="#AE1C28"/><rect y="2" width="9" height="2" fill="#FFF"/><rect y="4" width="9" height="2" fill="#21468B"/></svg></span><span>Nederlands</span></a></li>
+            <li role="option"><a href="../../eng/index.html" data-lang="en" class="lang-switch__option active"><span class="flag-icon"><svg viewBox="0 0 60 30"><clipPath id="en-d"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#en-d)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></span><span>English</span></a></li>
+            <li role="option"><a href="../../de/index.html" data-lang="de" class="lang-switch__option"><span class="flag-icon"><svg viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg></span><span>Deutsch</span></a></li>
+          </ul>
+        </div>
+        <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-overlay" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mobile-overlay__close" aria-label="Close menu">✕</button>
+  <nav>
+    <ul role="list">
+      <li><a href="../../eng/index.html">Home</a></li>
+      <li><a href="../../eng/websites.html">Websites</a>
+        <div class="m-sub">
+          <a href="../../eng/nieuwe-website.html">New website</a>
+          <a href="../../eng/redesign.html">Redesign</a>
+          <a href="../../eng/hosting.html">Hosting</a>
+          <a href="../../eng/concept.html" class="m-gratis">Free website concept &rarr;</a>
+        </div>
+      </li>
+      <li><a href="../../eng/ai-oplossingen.html">AI solutions</a></li>
+      <li><a href="../../eng/cases.html">Cases</a></li>
+      <li><a href="../../eng/blog.html">Blog</a></li>
+      <li><a href="../../eng/over-ons.html">About</a></li>
+      <li><a href="../../eng/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</div><!--#HEADER-END#-->
+<main>
+  <article>
+    <section class="article-hero" style="background-image:linear-gradient(rgba(10,26,48,.82),rgba(14,35,64,.9)),url('../../assets/images/uploads/set-up-GA4-blog-titlecards.png');background-size:cover;background-position:center">
+      <div class="container">
+        <a href="../../eng/blog.html" class="article-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to blog</a>
+        <span class="article-hero__cat">Google Analytics</span>
+        <h1>Google Analytics: Understand What Your Website Visitors Are Really Doing</h1>
+        <div class="article-hero__meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 31 July 2026</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 4 min read</span>
+        </div>
+      </div>
+    </section>
+    <section class="section" style="padding-top:0">
+      <div class="article-body">
+        <p>A website is much more than an online business card. To get the most out of it, you need to understand how visitors interact with your pages. Which pages attract the most attention? Where do your visitors come from? Why do some people leave without contacting you? Google Analytics provides the answers.</p>
+<h3>What is Google Analytics?</h3>
+<p>Google Analytics is a free analytics platform developed by Google that helps you understand how people use your website. It collects visitor data and presents it in easy to understand reports, allowing you to make informed decisions based on real data instead of assumptions.</p>
+<p>Whether you run a business website, portfolio, blog or online store, Google Analytics helps you identify what works well and where improvements can be made.</p>
+<h3>What can you measure?</h3>
+<p>Google Analytics offers detailed insights, including:</p>
+<ul><li>Total visitors over any period</li><li>Traffic sources such as Google Search, social media, email campaigns and advertisements</li><li>The most visited pages</li><li>Average time visitors spend on each page</li><li>Clicks on buttons and links</li><li>Device types including desktop, tablet and mobile</li><li>Visitor locations</li><li>Exit pages and user journeys</li></ul>
+<p>Together, these insights create a complete picture of how people interact with your website.</p>
+<h3>How does it help?</h3>
+<p>The collected data allows you to improve both your website and your marketing efforts.</p>
+<p>You can identify pages that attract many visitors but generate few enquiries, discover which campaigns deliver the best return, and understand where users leave your website before completing an action.</p>
+<p>For ecommerce websites, Google Analytics can reveal where customers abandon the checkout process. Service based businesses can measure contact form submissions, phone call clicks and quotation requests.</p>
+<p>This enables you to make smarter business decisions backed by reliable data.</p>
+<h3>Different ways to set it up</h3>
+<p>There are several ways to implement Google Analytics.</p>
+<p>The simplest approach is adding the Google Analytics tracking code directly to your website.</p>
+<p>Many businesses prefer using Google Tag Manager because it allows you to manage Analytics together with other tracking tools from one central platform.</p>
+<p>If your website runs on WordPress or another content management system, you can often install Analytics through a plugin within just a few minutes.</p>
+<p>For more advanced tracking, custom events and conversions can be configured. This makes it possible to measure actions such as downloading brochures, watching videos, submitting forms or completing purchases.</p>
+<h3>What insights can you gain?</h3>
+<p>The real value of Google Analytics comes from turning data into actionable insights.</p>
+<p>For example, you may discover that most visitors browse your website on mobile devices. This could encourage you to further optimize the mobile experience.</p>
+<p>You might also find that one particular page attracts significant traffic from search engines. Expanding that content could increase your organic visibility even further.</p>
+<p>Analytics also helps identify which marketing channels generate the highest quality leads, allowing you to invest your budget more effectively.</p>
+<h3>Why is it important?</h3>
+<p>A visually appealing website is only the first step. Without data, it is difficult to know whether your website is actually delivering results.</p>
+<p>Google Analytics helps you understand your audience, improve user experience, optimize marketing campaigns and increase conversions. By regularly reviewing your data and making informed improvements, your website becomes a stronger tool for growing your business.</p>
+        <div class="article-cta">
+          <h3>Need help with your website or automation?</h3>
+          <p>Request a free website concept or let us help you find the right AI solution.</p>
+          <div class="btn-row center" style="margin-top:16px"><a href="../../eng/concept.html" class="btn btn--gold">Free concept</a><a href="../../eng/ai-oplossingen.html" class="btn btn--outline">AI solutions</a></div>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+<!--#FOOTER#--><footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="../../assets/logo/logo-transparant-wit.png" alt="Drivenn Agency" height="38">
+        <p>We help businesses become smarter, faster and future-proof, with modern websites and smart AI automation.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Websites</h5>
+        <ul>
+          <li><a href="../../eng/nieuwe-website.html">New website</a></li>
+          <li><a href="../../eng/redesign.html">Redesign</a></li>
+          <li><a href="../../eng/hosting.html">Hosting</a></li>
+          <li><a href="../../eng/redesign.html#seo-check">Free SEO check</a></li>
+          <li><a href="../../eng/concept.html">Free website concept</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>AI &amp; more</h5>
+        <ul>
+          <li><a href="../../eng/ai-oplossingen.html">AI solutions</a></li>
+          <li><a href="../../eng/cases.html">Cases</a></li>
+          <li><a href="../../eng/blog.html">Blog</a></li>
+          <li><a href="../../eng/over-ons.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:info@drivennagency.nl">info@drivennagency.nl</a></li>
+          <li><a href="tel:+31681835935">+31 6 81 83 59 35</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Westland+Netherlands" target="_blank" rel="noopener">Westland region, NL</a></li>
+          <li><a href="../../eng/contact.html">Contact form</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> Drivenn Agency</span>
+      <span>Chamber of Commerce 86749439</span>
+      <span><a href="../../eng/privacy.html">Privacy policy</a></span>
+    </div>
+  </div>
+</footer><!--#FOOTER-END#-->
+<script src="../../js/main.js"></script>
+</body>
+</html>

@@ -6,7 +6,12 @@
   "prijs": "€ 299",
   "prijs_note": "eenmalig",
   "banner": "",
-  "apps": ["Google Sheets", "Gmail", "Google Agenda", "PDF"],
+  "apps": [
+    "Google Sheets",
+    "Gmail",
+    "Google Agenda",
+    "PDF"
+  ],
   "vereiste": "Werkt met een gratis Make-account en een Google-account",
   "binnenkort": false,
   "beschrijving": "Stop met het handmatig overtypen van gegevens in offertes en facturen. Deze automatisering pakt de gegevens die jij invoert (bijvoorbeeld in een simpel formulier of spreadsheet) en maakt daar automatisch een nette offerte van, plant de klus in je agenda zodra de klant akkoord geeft, en verstuurt na afronding automatisch de factuur, inclusief btw-berekening en een betaallink.\n\nJe houdt volledige controle: elke stap kun je desgewenst eerst laten goedkeuren voordat er iets de deur uitgaat. Zo combineer je de snelheid van automatisering met de zekerheid dat er niets ongewenst wordt verstuurd.",
@@ -18,8 +23,73 @@
     "Optioneel: elke stap eerst laten goedkeuren"
   ],
   "faq": [
-    {"v": "Werkt dit met mijn boekhoudprogramma?", "a": "In veel gevallen wel. De automatisering is te koppelen aan de meest gebruikte pakketten. Twijfel je of jouw software erbij zit? Neem even contact op, dan checken we het."},
-    {"v": "Moet ik technisch onderlegd zijn?", "a": "Nee. Je ontvangt een stap-voor-stap handleiding. En wil je het liever helemaal uit handen geven, dan komen wij het voor je installeren."},
-    {"v": "Kan ik zien wat er wordt verstuurd voordat het weg is?", "a": "Ja. Je kunt instellen dat elke offerte of factuur eerst ter goedkeuring aan jou wordt voorgelegd."}
-  ]
+    {
+      "v": "Werkt dit met mijn boekhoudprogramma?",
+      "a": "In veel gevallen wel. De automatisering is te koppelen aan de meest gebruikte pakketten. Twijfel je of jouw software erbij zit? Neem even contact op, dan checken we het."
+    },
+    {
+      "v": "Moet ik technisch onderlegd zijn?",
+      "a": "Nee. Je ontvangt een stap-voor-stap handleiding. En wil je het liever helemaal uit handen geven, dan komen wij het voor je installeren."
+    },
+    {
+      "v": "Kan ik zien wat er wordt verstuurd voordat het weg is?",
+      "a": "Ja. Je kunt instellen dat elke offerte of factuur eerst ter goedkeuring aan jou wordt voorgelegd."
+    }
+  ],
+  "en": {
+    "titel": "Automatically generate quotes, scheduling & invoices",
+    "samenvatting": "Have quotes, scheduling and invoices drawn up and sent automatically based on your own data. Saves hours of admin every week.",
+    "prijs_note": "one-off",
+    "vereiste": "Works with a free Make account and a Google account",
+    "beschrijving": "Stop manually retyping data into quotes and invoices. This automation takes the data you enter (for example in a simple form or spreadsheet) and automatically turns it into a tidy quote, schedules the job in your calendar as soon as the customer agrees, and automatically sends the invoice once the work is done, including VAT calculation and a payment link.\n\nYou stay in full control: if you like, every step can be approved by you before anything goes out. That way you combine the speed of automation with the certainty that nothing is sent unintentionally.",
+    "voordelen": [
+      "Hours saved every week because you no longer retype anything",
+      "Consistent, professional formatting in every quote and invoice",
+      "Automatic VAT calculation and payment link in the invoice",
+      "The job is added to your calendar automatically after approval",
+      "Optional: approve every step first"
+    ],
+    "faq": [
+      {
+        "v": "Does this work with my accounting software?",
+        "a": "In many cases, yes. The automation can connect to the most-used packages. Not sure if yours is included? Just get in touch and we'll check."
+      },
+      {
+        "v": "Do I need to be technical?",
+        "a": "No. You receive a step-by-step manual. And if you'd rather leave it entirely to us, we'll come and install it for you."
+      },
+      {
+        "v": "Can I see what's being sent before it goes out?",
+        "a": "Yes. You can set it so every quote or invoice is submitted to you for approval first."
+      }
+    ]
+  },
+  "de": {
+    "titel": "Angebote, Planungen & Rechnungen automatisch erstellen",
+    "samenvatting": "Lass Angebote, Planungen und Rechnungen automatisch auf Basis deiner eigenen Daten erstellen und versenden. Spart jede Woche Stunden an Verwaltung.",
+    "prijs_note": "einmalig",
+    "vereiste": "Funktioniert mit einem kostenlosen Make-Konto und einem Google-Konto",
+    "beschrijving": "Schluss mit dem manuellen Abtippen von Daten in Angebote und Rechnungen. Diese Automatisierung nimmt die Daten, die du eingibst (zum Beispiel in einem einfachen Formular oder einer Tabelle), und erstellt daraus automatisch ein sauberes Angebot, plant den Auftrag in deinem Kalender ein, sobald der Kunde zustimmt, und versendet nach Abschluss automatisch die Rechnung, inklusive Mehrwertsteuer-Berechnung und Zahlungslink.\n\nDu behältst die volle Kontrolle: Auf Wunsch kann jeder Schritt zuerst von dir freigegeben werden, bevor etwas rausgeht. So verbindest du die Geschwindigkeit der Automatisierung mit der Sicherheit, dass nichts ungewollt versendet wird.",
+    "voordelen": [
+      "Stunden Zeitersparnis pro Woche, weil du nichts mehr abtippst",
+      "Einheitliche, professionelle Gestaltung in jedem Angebot und jeder Rechnung",
+      "Automatische MwSt.-Berechnung und Zahlungslink in der Rechnung",
+      "Der Auftrag wird nach Freigabe automatisch in deinen Kalender eingetragen",
+      "Optional: jeden Schritt zuerst freigeben"
+    ],
+    "faq": [
+      {
+        "v": "Funktioniert das mit meiner Buchhaltungssoftware?",
+        "a": "In vielen Fällen ja. Die Automatisierung lässt sich mit den gängigsten Programmen verbinden. Unsicher, ob deine Software dabei ist? Melde dich kurz, dann prüfen wir das."
+      },
+      {
+        "v": "Muss ich technisch versiert sein?",
+        "a": "Nein. Du erhältst eine Schritt-für-Schritt-Anleitung. Und wenn du es lieber ganz abgeben möchtest, installieren wir es für dich."
+      },
+      {
+        "v": "Kann ich sehen, was versendet wird, bevor es rausgeht?",
+        "a": "Ja. Du kannst einstellen, dass jedes Angebot und jede Rechnung dir zuerst zur Freigabe vorgelegt wird."
+      }
+    ]
+  }
 }

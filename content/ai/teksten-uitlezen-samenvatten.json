@@ -6,7 +6,12 @@
   "prijs": "€ 199",
   "prijs_note": "eenmalig",
   "banner": "",
-  "apps": ["Gmail", "PDF", "Google Sheets", "Notion"],
+  "apps": [
+    "Gmail",
+    "PDF",
+    "Google Sheets",
+    "Notion"
+  ],
   "vereiste": "Werkt met een gratis Make-account; voor grote volumes een betaald AI-abonnement",
   "binnenkort": false,
   "beschrijving": "Krijg je dagelijks tientallen e-mails, offertes of rapporten binnen en kost het lezen ervan te veel tijd? Deze automatisering leest teksten automatisch uit, haalt de belangrijkste punten eruit en zet ze overzichtelijk op een rij, bijvoorbeeld in een spreadsheet of als korte samenvatting in je inbox.\n\nZo zie je in één oogopslag wat belangrijk is, zonder alles woord voor woord te hoeven doorlezen. Handig voor het verwerken van klantvragen, het scannen van lange documenten of het bijhouden van binnenkomende aanvragen.",
@@ -17,8 +22,71 @@
     "Samenvattingen netjes verzameld op één plek"
   ],
   "faq": [
-    {"v": "In welke talen werkt dit?", "a": "De automatisering werkt onder andere met Nederlands, Engels en Duits. Andere talen zijn vaak ook mogelijk."},
-    {"v": "Blijft mijn informatie vertrouwelijk?", "a": "Ja. We richten de automatisering zo in dat je gegevens zorgvuldig worden verwerkt. Bij de installatie leggen we precies uit hoe de gegevensstroom loopt."},
-    {"v": "Hoeveel tekst kan het aan?", "a": "Voor kleine volumes volstaat een gratis opzet. Verwerk je grote hoeveelheden, dan is een betaald AI-abonnement nodig, dat staat duidelijk bij de vereisten."}
-  ]
+    {
+      "v": "In welke talen werkt dit?",
+      "a": "De automatisering werkt onder andere met Nederlands, Engels en Duits. Andere talen zijn vaak ook mogelijk."
+    },
+    {
+      "v": "Blijft mijn informatie vertrouwelijk?",
+      "a": "Ja. We richten de automatisering zo in dat je gegevens zorgvuldig worden verwerkt. Bij de installatie leggen we precies uit hoe de gegevensstroom loopt."
+    },
+    {
+      "v": "Hoeveel tekst kan het aan?",
+      "a": "Voor kleine volumes volstaat een gratis opzet. Verwerk je grote hoeveelheden, dan is een betaald AI-abonnement nodig, dat staat duidelijk bij de vereisten."
+    }
+  ],
+  "en": {
+    "titel": "Smartly read & summarise large volumes of text",
+    "samenvatting": "Automatically read, sort and summarise long documents, emails or reports into clear key points. Ideal when you can't see the wood for the trees.",
+    "prijs_note": "one-off",
+    "vereiste": "Works with a free Make account; for large volumes a paid AI subscription",
+    "beschrijving": "Do you receive dozens of emails, quotes or reports every day and does reading them take too much time? This automation reads texts automatically, pulls out the most important points and lays them out clearly, for example in a spreadsheet or as a short summary in your inbox.\n\nThat way you see at a glance what matters, without having to read everything word for word. Handy for handling customer questions, scanning long documents or keeping track of incoming requests.",
+    "voordelen": [
+      "Long documents summarised to key points in seconds",
+      "Automatic sorting by topic, urgency or sender",
+      "Less reading, faster decisions",
+      "Summaries neatly collected in one place"
+    ],
+    "faq": [
+      {
+        "v": "Which languages does this work in?",
+        "a": "The automation works with Dutch, English and German among others. Other languages are often possible too."
+      },
+      {
+        "v": "Does my information stay confidential?",
+        "a": "Yes. We set up the automation so your data is handled carefully. During installation we explain exactly how the data flow works."
+      },
+      {
+        "v": "How much text can it handle?",
+        "a": "For small volumes a free setup is enough. If you process large amounts, a paid AI subscription is needed, that's clearly stated in the requirements."
+      }
+    ]
+  },
+  "de": {
+    "titel": "Große Textmengen intelligent auslesen & zusammenfassen",
+    "samenvatting": "Lass lange Dokumente, E-Mails oder Berichte automatisch auslesen, sortieren und zu klaren Kernpunkten zusammenfassen. Ideal, wenn du den Wald vor lauter Bäumen nicht mehr siehst.",
+    "prijs_note": "einmalig",
+    "vereiste": "Funktioniert mit einem kostenlosen Make-Konto; für große Mengen ein kostenpflichtiges KI-Abonnement",
+    "beschrijving": "Bekommst du täglich Dutzende E-Mails, Angebote oder Berichte und kostet dich das Lesen zu viel Zeit? Diese Automatisierung liest Texte automatisch aus, filtert die wichtigsten Punkte heraus und stellt sie übersichtlich zusammen, zum Beispiel in einer Tabelle oder als kurze Zusammenfassung in deinem Postfach.\n\nSo siehst du auf einen Blick, was wichtig ist, ohne alles Wort für Wort lesen zu müssen. Praktisch für die Bearbeitung von Kundenanfragen, das Sichten langer Dokumente oder das Verfolgen eingehender Anfragen.",
+    "voordelen": [
+      "Lange Dokumente in Sekunden auf Kernpunkte zusammengefasst",
+      "Automatisches Sortieren nach Thema, Dringlichkeit oder Absender",
+      "Weniger Lesen, schnellere Entscheidungen",
+      "Zusammenfassungen ordentlich an einem Ort gesammelt"
+    ],
+    "faq": [
+      {
+        "v": "In welchen Sprachen funktioniert das?",
+        "a": "Die Automatisierung funktioniert unter anderem mit Deutsch, Englisch und Niederländisch. Andere Sprachen sind oft ebenfalls möglich."
+      },
+      {
+        "v": "Bleiben meine Informationen vertraulich?",
+        "a": "Ja. Wir richten die Automatisierung so ein, dass deine Daten sorgfältig verarbeitet werden. Bei der Installation erklären wir genau, wie der Datenfluss verläuft."
+      },
+      {
+        "v": "Wie viel Text kann es verarbeiten?",
+        "a": "Für kleine Mengen genügt ein kostenloses Setup. Verarbeitest du große Mengen, ist ein kostenpflichtiges KI-Abonnement nötig, das steht klar bei den Voraussetzungen."
+      }
+    ]
+  }
 }

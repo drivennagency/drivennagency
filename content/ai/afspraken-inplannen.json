@@ -6,7 +6,11 @@
   "prijs": "",
   "prijs_note": "",
   "banner": "",
-  "apps": ["Google Agenda", "Gmail", "WhatsApp"],
+  "apps": [
+    "Google Agenda",
+    "Gmail",
+    "WhatsApp"
+  ],
   "vereiste": "",
   "binnenkort": true,
   "beschrijving": "Deze automatisering laat klanten zelf een moment kiezen uit jouw beschikbare tijden, plant de afspraak automatisch in je agenda, stuurt een bevestiging en herinnert de klant er op tijd aan. We werken er op dit moment aan, laat je e-mailadres achter en je hoort het als hij beschikbaar is.",
@@ -15,5 +19,25 @@
     "Automatische bevestiging en herinnering",
     "Minder no-shows en heen-en-weer geappt"
   ],
-  "faq": []
+  "faq": [],
+  "en": {
+    "titel": "Schedule appointments automatically",
+    "samenvatting": "Let customers book an appointment based on your availability, with automatic confirmation and reminder. Coming soon.",
+    "beschrijving": "This automation lets customers pick a time from your available slots, schedules the appointment automatically in your calendar, sends a confirmation and reminds the customer in good time. We're currently working on it, leave your email and you'll hear when it's available.",
+    "voordelen": [
+      "Customers book themselves, you stay in control",
+      "Automatic confirmation and reminder",
+      "Fewer no-shows and less back-and-forth messaging"
+    ]
+  },
+  "de": {
+    "titel": "Termine automatisch planen",
+    "samenvatting": "Lass Kunden selbst einen Termin auf Basis deiner Verfügbarkeit buchen, mit automatischer Bestätigung und Erinnerung. Bald verfügbar.",
+    "beschrijving": "Diese Automatisierung lässt Kunden selbst einen Zeitpunkt aus deinen verfügbaren Zeiten wählen, plant den Termin automatisch in deinen Kalender ein, sendet eine Bestätigung und erinnert den Kunden rechtzeitig daran. Wir arbeiten derzeit daran, hinterlasse deine E-Mail-Adresse und du erfährst es, sobald er verfügbar ist.",
+    "voordelen": [
+      "Kunden planen selbst, du behältst die Regie",
+      "Automatische Bestätigung und Erinnerung",
+      "Weniger No-Shows und weniger Hin-und-Her-Nachrichten"
+    ]
+  }
 }
