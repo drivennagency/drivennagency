@@ -34,13 +34,14 @@ UI = {
     "blog_back":"Terug naar blog", "min_read":"min lezen", "min":"min",
     "blog_cta_h":"Hulp nodig met jouw website of automatisering?",
     "blog_cta_p":"Vraag een gratis websiteconcept aan of laat ons meedenken over de juiste AI-oplossing.",
-    "blog_cta_b1":"Gratis concept", "blog_cta_b2":"AI-oplossingen",
+    "blog_cta_b1":"Gratis websiteconcept", "blog_cta_b2":"AI-oplossingen",
     "home":"Home", "crumb_ai":"AI-oplossingen",
     "ai_what":"Wat het je oplevert", "ai_faq":"Veelgestelde vragen",
     "ai_workswith":"Werkt met", "ai_foryou":"Is dit iets voor jou?",
     "ai_install_note":"Liever niet zelf opzetten? Wij komen het bij je bedrijf installeren en uitleggen.",
     "ai_install_btn":"Vraag installatie aan",
     "ai_soon_badge":"Binnenkort beschikbaar", "ai_soon_short":"Binnenkort",
+    "ai_soon_note":"Deze oplossing komt binnenkort. Laat je gegevens achter, dan hoor je het als eerste.",
     "ai_keepposted":"Houd mij op de hoogte", "ai_indev":"In ontwikkeling",
     "ai_buy":"Kopen &amp; ontvangen",
     "ai_buy_note":"Eenmalige aanschaf · handleiding per e-mail · betaling volgt via een beveiligd platform",
@@ -61,6 +62,7 @@ UI = {
     "ai_install_note":"Rather not set it up yourself? We'll install it at your business and explain everything.",
     "ai_install_btn":"Request installation",
     "ai_soon_badge":"Coming soon", "ai_soon_short":"Soon",
+    "ai_soon_note":"This solution is coming soon. Leave your details and you'll be the first to know.",
     "ai_keepposted":"Keep me posted", "ai_indev":"In development",
     "ai_buy":"Buy &amp; receive",
     "ai_buy_note":"One-off purchase · manual by e-mail · payment via a secure platform",
@@ -81,6 +83,7 @@ UI = {
     "ai_install_note":"Lieber nicht selbst einrichten? Wir installieren es bei dir im Betrieb und erklären alles.",
     "ai_install_btn":"Installation anfragen",
     "ai_soon_badge":"Bald verfügbar", "ai_soon_short":"Bald",
+    "ai_soon_note":"Diese Lösung kommt bald. Hinterlasse deine Daten und du erfährst es als Erster.",
     "ai_keepposted":"Halte mich auf dem Laufenden", "ai_indev":"In Entwicklung",
     "ai_buy":"Kaufen &amp; erhalten",
     "ai_buy_note":"Einmaliger Kauf · Anleitung per E-Mail · Zahlung über eine sichere Plattform",
@@ -311,8 +314,7 @@ AI_PAGE = """<!DOCTYPE html>
   <section class="page-hero" style="text-align:left">
     <div class="container">
       <p class="page-hero__crumb"><a href="{L}index.html">{home}</a> / <a href="{L}ai-oplossingen.html">{crumb_ai}</a> / {cat}</p>
-      <span class="article-hero__cat">{cat}</span>
-      <h1 style="max-width:22ch;margin:14px 0 16px">{title}</h1>
+      <h1 style="max-width:22ch;margin:10px 0 16px">{title}</h1>
       <p class="lead" style="margin:0">{summary}</p>
     </div>
   </section>
@@ -379,7 +381,11 @@ def build_ai(lang):
             faq = f'<h2 style="margin-top:2.4rem">{u["ai_faq"]}</h2><div class="faq" style="margin:0">{items}</div>'
         else: faq = ""
         apps = "".join(app_chip(a) for a in d.get("apps",[]))
-        req = f'<div class="ai-req">{ICON_CHECK_SMALL}<span><strong>{u["ai_foryou"]}</strong>{html.escape(o.get("vereiste",""))}</span></div>' if o.get("vereiste") else ""
+        if o.get("vereiste"):
+            req = f'<div class="ai-req">{ICON_CHECK_SMALL}<span><strong>{u["ai_foryou"]}</strong>{html.escape(o.get("vereiste",""))}</span></div>'
+        elif d.get("binnenkort"):
+            req = f'<div class="ai-req ai-req--soon">{ICON_CLOCK}<span><strong>{u["ai_soon_badge"]}</strong>{u["ai_soon_note"]}</span></div>'
+        else: req = ""
         if d.get("binnenkort"):
             price_block = f'<div style="text-align:center;margin-bottom:16px"><span class="ai-card__soon" style="position:static;display:inline-block">{u["ai_soon_badge"]}</span></div>'
             buy = f'<a href="{L}ai-oplossingen.html#updates" class="btn btn--navy" style="width:100%">{u["ai_keepposted"]}</a>'
@@ -402,7 +408,11 @@ def build_ai(lang):
         bannerhtml = f'<div class="ai-card__banner" style="background-image:url(\'{banner}\')">' if banner else '<div class="ai-card__banner"><span class="ph">DRIVENN · AI</span>'
         soon = f'<span class="ai-card__soon">{u["ai_soon_short"]}</span>' if d.get("binnenkort") else ''
         apps = "".join(app_chip(a) for a in d.get("apps",[]))
-        req = f'<div class="ai-req">{ICON_CHECK_SMALL}<span><strong>{u["ai_foryou"]}</strong>{html.escape(o.get("vereiste",""))}</span></div>' if o.get("vereiste") else ''
+        if o.get("vereiste"):
+            req = f'<div class="ai-req">{ICON_CHECK_SMALL}<span><strong>{u["ai_foryou"]}</strong>{html.escape(o.get("vereiste",""))}</span></div>'
+        elif d.get("binnenkort"):
+            req = f'<div class="ai-req ai-req--soon">{ICON_CLOCK}<span><strong>{u["ai_soon_badge"]}</strong>{u["ai_soon_note"]}</span></div>'
+        else: req = ''
         if d.get("binnenkort"):
             foot = f'<div class="ai-card__foot"><span class="ai-price" style="font-size:1rem;color:var(--ink-faint)">{u["ai_indev"]}</span><a href="{L}ai-oplossingen/{slug}.html" class="btn btn--outline">{u["ai_view"]}</a></div>'
         else:
