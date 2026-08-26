@@ -106,7 +106,7 @@ p{margin:0 0 1rem}
 #site-header.scrolled .nav__logo-img{height:39px}
 .nav__links{display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:0}
 .nav__links>li{position:relative}
-.nav__links>li>a{display:flex;align-items:center;gap:5px;font-family:var(--head);font-weight:500;font-size:.94rem;color:rgba(255,255,255,.85);padding:9px 14px;border-radius:8px;transition:var(--tr)}
+.nav__links>li>a{display:flex;align-items:center;gap:5px;font-family:var(--head);font-weight:500;font-size:.94rem;color:rgba(255,255,255,.85);padding:9px 14px;border-radius:8px;transition:var(--tr);white-space:nowrap}
 .nav__links>li>a:hover,.nav__links>li>a.active{color:#fff}
 .nav__links>li>a.active{color:var(--gold)}
 .nav__caret{width:11px;height:11px;transition:transform var(--tr)}
@@ -131,7 +131,7 @@ p{margin:0 0 1rem}
 .dd-badge{margin-left:auto;align-self:center;background:var(--navy);color:#fff;font-family:var(--head);font-weight:700;font-size:.62rem;letter-spacing:.06em;padding:3px 8px;border-radius:20px;text-transform:uppercase}
 
 .nav__right{display:flex;align-items:center;gap:14px}
-.nav__cta{background:var(--gold);color:var(--navy);font-family:var(--head);font-weight:600;font-size:.9rem;padding:11px 20px;border-radius:8px;transition:var(--tr);box-shadow:var(--shadow-gold)}
+.nav__cta{background:var(--gold);color:var(--navy);font-family:var(--head);font-weight:600;font-size:.9rem;padding:11px 20px;border-radius:8px;transition:var(--tr);box-shadow:var(--shadow-gold);white-space:nowrap}
 .nav__cta:hover{background:var(--gold-2);transform:translateY(-2px)}
 
 /* lang switch */
@@ -472,6 +472,12 @@ p{margin:0 0 1rem}
 /* ============================================================
    RESPONSIVE
 ============================================================ */
+/* Bredere talen (DE) passen niet altijd op één regel in de desktop-nav;
+   klap daarom iets eerder in tot het hamburgermenu i.p.v. te laten afbreken. */
+@media(max-width:1100px){
+  .nav__links,.nav__cta{display:none}
+  .nav__burger{display:flex}
+}
 @media(max-width:960px){
   .nav__links,.nav__cta{display:none}
   .nav__burger{display:flex}
