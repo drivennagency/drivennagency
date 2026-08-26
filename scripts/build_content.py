@@ -92,6 +92,25 @@ UI = {
   },
 }
 
+# Google Analytics 4 meet-ID
+GA_ID = "G-4VXJQRECQ6"
+
+# Schone, korte paginanamen per taal voor GA-rapporten (taal-suffix wordt toegevoegd)
+PAGE_NAMES = {
+  "nl": {"index.html":"Home","websites.html":"Websites","nieuwe-website.html":"Nieuwe website",
+         "redesign.html":"Redesign","hosting.html":"Hosting","ai-oplossingen.html":"AI-oplossingen",
+         "cases.html":"Cases","blog.html":"Blog","over-ons.html":"Over ons","contact.html":"Contact",
+         "concept.html":"Gratis websiteconcept","privacy.html":"Privacyverklaring","404.html":"404"},
+  "en": {"index.html":"Home","websites.html":"Websites","nieuwe-website.html":"New website",
+         "redesign.html":"Redesign","hosting.html":"Hosting","ai-oplossingen.html":"AI solutions",
+         "cases.html":"Cases","blog.html":"Blog","over-ons.html":"About","contact.html":"Contact",
+         "concept.html":"Free website concept","privacy.html":"Privacy policy","404.html":"404"},
+  "de": {"index.html":"Home","websites.html":"Websites","nieuwe-website.html":"Neue Website",
+         "redesign.html":"Redesign","hosting.html":"Hosting","ai-oplossingen.html":"KI-Lösungen",
+         "cases.html":"Referenzen","blog.html":"Blog","over-ons.html":"Über uns","contact.html":"Kontakt",
+         "concept.html":"Kostenloses Website-Konzept","privacy.html":"Datenschutz","404.html":"404"},
+}
+
 def read(p): return pathlib.Path(p).read_text(encoding="utf-8")
 def write(p, s):
     pathlib.Path(p).parent.mkdir(parents=True, exist_ok=True)
@@ -550,6 +569,29 @@ def inject_seo_schema(lang):
         write(p, t)
 
 # ---------------------------------------------------------------------------
+# Google Analytics (na cookie-toestemming) + schone paginanaam per taal
+# ---------------------------------------------------------------------------
+def inject_analytics(lang):
+    base = outdir(lang); code = UI[lang]["code"].upper()
+    pages = list(base.glob("*.html"))
+    for sub in ("blog", "ai-oplossingen"):
+        if (base/sub).exists():
+            pages += list((base/sub).glob("*.html"))
+    for p in pages:
+        t = read(p)
+        nm = PAGE_NAMES[lang].get(p.name)
+        if not nm:
+            m = re.search(r'<title>(.*?)</title>', t, re.S)
+            nm = html.unescape(m.group(1)).split(' | ')[0].strip() if m else p.stem
+        page_title = f"{nm} – {code}"
+        cfg = 'window.DRIVENN_GA={id:%s,page:%s,lang:%s};' % (json.dumps(GA_ID), json.dumps(page_title), json.dumps(lang))
+        block = ('<!--ANALYTICS--><script>' + cfg + '</script>'
+                 '<script src="/js/consent.js" defer></script><!--/ANALYTICS-->')
+        t = re.sub(r'<!--ANALYTICS-->.*?<!--/ANALYTICS-->', '', t, flags=re.S)
+        t = t.replace('</head>', '  ' + block + '\n</head>', 1)
+        write(p, t)
+
+# ---------------------------------------------------------------------------
 # sitemap (alle talen + hreflang)
 # ---------------------------------------------------------------------------
 def build_sitemap(all_posts, all_sols, all_cases):
@@ -586,6 +628,7 @@ if __name__ == "__main__":
         inject_components(lang)
         fix_static_head(lang)
         inject_seo_schema(lang)
+        inject_analytics(lang)
     build_sitemap(all_posts, all_sols, all_cases)
     relativize_all()
     langs = ", ".join(ACTIVE)
