@@ -479,6 +479,77 @@ def relativize_all():
         write(p, relativize(read(p), depth))
 
 # ---------------------------------------------------------------------------
+# SEO: canonical + hreflang (statische pagina's) en structured data
+# ---------------------------------------------------------------------------
+def _strip_tags(s):
+    return re.sub(r"<[^>]+>", "", s).replace("&amp;", "&").strip()
+
+FAQ_RE = re.compile(r'class="faq__q"[^>]*>(.*?)<span class="fq-plus"></span></button><div class="faq__a"><p>(.*?)</p>', re.S)
+
+def fix_static_head(lang):
+    """Zet op elke statische pagina een correcte canonical + hreflang-set (alleen
+    ACTIVE talen, dus geen 404-verwijzingen). Draait niet op de gegenereerde
+    blog-/AI-detailpagina's; die krijgen hun head al uit hun template."""
+    base = outdir(lang)
+    for p in base.glob("*.html"):
+        key = p.name
+        t = read(p)
+        canon = f"{SITE}{lp(lang)}" if key == "index.html" else f"{SITE}{lp(lang)}{key}"
+        def href(lg):
+            return f"{SITE}{lp(lg)}" if key == "index.html" else f"{SITE}{lp(lg)}{key}"
+        links = [f'<link rel="canonical" href="{canon}">']
+        for lg in ACTIVE:
+            links.append(f'<link rel="alternate" hreflang="{UI[lg]["code"]}" href="{href(lg)}">')
+        links.append(f'<link rel="alternate" hreflang="x-default" href="{href("nl")}">')
+        block = "<!--HEADLINKS-->" + "".join(links) + "<!--/HEADLINKS-->"
+        t = re.sub(r'<!--HEADLINKS-->.*?<!--/HEADLINKS-->', '', t, flags=re.S)
+        t = re.sub(r'\s*<link rel="canonical"[^>]*>', '', t)
+        t = re.sub(r'\s*<link rel="alternate" hreflang="[^"]*"[^>]*>', '', t)
+        t = t.replace('</head>', '  ' + block + '\n</head>', 1)
+        write(p, t)
+
+def _faq_schema(t):
+    items = FAQ_RE.findall(t)
+    if not items:
+        return None
+    qa = [{"@type": "Question", "name": _strip_tags(q),
+           "acceptedAnswer": {"@type": "Answer", "text": _strip_tags(a)}} for q, a in items]
+    return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": qa}
+
+def _breadcrumb_schema(t, lang):
+    m = re.search(r'<p class="page-hero__crumb">(.*?)</p>', t, re.S)
+    if not m:
+        return None
+    inner = m.group(1)
+    items = []
+    pos = 1
+    for hrefv, label in re.findall(r'<a href="([^"]+)">(.*?)</a>', inner):
+        items.append({"@type": "ListItem", "position": pos, "name": _strip_tags(label),
+                      "item": f"{SITE}{lp(lang)}" if hrefv == "index.html" else f"{SITE}{lp(lang)}{hrefv}"})
+        pos += 1
+    tail = _strip_tags(inner.rsplit('</a>', 1)[-1]).lstrip('/ ').strip()
+    if tail:
+        items.append({"@type": "ListItem", "position": pos, "name": tail})
+    if len(items) < 2:
+        return None
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}
+
+def inject_seo_schema(lang):
+    base = outdir(lang)
+    pages = list(base.glob("*.html"))
+    for sub in ("blog", "ai-oplossingen"):
+        if (base/sub).exists():
+            pages += list((base/sub).glob("*.html"))
+    for p in pages:
+        t = read(p)
+        t = re.sub(r'<!--SEOSCHEMA-->.*?<!--/SEOSCHEMA-->', '', t, flags=re.S)
+        blocks = [b for b in (_faq_schema(t), _breadcrumb_schema(t, lang)) if b]
+        if blocks:
+            scripts = "".join('<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False) + '</script>' for b in blocks)
+            t = t.replace('</head>', '  <!--SEOSCHEMA-->' + scripts + '<!--/SEOSCHEMA-->\n</head>', 1)
+        write(p, t)
+
+# ---------------------------------------------------------------------------
 # sitemap (alle talen + hreflang)
 # ---------------------------------------------------------------------------
 def build_sitemap(all_posts, all_sols, all_cases):
@@ -513,6 +584,8 @@ if __name__ == "__main__":
         all_sols[lang]  = build_ai(lang)
         all_cases[lang] = build_cases(lang)
         inject_components(lang)
+        fix_static_head(lang)
+        inject_seo_schema(lang)
     build_sitemap(all_posts, all_sols, all_cases)
     relativize_all()
     langs = ", ".join(ACTIVE)
