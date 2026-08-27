@@ -1,14 +1,4 @@
 {
-  "slug": "whatsapp-automatisch-beantwoorden",
-  "categorie": "communicatie",
-  "prijs": "€ 249",
-  "stripe_link": "",
-  "banner": "",
-  "apps": [
-    "WhatsApp",
-    "Google Sheets"
-  ],
-  "binnenkort": false,
   "nl": {
     "titel": "Appjes automatisch beantwoorden",
     "samenvatting": "Laat veelgestelde vragen via WhatsApp automatisch beantwoorden, dag en nacht. Jouw klanten krijgen direct antwoord, jij houdt tijd over.",
@@ -35,7 +25,17 @@
         "v": "Heb ik hier WhatsApp Business voor nodig?",
         "a": "Ja, deze automatisering werkt met een (gratis) WhatsApp Business-account. Dat staat ook duidelijk bij de vereisten."
       }
-    ]
+    ],
+    "slug": "whatsapp-automatisch-beantwoorden",
+    "categorie": "communicatie",
+    "prijs": "€ 249",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "WhatsApp",
+      "Google Sheets"
+    ],
+    "binnenkort": false
   },
   "en": {
     "titel": "Answer messages automatically",
@@ -63,7 +63,17 @@
         "v": "Do I need WhatsApp Business for this?",
         "a": "Yes, this automation works with a (free) WhatsApp Business account. That's also clearly stated in the requirements."
       }
-    ]
+    ],
+    "slug": "whatsapp-automatisch-beantwoorden",
+    "categorie": "communicatie",
+    "prijs": "€ 249",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "WhatsApp",
+      "Google Sheets"
+    ],
+    "binnenkort": false
   },
   "de": {
     "titel": "Nachrichten automatisch beantworten",
@@ -91,6 +101,16 @@
         "v": "Brauche ich dafür WhatsApp Business?",
         "a": "Ja, diese Automatisierung funktioniert mit einem (kostenlosen) WhatsApp-Business-Konto. Das steht auch klar bei den Voraussetzungen."
       }
-    ]
+    ],
+    "slug": "whatsapp-automatisch-beantwoorden",
+    "categorie": "communicatie",
+    "prijs": "€ 249",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "WhatsApp",
+      "Google Sheets"
+    ],
+    "binnenkort": false
   }
 }

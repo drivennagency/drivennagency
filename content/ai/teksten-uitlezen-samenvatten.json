@@ -1,16 +1,4 @@
 {
-  "slug": "teksten-uitlezen-samenvatten",
-  "categorie": "tekst",
-  "prijs": "€ 199",
-  "stripe_link": "",
-  "banner": "",
-  "apps": [
-    "Gmail",
-    "PDF",
-    "Google Sheets",
-    "Notion"
-  ],
-  "binnenkort": false,
   "nl": {
     "titel": "Grote hoeveelheden tekst slim uitlezen & samenvatten",
     "samenvatting": "Laat lange documenten, e-mails of rapporten automatisch uitlezen, sorteren en samenvatten tot heldere kernpunten. Ideaal als je door de bomen het bos niet meer ziet.",
@@ -36,7 +24,19 @@
         "v": "Hoeveel tekst kan het aan?",
         "a": "Voor kleine volumes volstaat een gratis opzet. Verwerk je grote hoeveelheden, dan is een betaald AI-abonnement nodig, dat staat duidelijk bij de vereisten."
       }
-    ]
+    ],
+    "slug": "teksten-uitlezen-samenvatten",
+    "categorie": "tekst",
+    "prijs": "€ 199",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "Gmail",
+      "PDF",
+      "Google Sheets",
+      "Notion"
+    ],
+    "binnenkort": false
   },
   "en": {
     "titel": "Smartly read & summarise large volumes of text",
@@ -63,7 +63,19 @@
         "v": "How much text can it handle?",
         "a": "For small volumes a free setup is enough. If you process large amounts, a paid AI subscription is needed, that's clearly stated in the requirements."
       }
-    ]
+    ],
+    "slug": "teksten-uitlezen-samenvatten",
+    "categorie": "tekst",
+    "prijs": "€ 199",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "Gmail",
+      "PDF",
+      "Google Sheets",
+      "Notion"
+    ],
+    "binnenkort": false
   },
   "de": {
     "titel": "Große Textmengen intelligent auslesen & zusammenfassen",
@@ -90,6 +102,18 @@
         "v": "Wie viel Text kann es verarbeiten?",
         "a": "Für kleine Mengen genügt ein kostenloses Setup. Verarbeitest du große Mengen, ist ein kostenpflichtiges KI-Abonnement nötig, das steht klar bei den Voraussetzungen."
       }
-    ]
+    ],
+    "slug": "teksten-uitlezen-samenvatten",
+    "categorie": "tekst",
+    "prijs": "€ 199",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "Gmail",
+      "PDF",
+      "Google Sheets",
+      "Notion"
+    ],
+    "binnenkort": false
   }
 }

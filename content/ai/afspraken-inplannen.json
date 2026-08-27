@@ -1,15 +1,4 @@
 {
-  "slug": "afspraken-inplannen",
-  "categorie": "communicatie",
-  "prijs": "",
-  "stripe_link": "",
-  "banner": "",
-  "apps": [
-    "Google Agenda",
-    "Gmail",
-    "WhatsApp"
-  ],
-  "binnenkort": true,
   "nl": {
     "titel": "Afspraken automatisch inplannen",
     "samenvatting": "Laat klanten zelf een afspraak inplannen op basis van jouw beschikbaarheid, met automatische bevestiging en herinnering. Binnenkort beschikbaar.",
@@ -21,7 +10,18 @@
       "Automatische bevestiging en herinnering",
       "Minder no-shows en heen-en-weer geappt"
     ],
-    "faq": []
+    "faq": [],
+    "slug": "afspraken-inplannen",
+    "categorie": "communicatie",
+    "prijs": "",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "Google Agenda",
+      "Gmail",
+      "WhatsApp"
+    ],
+    "binnenkort": true
   },
   "en": {
     "titel": "Schedule appointments automatically",
@@ -31,7 +31,18 @@
       "Customers book themselves, you stay in control",
       "Automatic confirmation and reminder",
       "Fewer no-shows and less back-and-forth messaging"
-    ]
+    ],
+    "slug": "afspraken-inplannen",
+    "categorie": "communicatie",
+    "prijs": "",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "Google Agenda",
+      "Gmail",
+      "WhatsApp"
+    ],
+    "binnenkort": true
   },
   "de": {
     "titel": "Termine automatisch planen",
@@ -41,6 +52,17 @@
       "Kunden planen selbst, du behältst die Regie",
       "Automatische Bestätigung und Erinnerung",
       "Weniger No-Shows und weniger Hin-und-Her-Nachrichten"
-    ]
+    ],
+    "slug": "afspraken-inplannen",
+    "categorie": "communicatie",
+    "prijs": "",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "Google Agenda",
+      "Gmail",
+      "WhatsApp"
+    ],
+    "binnenkort": true
   }
 }

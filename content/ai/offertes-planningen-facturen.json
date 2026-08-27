@@ -1,16 +1,4 @@
 {
-  "slug": "offertes-planningen-facturen",
-  "categorie": "documenten",
-  "prijs": "€ 299",
-  "stripe_link": "",
-  "banner": "",
-  "apps": [
-    "Google Sheets",
-    "Gmail",
-    "Google Agenda",
-    "PDF"
-  ],
-  "binnenkort": false,
   "nl": {
     "titel": "Offertes, planningen & facturen automatisch genereren",
     "samenvatting": "Laat offertes, planningen en facturen automatisch opmaken en versturen op basis van je eigen gegevens. Bespaart uren administratie per week.",
@@ -37,7 +25,19 @@
         "v": "Kan ik zien wat er wordt verstuurd voordat het weg is?",
         "a": "Ja. Je kunt instellen dat elke offerte of factuur eerst ter goedkeuring aan jou wordt voorgelegd."
       }
-    ]
+    ],
+    "slug": "offertes-planningen-facturen",
+    "categorie": "documenten",
+    "prijs": "€ 299",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "Google Sheets",
+      "Gmail",
+      "Google Agenda",
+      "PDF"
+    ],
+    "binnenkort": false
   },
   "en": {
     "titel": "Automatically generate quotes, scheduling & invoices",
@@ -65,7 +65,19 @@
         "v": "Can I see what's being sent before it goes out?",
         "a": "Yes. You can set it so every quote or invoice is submitted to you for approval first."
       }
-    ]
+    ],
+    "slug": "offertes-planningen-facturen",
+    "categorie": "documenten",
+    "prijs": "€ 299",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "Google Sheets",
+      "Gmail",
+      "Google Agenda",
+      "PDF"
+    ],
+    "binnenkort": false
   },
   "de": {
     "titel": "Angebote, Planungen & Rechnungen automatisch erstellen",
@@ -93,6 +105,18 @@
         "v": "Kann ich sehen, was versendet wird, bevor es rausgeht?",
         "a": "Ja. Du kannst einstellen, dass jedes Angebot und jede Rechnung dir zuerst zur Freigabe vorgelegt wird."
       }
-    ]
+    ],
+    "slug": "offertes-planningen-facturen",
+    "categorie": "documenten",
+    "prijs": "€ 299",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "Google Sheets",
+      "Gmail",
+      "Google Agenda",
+      "PDF"
+    ],
+    "binnenkort": false
   }
 }
