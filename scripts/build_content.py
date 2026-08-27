@@ -111,6 +111,24 @@ PAGE_NAMES = {
          "concept.html":"Kostenloses Website-Konzept","privacy.html":"Datenschutz","404.html":"404","bedankt.html":"Danke"},
 }
 
+def _shared(d, key, default=None):
+    """Leest een gedeeld ('duplicate') veld: eerst op het hoogste niveau
+    (eigen/genormaliseerde bestanden), anders uit de nl-vertaling. Sveltia
+    CMS slaat i18n:duplicate-velden namelijk binnen élke taal op (single_file),
+    niet los op het hoofdniveau."""
+    if key in d:
+        return d[key]
+    return d.get("nl", {}).get(key, default)
+
+def prune_stale(folder, keep_slugs):
+    """Verwijdert gegenereerde detailpagina's waarvan de bron (JSON) niet meer
+    bestaat, bijv. na het verwijderen van een blog/AI-oplossing via het CMS."""
+    if not folder.exists(): return
+    keep = {f"{s}.html" for s in keep_slugs}
+    for p in folder.glob("*.html"):
+        if p.name not in keep:
+            p.unlink()
+
 def read(p): return pathlib.Path(p).read_text(encoding="utf-8")
 def write(p, s):
     pathlib.Path(p).parent.mkdir(parents=True, exist_ok=True)
@@ -271,8 +289,8 @@ def build_blog(lang):
     for f in sorted((ROOT/"content/blog").glob("*.json")):
         d = json.loads(read(f))
         title, summary, body, cat = _blogfields(d, lang)
-        slug = d["slug"]; image = d.get("image",""); date_iso = d.get("date","")
-        reading = d.get("reading_time_min", 4)
+        slug = _shared(d, "slug"); image = _shared(d, "image", ""); date_iso = _shared(d, "date", "")
+        reading = _shared(d, "reading_time_min", 4)
         paths = {lg: f"{lp(lg)}blog/{slug}.html" for lg in ACTIVE}
         canon = f"{SITE}{paths[lang]}"
         ogimg = image if image.startswith("http") else SITE+image
@@ -305,6 +323,7 @@ def build_blog(lang):
     teaser = "\n".join(card(p) for p in posts[:3])
     if (base/"index.html").exists():
         write(base/"index.html", inject_marker(read(base/"index.html"), "BLOG_TEASER", teaser))
+    prune_stale(base/"blog", [p["slug"] for p in posts])
     return posts
 
 # ---------------------------------------------------------------------------
@@ -385,6 +404,11 @@ def build_ai(lang):
     sols = []
     for f in sorted((ROOT/"content/ai").glob("*.json")):
         sols.append(json.loads(read(f)))
+    for d in sols:
+        for key in ("slug", "categorie", "apps", "binnenkort", "prijs", "stripe_link", "banner"):
+            if key not in d:
+                val = _shared(d, key)
+                if val is not None: d[key] = val
     sols.sort(key=lambda s: s.get("binnenkort", False))
 
     for d in sols:
@@ -452,6 +476,7 @@ def build_ai(lang):
     cards = "\n".join(card(d) for d in sols)
     if (base/"ai-oplossingen.html").exists():
         write(base/"ai-oplossingen.html", inject_marker(read(base/"ai-oplossingen.html"), "AI_CARDS", cards))
+    prune_stale(base/"ai-oplossingen", [d["slug"] for d in sols])
     return sols
 
 # ---------------------------------------------------------------------------
@@ -460,6 +485,11 @@ def build_ai(lang):
 def build_cases(lang):
     u = UI[lang]; base = outdir(lang)
     cases = [json.loads(read(f)) for f in sorted((ROOT/"content/cases").glob("*.json"))]
+    for d in cases:
+        for key in ("link", "image", "categorie"):
+            if key not in d:
+                val = _shared(d, key)
+                if val is not None: d[key] = val
     def card(d):
         o = d.get(lang) or d.get("nl",{})
         title=o.get("titel") or o.get("title",""); desc=o.get("beschrijving") or o.get("description","")
