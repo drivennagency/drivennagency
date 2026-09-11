@@ -1,9 +1,18 @@
 {
   "nl": {
+    "slug": "whatsapp-automatisch-beantwoorden",
+    "categorie": "communicatie",
+    "prijs": "€ 249",
+    "stripe_link": "",
+    "banner": "",
+    "apps": [
+      "WhatsApp",
+      "Google Sheets"
+    ],
+    "binnenkort": false,
     "titel": "Appjes automatisch beantwoorden",
     "samenvatting": "Laat veelgestelde vragen via WhatsApp automatisch beantwoorden, dag en nacht. Jouw klanten krijgen direct antwoord, jij houdt tijd over.",
     "prijs_note": "eenmalig",
-    "vereiste": "Werkt met een WhatsApp Business-account",
     "beschrijving": "Veel klanten stellen dezelfde vragen: openingstijden, prijzen, beschikbaarheid, adres. Deze automatisering herkent dat soort vragen en beantwoordt ze automatisch via WhatsApp, met jouw eigen antwoorden, in jouw eigen toon.\n\nKomt er een vraag binnen die te specifiek is? Dan geeft de automatisering die netjes aan jou door, zodat je persoonlijk kunt reageren. Zo krijgen klanten altijd snel antwoord, ook buiten kantooruren, terwijl jij alleen nog de echt belangrijke berichten zelf hoeft te beantwoorden.",
     "voordelen": [
       "Klanten krijgen direct antwoord, óók buiten kantooruren",
@@ -12,6 +21,7 @@
       "Antwoorden in jouw eigen woorden en toon",
       "Minder onderbrekingen, meer tijd voor je werk"
     ],
+    "vereiste": "Werkt met een WhatsApp Business-account",
     "faq": [
       {
         "v": "Merken klanten dat het geautomatiseerd is?",
@@ -23,9 +33,11 @@
       },
       {
         "v": "Heb ik hier WhatsApp Business voor nodig?",
-        "a": "Ja, deze automatisering werkt met een (gratis) WhatsApp Business-account. Dat staat ook duidelijk bij de vereisten."
+        "a": "Ja, deze automatisering werkt met een (gratis) WhatsApp Business-account."
       }
-    ],
+    ]
+  },
+  "en": {
     "slug": "whatsapp-automatisch-beantwoorden",
     "categorie": "communicatie",
     "prijs": "€ 249",
@@ -35,13 +47,10 @@
       "WhatsApp",
       "Google Sheets"
     ],
-    "binnenkort": false
-  },
-  "en": {
+    "binnenkort": false,
     "titel": "Answer messages automatically",
     "samenvatting": "Have frequently asked questions answered automatically via WhatsApp, day and night. Your customers get instant answers, you save time.",
     "prijs_note": "one-off",
-    "vereiste": "Works with a WhatsApp Business account",
     "beschrijving": "Many customers ask the same questions: opening hours, prices, availability, address. This automation recognises those kinds of questions and answers them automatically via WhatsApp, with your own answers, in your own tone.\n\nDoes a question come in that's too specific? Then the automation neatly passes it on to you, so you can respond personally. That way customers always get a quick answer, even outside office hours, while you only have to answer the truly important messages yourself.",
     "voordelen": [
       "Customers get instant answers, even outside office hours",
@@ -50,6 +59,7 @@
       "Answers in your own words and tone",
       "Fewer interruptions, more time for your work"
     ],
+    "vereiste": "Works with a WhatsApp Business account",
     "faq": [
       {
         "v": "Do customers notice it's automated?",
@@ -63,7 +73,9 @@
         "v": "Do I need WhatsApp Business for this?",
         "a": "Yes, this automation works with a (free) WhatsApp Business account. That's also clearly stated in the requirements."
       }
-    ],
+    ]
+  },
+  "de": {
     "slug": "whatsapp-automatisch-beantwoorden",
     "categorie": "communicatie",
     "prijs": "€ 249",
@@ -73,13 +85,10 @@
       "WhatsApp",
       "Google Sheets"
     ],
-    "binnenkort": false
-  },
-  "de": {
+    "binnenkort": false,
     "titel": "Nachrichten automatisch beantworten",
     "samenvatting": "Lass häufig gestellte Fragen über WhatsApp automatisch beantworten, Tag und Nacht. Deine Kunden erhalten sofort eine Antwort, du sparst Zeit.",
     "prijs_note": "einmalig",
-    "vereiste": "Funktioniert mit einem WhatsApp-Business-Konto",
     "beschrijving": "Viele Kunden stellen dieselben Fragen: Öffnungszeiten, Preise, Verfügbarkeit, Adresse. Diese Automatisierung erkennt solche Fragen und beantwortet sie automatisch über WhatsApp, mit deinen eigenen Antworten, in deinem eigenen Ton.\n\nKommt eine Frage herein, die zu spezifisch ist? Dann leitet die Automatisierung sie ordentlich an dich weiter, damit du persönlich antworten kannst. So erhalten Kunden immer schnell eine Antwort, auch außerhalb der Geschäftszeiten, während du nur noch die wirklich wichtigen Nachrichten selbst beantworten musst.",
     "voordelen": [
       "Kunden erhalten sofort eine Antwort, auch außerhalb der Geschäftszeiten",
@@ -88,6 +97,7 @@
       "Antworten in deinen eigenen Worten und deinem Ton",
       "Weniger Unterbrechungen, mehr Zeit für deine Arbeit"
     ],
+    "vereiste": "Funktioniert mit einem WhatsApp-Business-Konto",
     "faq": [
       {
         "v": "Merken Kunden, dass es automatisiert ist?",
@@ -101,16 +111,6 @@
         "v": "Brauche ich dafür WhatsApp Business?",
         "a": "Ja, diese Automatisierung funktioniert mit einem (kostenlosen) WhatsApp-Business-Konto. Das steht auch klar bei den Voraussetzungen."
       }
-    ],
-    "slug": "whatsapp-automatisch-beantwoorden",
-    "categorie": "communicatie",
-    "prijs": "€ 249",
-    "stripe_link": "",
-    "banner": "",
-    "apps": [
-      "WhatsApp",
-      "Google Sheets"
-    ],
-    "binnenkort": false
+    ]
   }
 }
