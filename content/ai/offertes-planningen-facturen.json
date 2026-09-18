@@ -3,11 +3,11 @@
     "titel": "Offertes, planningen & facturen automatisch genereren",
     "samenvatting": "Laat offertes, planningen en facturen automatisch opmaken en versturen op basis van je eigen gegevens. Bespaart uren administratie per week.",
     "prijs_note": "eenmalig",
-    "vereiste": "Werkt met een gratis Make-account en een Google-account",
-    "beschrijving": "Stop met het handmatig overtypen van gegevens in offertes en facturen. Deze automatisering pakt de gegevens die jij invoert (bijvoorbeeld in een simpel formulier of spreadsheet) en maakt daar automatisch een nette offerte van, plant de klus in je agenda zodra de klant akkoord geeft, en verstuurt na afronding automatisch de factuur, inclusief btw-berekening en een betaallink.\n\nJe houdt volledige controle: elke stap kun je desgewenst eerst laten goedkeuren voordat er iets de deur uitgaat. Zo combineer je de snelheid van automatisering met de zekerheid dat er niets ongewenst wordt verstuurd.",
+    "vereiste": "Werkt met Outlook, Google Agenda en een gratis Moneybird-account",
+    "beschrijving": "Stop met het handmatig overtypen van gegevens in offertes en facturen. Deze automatisering herkent binnenkomende verzoeken in Outlook, maakt daar automatisch een nette offerte van in Moneybird, plant de klus in je agenda zodra de klant akkoord geeft, en verstuurt na afronding automatisch de factuur, inclusief btw-berekening en een betaallink.\n\nJe houdt volledige controle: elke stap kun je desgewenst eerst laten goedkeuren voordat er iets de deur uitgaat. Zo combineer je de snelheid van automatisering met de zekerheid dat er niets ongewenst wordt verstuurd.",
     "voordelen": [
       "Uren tijdwinst per week doordat je niets meer overtypt",
-      "Consistente, professionele opmaak in elke offerte en factuur",
+      "Consistente, professionele offertes en facturen via Moneybird",
       "Automatische btw-berekening en betaallink in de factuur",
       "Klus wordt automatisch in je agenda gezet na akkoord",
       "Optioneel: elke stap eerst laten goedkeuren"
@@ -15,7 +15,7 @@
     "faq": [
       {
         "v": "Werkt dit met mijn boekhoudprogramma?",
-        "a": "In veel gevallen wel. De automatisering is te koppelen aan de meest gebruikte pakketten. Twijfel je of jouw software erbij zit? Neem even contact op, dan checken we het."
+        "a": "Deze oplossing is standaard gekoppeld aan Moneybird, een van de populairste boekhoudpakketten voor het MKB. Gebruik je een ander pakket? Neem contact op, vaak is een koppeling ook daarmee mogelijk."
       },
       {
         "v": "Moet ik technisch onderlegd zijn?",
@@ -32,10 +32,9 @@
     "stripe_link": "",
     "banner": "/assets/images/uploads/offertes-planningen-facturen-banner-nl.jpg",
     "apps": [
-      "Google Sheets",
-      "Gmail",
+      "Outlook",
       "Google Agenda",
-      "PDF"
+      "Moneybird"
     ],
     "binnenkort": false
   },
@@ -43,11 +42,11 @@
     "titel": "Automatically generate quotes, scheduling & invoices",
     "samenvatting": "Have quotes, scheduling and invoices drawn up and sent automatically based on your own data. Saves hours of admin every week.",
     "prijs_note": "one-off",
-    "vereiste": "Works with a free Make account and a Google account",
-    "beschrijving": "Stop manually retyping data into quotes and invoices. This automation takes the data you enter (for example in a simple form or spreadsheet) and automatically turns it into a tidy quote, schedules the job in your calendar as soon as the customer agrees, and automatically sends the invoice once the work is done, including VAT calculation and a payment link.\n\nYou stay in full control: if you like, every step can be approved by you before anything goes out. That way you combine the speed of automation with the certainty that nothing is sent unintentionally.",
+    "vereiste": "Works with Outlook, Google Calendar and a free Moneybird account",
+    "beschrijving": "Stop manually retyping data into quotes and invoices. This automation recognises incoming requests in Outlook, automatically turns them into a tidy quote in Moneybird, schedules the job in your calendar as soon as the customer agrees, and automatically sends the invoice once the work is done, including VAT calculation and a payment link.\n\nYou stay in full control: if you like, every step can be approved by you before anything goes out. That way you combine the speed of automation with the certainty that nothing is sent unintentionally.",
     "voordelen": [
       "Hours saved every week because you no longer retype anything",
-      "Consistent, professional formatting in every quote and invoice",
+      "Consistent, professional quotes and invoices via Moneybird",
       "Automatic VAT calculation and payment link in the invoice",
       "The job is added to your calendar automatically after approval",
       "Optional: approve every step first"
@@ -55,7 +54,7 @@
     "faq": [
       {
         "v": "Does this work with my accounting software?",
-        "a": "In many cases, yes. The automation can connect to the most-used packages. Not sure if yours is included? Just get in touch and we'll check."
+        "a": "This solution is connected to Moneybird by default, one of the most popular accounting packages for SMEs. Using a different package? Get in touch, a connection is often possible there too."
       },
       {
         "v": "Do I need to be technical?",
@@ -72,10 +71,9 @@
     "stripe_link": "",
     "banner": "/assets/images/uploads/offertes-planningen-facturen-banner-en.jpg",
     "apps": [
-      "Google Sheets",
-      "Gmail",
-      "Google Agenda",
-      "PDF"
+      "Outlook",
+      "Google Calendar",
+      "Moneybird"
     ],
     "binnenkort": false
   },
@@ -83,11 +81,11 @@
     "titel": "Angebote, Planungen & Rechnungen automatisch erstellen",
     "samenvatting": "Lass Angebote, Planungen und Rechnungen automatisch auf Basis deiner eigenen Daten erstellen und versenden. Spart jede Woche Stunden an Verwaltung.",
     "prijs_note": "einmalig",
-    "vereiste": "Funktioniert mit einem kostenlosen Make-Konto und einem Google-Konto",
-    "beschrijving": "Schluss mit dem manuellen Abtippen von Daten in Angebote und Rechnungen. Diese Automatisierung nimmt die Daten, die du eingibst (zum Beispiel in einem einfachen Formular oder einer Tabelle), und erstellt daraus automatisch ein sauberes Angebot, plant den Auftrag in deinem Kalender ein, sobald der Kunde zustimmt, und versendet nach Abschluss automatisch die Rechnung, inklusive Mehrwertsteuer-Berechnung und Zahlungslink.\n\nDu behältst die volle Kontrolle: Auf Wunsch kann jeder Schritt zuerst von dir freigegeben werden, bevor etwas rausgeht. So verbindest du die Geschwindigkeit der Automatisierung mit der Sicherheit, dass nichts ungewollt versendet wird.",
+    "vereiste": "Funktioniert mit Outlook, Google Kalender und einem kostenlosen Moneybird-Konto",
+    "beschrijving": "Schluss mit dem manuellen Abtippen von Daten in Angebote und Rechnungen. Diese Automatisierung erkennt eingehende Anfragen in Outlook, erstellt daraus automatisch ein sauberes Angebot in Moneybird, plant den Auftrag in deinem Kalender ein, sobald der Kunde zustimmt, und versendet nach Abschluss automatisch die Rechnung, inklusive Mehrwertsteuer-Berechnung und Zahlungslink.\n\nDu behältst die volle Kontrolle: Auf Wunsch kann jeder Schritt zuerst von dir freigegeben werden, bevor etwas rausgeht. So verbindest du die Geschwindigkeit der Automatisierung mit der Sicherheit, dass nichts ungewollt versendet wird.",
     "voordelen": [
       "Stunden Zeitersparnis pro Woche, weil du nichts mehr abtippst",
-      "Einheitliche, professionelle Gestaltung in jedem Angebot und jeder Rechnung",
+      "Einheitliche, professionelle Angebote und Rechnungen über Moneybird",
       "Automatische MwSt.-Berechnung und Zahlungslink in der Rechnung",
       "Der Auftrag wird nach Freigabe automatisch in deinen Kalender eingetragen",
       "Optional: jeden Schritt zuerst freigeben"
@@ -95,7 +93,7 @@
     "faq": [
       {
         "v": "Funktioniert das mit meiner Buchhaltungssoftware?",
-        "a": "In vielen Fällen ja. Die Automatisierung lässt sich mit den gängigsten Programmen verbinden. Unsicher, ob deine Software dabei ist? Melde dich kurz, dann prüfen wir das."
+        "a": "Diese Lösung ist standardmäßig mit Moneybird verbunden, einem der beliebtesten Buchhaltungsprogramme für den Mittelstand. Nutzt du ein anderes Programm? Melde dich, oft ist eine Verbindung auch dort möglich."
       },
       {
         "v": "Muss ich technisch versiert sein?",
@@ -112,10 +110,9 @@
     "stripe_link": "",
     "banner": "/assets/images/uploads/offertes-planningen-facturen-banner-de.jpg",
     "apps": [
-      "Google Sheets",
-      "Gmail",
-      "Google Agenda",
-      "PDF"
+      "Outlook",
+      "Google Kalender",
+      "Moneybird"
     ],
     "binnenkort": false
   }
