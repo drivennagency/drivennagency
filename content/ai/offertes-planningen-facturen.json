@@ -30,7 +30,7 @@
     "categorie": "documenten",
     "prijs": "€ 299",
     "stripe_link": "",
-    "banner": "",
+    "banner": "/assets/images/uploads/offertes-planningen-facturen-banner-nl.jpg",
     "apps": [
       "Google Sheets",
       "Gmail",
@@ -70,7 +70,7 @@
     "categorie": "documenten",
     "prijs": "€ 299",
     "stripe_link": "",
-    "banner": "",
+    "banner": "/assets/images/uploads/offertes-planningen-facturen-banner-en.jpg",
     "apps": [
       "Google Sheets",
       "Gmail",
@@ -110,7 +110,7 @@
     "categorie": "documenten",
     "prijs": "€ 299",
     "stripe_link": "",
-    "banner": "",
+    "banner": "/assets/images/uploads/offertes-planningen-facturen-banner-de.jpg",
     "apps": [
       "Google Sheets",
       "Gmail",

@@ -405,7 +405,7 @@ def build_ai(lang):
     for f in sorted((ROOT/"content/ai").glob("*.json")):
         sols.append(json.loads(read(f)))
     for d in sols:
-        for key in ("slug", "categorie", "apps", "binnenkort", "prijs", "stripe_link", "banner"):
+        for key in ("slug", "categorie", "apps", "binnenkort", "prijs", "stripe_link"):
             if key not in d:
                 val = _shared(d, key)
                 if val is not None: d[key] = val
@@ -450,7 +450,7 @@ def build_ai(lang):
         slug=d["slug"]; title=o["titel"]; summary=o["samenvatting"]; catkey=d.get("categorie","")
         cat=u["cat_ai"].get(catkey,u["ai_default_cat"]); cat_plain=cat.replace("&amp;","en")
         srch = html.escape((title+" "+summary+" "+" ".join(d.get("apps",[]))+" "+cat_plain+" "+catkey).lower(), quote=True)
-        banner = d.get("banner","")
+        banner = o.get("banner") or d.get("banner","")
         bannerhtml = f'<div class="ai-card__banner" style="background-image:url(\'{banner}\')">' if banner else '<div class="ai-card__banner"><span class="ph">DRIVENN · AI</span>'
         soon = f'<span class="ai-card__soon">{u["ai_soon_short"]}</span>' if d.get("binnenkort") else ''
         apps = "".join(app_chip(a) for a in d.get("apps",[]))
