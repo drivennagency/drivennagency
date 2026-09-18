@@ -199,6 +199,7 @@ p{margin:0 0 1rem}
 .marquee__item{flex:none;display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.06);border:1px solid var(--navy-line);border-radius:50px;padding:11px 22px;color:#fff;font-family:var(--head);font-weight:600;font-size:.95rem;white-space:nowrap}
 .marquee__item .m-ico{width:26px;height:26px;display:grid;place-items:center;color:var(--gold)}
 .marquee__item .m-ico svg{width:22px;height:22px}
+.marquee__item .m-ico img{width:22px;height:22px;object-fit:contain}
 
 /* ============================================================
    PILLARS (twee bedrijfstakken)
@@ -301,7 +302,7 @@ p{margin:0 0 1rem}
 
 .ai-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:var(--tr);box-shadow:var(--shadow-sm)}
 .ai-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold-soft)}
-.ai-card__banner{aspect-ratio:16/9;background:var(--navy) center/cover no-repeat;position:relative;display:grid;place-items:center}
+.ai-card__banner{aspect-ratio:1200/630;background:var(--navy) center/cover no-repeat;position:relative;display:grid;place-items:center}
 .ai-card__banner .ph{color:rgba(255,255,255,.3);font-family:var(--head);font-weight:700;letter-spacing:.1em;font-size:.8rem}
 .ai-card__soon{position:absolute;top:12px;left:12px;background:var(--ink);color:#fff;font-family:var(--head);font-weight:700;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:20px}
 .ai-card__body{padding:22px;display:flex;flex-direction:column;flex:1}
@@ -515,12 +516,12 @@ p{margin:0 0 1rem}
 
 /* Uitgelichte AI-oplossing: zelfde 16:9-formaat als de AI-oplossingen-kaarten */
 .uitgelicht-media{position:relative}
-.uitgelicht-media img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
-.uitgelicht-media__ph{aspect-ratio:16/9;background:linear-gradient(135deg,var(--navy),var(--navy-2));color:rgba(255,255,255,.55);display:grid;place-items:center;gap:12px;text-align:center;padding:24px;font-family:var(--head);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.82rem}
+.uitgelicht-media img{width:100%;display:block;aspect-ratio:1200/630;object-fit:cover}
+.uitgelicht-media__ph{aspect-ratio:1200/630;background:linear-gradient(135deg,var(--navy),var(--navy-2));color:rgba(255,255,255,.55);display:grid;place-items:center;gap:12px;text-align:center;padding:24px;font-family:var(--head);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.82rem}
 .uitgelicht-media__ph svg{width:38px;height:38px;color:rgba(201,162,39,.7)}
 
-/* AI-detailpagina: bannerafbeelding boven de toelichting, zelfde 16:9-formaat */
-.ai-detail__banner{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);display:block;margin-top:24px}
+/* AI-detailpagina: bannerafbeelding boven de toelichting, zelfde formaat als de kaarten maar compacter */
+.ai-detail__banner{width:100%;max-width:520px;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);display:block;margin:24px auto 0}
 
 /* Websites-kaarten: twee knoppen onderin (gratis concept + contact) */
 .svc-btns{margin-top:auto;display:flex;flex-direction:column;gap:10px}

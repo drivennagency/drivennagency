@@ -30,7 +30,7 @@
     "categorie": "documenten",
     "prijs": "€ 299",
     "stripe_link": "",
-    "banner": "/assets/images/uploads/offertes-planningen-facturen-banner-nl.jpg",
+    "banner": "/assets/ai-oplossingsbanner/offertes-planningen-facturen/nl.jpg",
     "apps": [
       "Outlook",
       "Google Agenda",
@@ -69,7 +69,7 @@
     "categorie": "documenten",
     "prijs": "€ 299",
     "stripe_link": "",
-    "banner": "/assets/images/uploads/offertes-planningen-facturen-banner-en.jpg",
+    "banner": "/assets/ai-oplossingsbanner/offertes-planningen-facturen/en.jpg",
     "apps": [
       "Outlook",
       "Google Calendar",
@@ -108,7 +108,7 @@
     "categorie": "documenten",
     "prijs": "€ 299",
     "stripe_link": "",
-    "banner": "/assets/images/uploads/offertes-planningen-facturen-banner-de.jpg",
+    "banner": "/assets/ai-oplossingsbanner/offertes-planningen-facturen/de.jpg",
     "apps": [
       "Outlook",
       "Google Kalender",
