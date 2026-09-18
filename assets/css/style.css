@@ -196,10 +196,10 @@ p{margin:0 0 1rem}
 .marquee__track{display:flex;gap:20px;align-items:center;padding-right:20px;animation:marquee 34s linear infinite;flex:none}
 .marquee:hover .marquee__track{animation-play-state:paused}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee__item{flex:none;display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.06);border:1px solid var(--navy-line);border-radius:50px;padding:11px 22px;color:#fff;font-family:var(--head);font-weight:600;font-size:.95rem;white-space:nowrap}
-.marquee__item .m-ico{width:26px;height:26px;display:grid;place-items:center;color:var(--gold)}
-.marquee__item .m-ico svg{width:22px;height:22px}
-.marquee__item .m-ico img{width:22px;height:22px;object-fit:contain}
+.marquee__item{flex:none;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid var(--navy-line);border-radius:16px;width:76px;height:76px;color:var(--gold)}
+.marquee__item .m-ico{width:44px;height:44px;display:grid;place-items:center}
+.marquee__item .m-ico svg{width:44px;height:44px}
+.marquee__item .m-ico img{width:44px;height:44px;object-fit:contain}
 
 /* ============================================================
    PILLARS (twee bedrijfstakken)
