@@ -354,6 +354,7 @@ AI_PAGE = """<!DOCTYPE html>
       <p class="page-hero__crumb"><a href="{L}index.html">{home}</a> / <a href="{L}ai-oplossingen.html">{crumb_ai}</a> / {cat}</p>
       <h1 style="max-width:22ch;margin:10px 0 16px">{title}</h1>
       <p class="lead" style="margin:0">{summary}</p>
+      {banner_block}
     </div>
   </section>
 
@@ -425,6 +426,8 @@ def build_ai(lang):
             faq = f'<h2 style="margin-top:2.4rem">{u["ai_faq"]}</h2><div class="faq" style="margin:0">{items}</div>'
         else: faq = ""
         apps = "".join(app_chip(a) for a in d.get("apps",[]))
+        banner = o.get("banner") or d.get("banner","")
+        banner_block = f'<img src="{banner}" alt="{html.escape(title, quote=True)}" class="ai-detail__banner">' if banner else ""
         if o.get("vereiste"):
             req = f'<div class="ai-req">{ICON_CHECK_SMALL}<span><strong>{u["ai_foryou"]}</strong>{html.escape(o.get("vereiste",""))}</span></div>'
         elif d.get("binnenkort"):
@@ -442,7 +445,8 @@ def build_ai(lang):
             summary=html.escape(summary,quote=True), canon=canon, hreflang=hreflang_block(paths),
             L=L, home=u["home"], crumb_ai=u["crumb_ai"], cat=cat, body=body, ai_what=u["ai_what"],
             voordelen=voordelen, faq=faq, workswith=u["ai_workswith"], apps=apps, req=req,
-            price_block=price_block, buy=buy, install_note=u["ai_install_note"], install_btn=u["ai_install_btn"])
+            price_block=price_block, buy=buy, install_note=u["ai_install_note"], install_btn=u["ai_install_btn"],
+            banner_block=banner_block)
         write(base/f"ai-oplossingen/{slug}.html", page)
 
     def card(d):

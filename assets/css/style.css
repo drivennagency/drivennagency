@@ -223,6 +223,7 @@ p{margin:0 0 1rem}
    FEATURE / UITLICHTING split
 ============================================================ */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split--media-lg{grid-template-columns:1.15fr 1fr}
 .split--rev .split__media{order:2}
 .split__media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);position:relative}
 .split__media img{width:100%;height:100%;object-fit:cover}
@@ -512,11 +513,14 @@ p{margin:0 0 1rem}
 /* Een btn-row die zelf .center heeft, centreert nu ook (o.a. AI-help knop) */
 .btn-row.center{justify-content:center}
 
-/* Uitgelichte AI-oplossing: afbeelding i.p.v. mock (afbeelding volgt later) */
+/* Uitgelichte AI-oplossing: zelfde 16:9-formaat als de AI-oplossingen-kaarten */
 .uitgelicht-media{position:relative}
-.uitgelicht-media img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover}
-.uitgelicht-media__ph{aspect-ratio:16/10;background:linear-gradient(135deg,var(--navy),var(--navy-2));color:rgba(255,255,255,.55);display:grid;place-items:center;gap:12px;text-align:center;padding:24px;font-family:var(--head);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.82rem}
+.uitgelicht-media img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
+.uitgelicht-media__ph{aspect-ratio:16/9;background:linear-gradient(135deg,var(--navy),var(--navy-2));color:rgba(255,255,255,.55);display:grid;place-items:center;gap:12px;text-align:center;padding:24px;font-family:var(--head);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.82rem}
 .uitgelicht-media__ph svg{width:38px;height:38px;color:rgba(201,162,39,.7)}
+
+/* AI-detailpagina: bannerafbeelding boven de toelichting, zelfde 16:9-formaat */
+.ai-detail__banner{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);display:block;margin-top:24px}
 
 /* Websites-kaarten: twee knoppen onderin (gratis concept + contact) */
 .svc-btns{margin-top:auto;display:flex;flex-direction:column;gap:10px}
