@@ -277,7 +277,7 @@ BLOG_PAGE = """<!DOCTYPE html>
 def _blogfields(d, lang):
     o = d.get(lang) or d.get("nl", {})
     title = o.get("titel") or o.get("title","")
-    summary = o.get("samenvatting") or o.get("summary","")
+    summary = o.get("samenvatting") or o.get("summary") or o.get("zusammenfassung","")
     body = o.get("tekst") or o.get("text","")
     cat = o.get("category") or o.get("categorie") or d.get("category","")
     return title, summary, body, cat
