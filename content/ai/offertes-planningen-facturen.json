@@ -1,6 +1,6 @@
 {
   "nl": {
-    "titel": "Offertes, planningen & facturen automatisch genereren",
+    "titel": "Offertes & facturen automatisch",
     "samenvatting": "Laat offertes, planningen en facturen automatisch opmaken en versturen op basis van je eigen gegevens. Bespaart uren administratie per week.",
     "prijs_note": "eenmalig",
     "vereiste": "Werkt met Outlook, Google Agenda en een gratis Moneybird-account",
@@ -39,7 +39,7 @@
     "binnenkort": false
   },
   "en": {
-    "titel": "Automatically generate quotes, scheduling & invoices",
+    "titel": "Quotes & invoices, automated",
     "samenvatting": "Have quotes, scheduling and invoices drawn up and sent automatically based on your own data. Saves hours of admin every week.",
     "prijs_note": "one-off",
     "vereiste": "Works with Outlook, Google Calendar and a free Moneybird account",
@@ -78,7 +78,7 @@
     "binnenkort": false
   },
   "de": {
-    "titel": "Angebote, Planungen & Rechnungen automatisch erstellen",
+    "titel": "Angebote & Rechnungen automatisch",
     "samenvatting": "Lass Angebote, Planungen und Rechnungen automatisch auf Basis deiner eigenen Daten erstellen und versenden. Spart jede Woche Stunden an Verwaltung.",
     "prijs_note": "einmalig",
     "vereiste": "Funktioniert mit Outlook, Google Kalender und einem kostenlosen Moneybird-Konto",

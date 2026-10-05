@@ -1,6 +1,6 @@
 {
   "nl": {
-    "titel": "Grote hoeveelheden tekst slim uitlezen & samenvatten",
+    "titel": "Tekst uitlezen & samenvatten",
     "samenvatting": "Laat lange documenten, e-mails of rapporten automatisch uitlezen, sorteren en samenvatten tot heldere kernpunten. Ideaal als je door de bomen het bos niet meer ziet.",
     "prijs_note": "eenmalig",
     "vereiste": "Werkt met een gratis Make-account; voor grote volumes een betaald AI-abonnement",
@@ -39,7 +39,7 @@
     "binnenkort": false
   },
   "en": {
-    "titel": "Smartly read & summarise large volumes of text",
+    "titel": "Smartly read & summarise text",
     "samenvatting": "Automatically read, sort and summarise long documents, emails or reports into clear key points. Ideal when you can't see the wood for the trees.",
     "prijs_note": "one-off",
     "vereiste": "Works with a free Make account; for large volumes a paid AI subscription",
@@ -78,7 +78,7 @@
     "binnenkort": false
   },
   "de": {
-    "titel": "Große Textmengen intelligent auslesen & zusammenfassen",
+    "titel": "Text intelligent zusammenfassen",
     "samenvatting": "Lass lange Dokumente, E-Mails oder Berichte automatisch auslesen, sortieren und zu klaren Kernpunkten zusammenfassen. Ideal, wenn du den Wald vor lauter Bäumen nicht mehr siehst.",
     "prijs_note": "einmalig",
     "vereiste": "Funktioniert mit einem kostenlosen Make-Konto; für große Mengen ein kostenpflichtiges KI-Abonnement",
