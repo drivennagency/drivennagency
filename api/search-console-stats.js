@@ -1,4 +1,5 @@
 // Vercel serverless function: live Google Search Console-cijfers voor het Drivenn Agency dashboard.
+// build-trigger: forceer nieuwe Vercel-deploy na gemiste webhook
 // Geeft de top zoekwoorden (clicks/vertoningen/CTR/positie) van de laatste 28 dagen terug,
 // zodat nieuwe blogs beter kunnen aansluiten op waar mensen al naar zoeken.
 //
