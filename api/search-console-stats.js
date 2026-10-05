@@ -18,8 +18,29 @@ function base64url(buf) {
   return buf.toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 
+// Service-account private keys get mangled in all kinds of ways when they pass through an
+// env-var UI (real newlines dropped, backslash-n sequences double-escaped, wrapping quotes
+// left in, stray \r from Windows clipboards, trailing/leading whitespace). Normalize defensively
+// instead of assuming one specific encoding, and fail with a diagnostic (never the key itself).
+function normalizePrivateKey(raw) {
+  let key = raw.trim();
+  if ((key.startsWith('"') && key.endsWith('"')) || (key.startsWith("'") && key.endsWith("'"))) {
+    key = key.slice(1, -1).trim();
+  }
+  key = key.replace(/\\+n/g, "\n"); // one or more literal backslashes followed by n -> real newline
+  key = key.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  key = key.trim() + "\n";
+  if (!key.includes("BEGIN PRIVATE KEY") || !key.includes("END PRIVATE KEY")) {
+    const preview = raw.trim().slice(0, 25).replace(/[^\x20-\x7e]/g, "?");
+    throw new Error(
+      `GOOGLE_SC_PRIVATE_KEY lijkt niet een geldige PEM-key te zijn (${raw.length} tekens, begint met "${preview}..."). Verwacht tekst die begint met -----BEGIN PRIVATE KEY-----.`
+    );
+  }
+  return key;
+}
+
 async function getAccessToken(clientEmail, privateKeyRaw) {
-  const privateKey = privateKeyRaw.includes("\\n") ? privateKeyRaw.replace(/\\n/g, "\n") : privateKeyRaw;
+  const privateKey = normalizePrivateKey(privateKeyRaw);
   const crypto = require("crypto");
   const now = Math.floor(Date.now() / 1000);
   const header = { alg: "RS256", typ: "JWT" };
@@ -32,7 +53,15 @@ async function getAccessToken(clientEmail, privateKeyRaw) {
   };
   const signingInput =
     base64url(Buffer.from(JSON.stringify(header))) + "." + base64url(Buffer.from(JSON.stringify(claims)));
-  const signature = crypto.createSign("RSA-SHA256").update(signingInput).sign(privateKey);
+  let signature;
+  try {
+    signature = crypto.createSign("RSA-SHA256").update(signingInput).sign(privateKey);
+  } catch (signErr) {
+    const lineCount = privateKey.split("\n").length;
+    throw new Error(
+      `Ondertekenen met GOOGLE_SC_PRIVATE_KEY is mislukt (${privateKey.length} tekens, ${lineCount} regels, header/footer wel aanwezig): ${signErr.message}`
+    );
+  }
   const jwt = signingInput + "." + base64url(signature);
 
   const res = await fetch("https://oauth2.googleapis.com/token", {
