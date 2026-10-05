@@ -5,8 +5,9 @@
 //
 // Vereiste environment variables (Vercel -> Settings -> Environment Variables):
 //   GOOGLE_SC_CLIENT_EMAIL  - het "client_email" veld uit het service-account JSON-keybestand
-//   GOOGLE_SC_PRIVATE_KEY   - het "private_key" veld uit datzelfde bestand (incl. BEGIN/END regels;
-//                             newlines mogen als letterlijke \n staan, deze functie zet ze terug om)
+//   GOOGLE_SC_PRIVATE_KEY   - de private key, bij voorkeur als EEN REGEL base64 (geen backslashes of
+//                             newlines, dus immuun voor plak-mangling in env-var UI's). Normale PEM
+//                             (met echte of \n-regeleinden) wordt ook herkend.
 //   GOOGLE_SC_SITE_URL      - de property-naam exact zoals die in Search Console staat,
 //                             bv. "https://drivennagency.nl/" (URL-prefix) of "sc-domain:drivennagency.nl"
 //
@@ -28,13 +29,24 @@ function normalizePrivateKey(raw) {
   if ((key.startsWith('"') && key.endsWith('"')) || (key.startsWith("'") && key.endsWith("'"))) {
     key = key.slice(1, -1).trim();
   }
+  if (!key.includes("BEGIN PRIVATE KEY")) {
+    // Not recognizable as PEM text as-is -- try treating it as base64 of the whole PEM file.
+    // This is the recommended format: no backslashes/newlines/quotes means nothing for an
+    // env-var UI (or a copy/paste step) to mangle.
+    try {
+      const decoded = Buffer.from(key, "base64").toString("utf8");
+      if (decoded.includes("BEGIN PRIVATE KEY")) key = decoded;
+    } catch (e) {
+      // fall through -- diagnostic below will fire
+    }
+  }
   key = key.replace(/\\+n/g, "\n"); // one or more literal backslashes followed by n -> real newline
   key = key.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
   key = key.trim() + "\n";
   if (!key.includes("BEGIN PRIVATE KEY") || !key.includes("END PRIVATE KEY")) {
     const preview = raw.trim().slice(0, 25).replace(/[^\x20-\x7e]/g, "?");
     throw new Error(
-      `GOOGLE_SC_PRIVATE_KEY lijkt niet een geldige PEM-key te zijn (${raw.length} tekens, begint met "${preview}..."). Verwacht tekst die begint met -----BEGIN PRIVATE KEY-----.`
+      `GOOGLE_SC_PRIVATE_KEY lijkt niet een geldige PEM-key of base64-key te zijn (${raw.length} tekens, begint met "${preview}..."). Verwacht tekst die begint met -----BEGIN PRIVATE KEY----- of de base64-vorm daarvan.`
     );
   }
   return key;
