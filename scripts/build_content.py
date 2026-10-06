@@ -564,13 +564,31 @@ def fix_static_head(lang):
         t = t.replace('</head>', '  ' + block + '\n</head>', 1)
         write(p, t)
 
-def _faq_schema(t):
-    items = FAQ_RE.findall(t)
+FAQ_MD_QA_RE = re.compile(r'<p><strong>(.*?)</strong></p>\s*<p>(.*?)</p>', re.S)
+
+def _faq_schema_markdown(t, lang):
+    """Blogteksten zetten een FAQ-sectie niet via de faq__q/faq__a-structuur
+    (die hebben alleen AI-/servicepagina's met een echt 'faq'-veld), maar als
+    gewone markdown: ## <ai_faq-kop>, gevolgd door **Vraag?** / Antwoord-alinea's.
+    Die kop is dezelfde vertaalde tekst als elders (zie ai_faq per taal)."""
+    heading = re.escape(UI[lang]["ai_faq"])
+    m = re.search(rf'<h2>{heading}</h2>(.*?)(?=<h2>|$)', t, re.S)
+    if not m:
+        return None
+    items = FAQ_MD_QA_RE.findall(m.group(1))
     if not items:
         return None
     qa = [{"@type": "Question", "name": _strip_tags(q),
            "acceptedAnswer": {"@type": "Answer", "text": _strip_tags(a)}} for q, a in items]
     return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": qa}
+
+def _faq_schema(t, lang):
+    items = FAQ_RE.findall(t)
+    if items:
+        qa = [{"@type": "Question", "name": _strip_tags(q),
+               "acceptedAnswer": {"@type": "Answer", "text": _strip_tags(a)}} for q, a in items]
+        return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": qa}
+    return _faq_schema_markdown(t, lang)
 
 def _breadcrumb_schema(t, lang):
     m = re.search(r'<p class="page-hero__crumb">(.*?)</p>', t, re.S)
@@ -599,7 +617,7 @@ def inject_seo_schema(lang):
     for p in pages:
         t = read(p)
         t = re.sub(r'<!--SEOSCHEMA-->.*?<!--/SEOSCHEMA-->', '', t, flags=re.S)
-        blocks = [b for b in (_faq_schema(t), _breadcrumb_schema(t, lang)) if b]
+        blocks = [b for b in (_faq_schema(t, lang), _breadcrumb_schema(t, lang)) if b]
         if blocks:
             scripts = "".join('<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False) + '</script>' for b in blocks)
             t = t.replace('</head>', '  <!--SEOSCHEMA-->' + scripts + '<!--/SEOSCHEMA-->\n</head>', 1)
