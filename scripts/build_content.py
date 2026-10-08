@@ -608,6 +608,33 @@ def _breadcrumb_schema(t, lang):
         return None
     return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}
 
+def _product_schema(t):
+    """Alleen de AI-detailpagina's hebben deze exacte, geïnlinede prijsstijl
+    (de kaart-teaser op het AI-overzicht gebruikt dezelfde class zonder deze
+    stijl), dus dit matcht nooit op het overzicht of op andere pagina's."""
+    m = re.search(
+        r'class="ai-price" style="font-size:1\.9rem;text-align:center;margin-bottom:4px">'
+        r'€\s*([\d.,]+)<small[^>]*>(.*?)</small>', t)
+    if not m:
+        return None
+    price = m.group(1).replace('.', '').replace(',', '.')
+    title_m = re.search(r'<title>(.*?)</title>', t, re.S)
+    name = _strip_tags(title_m.group(1)).split(' | ')[0].strip() if title_m else None
+    desc_m = re.search(r'<meta name="description" content="(.*?)">', t)
+    description = html.unescape(desc_m.group(1)) if desc_m else None
+    canon_m = re.search(r'<link rel="canonical" href="([^"]+)">', t)
+    url = canon_m.group(1) if canon_m else None
+    img_m = re.search(r'<img src="([^"]+)"[^>]*class="ai-detail__banner"', t)
+    product = {"@context": "https://schema.org", "@type": "Product", "name": name,
+               "description": description,
+               "offers": {"@type": "Offer", "price": price, "priceCurrency": "EUR",
+                          "availability": "https://schema.org/InStock", "url": url}}
+    if img_m:
+        # inject_seo_schema draait vóór relativize_all, dus src is hier nog het
+        # oorspronkelijke absolute pad (/assets/...) uit de content-JSON.
+        product["image"] = SITE + img_m.group(1)
+    return product
+
 def inject_seo_schema(lang):
     base = outdir(lang)
     pages = list(base.glob("*.html"))
@@ -617,7 +644,7 @@ def inject_seo_schema(lang):
     for p in pages:
         t = read(p)
         t = re.sub(r'<!--SEOSCHEMA-->.*?<!--/SEOSCHEMA-->', '', t, flags=re.S)
-        blocks = [b for b in (_faq_schema(t, lang), _breadcrumb_schema(t, lang)) if b]
+        blocks = [b for b in (_faq_schema(t, lang), _breadcrumb_schema(t, lang), _product_schema(t)) if b]
         if blocks:
             scripts = "".join('<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False) + '</script>' for b in blocks)
             t = t.replace('</head>', '  <!--SEOSCHEMA-->' + scripts + '<!--/SEOSCHEMA-->\n</head>', 1)
