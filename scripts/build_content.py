@@ -345,6 +345,7 @@ AI_PAGE = """<!DOCTYPE html>
   <meta property="og:title" content="{title} | Drivenn Agency">
   <meta property="og:description" content="{summary}">
   <meta property="og:url" content="{canon}">
+  <meta property="og:image" content="{ogimg}">
 </head>
 <body data-page="ai">
 <!--#HEADER#--><!--#HEADER-END#-->
@@ -428,6 +429,7 @@ def build_ai(lang):
         apps = "".join(app_chip(a) for a in d.get("apps",[]))
         banner = o.get("banner") or d.get("banner","")
         banner_block = f'<img src="{banner}" alt="{html.escape(title, quote=True)}" class="ai-detail__banner">' if banner else ""
+        ogimg = (SITE + banner) if banner else f"{SITE}/assets/logo/logo-op-witte-achtergrond.png"
         if o.get("vereiste"):
             req = f'<div class="ai-req">{ICON_CHECK_SMALL}<span><strong>{u["ai_foryou"]}</strong>{html.escape(o.get("vereiste",""))}</span></div>'
         elif d.get("binnenkort"):
@@ -446,7 +448,7 @@ def build_ai(lang):
             L=L, home=u["home"], crumb_ai=u["crumb_ai"], cat=cat, body=body, ai_what=u["ai_what"],
             voordelen=voordelen, faq=faq, workswith=u["ai_workswith"], apps=apps, req=req,
             price_block=price_block, buy=buy, install_note=u["ai_install_note"], install_btn=u["ai_install_btn"],
-            banner_block=banner_block)
+            banner_block=banner_block, ogimg=ogimg)
         write(base/f"ai-oplossingen/{slug}.html", page)
 
     def card(d):
