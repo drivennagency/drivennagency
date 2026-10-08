@@ -655,24 +655,29 @@ def inject_analytics(lang):
 def build_sitemap(all_posts, all_sols, all_cases):
     static = ["index.html","websites.html","nieuwe-website.html","redesign.html","hosting.html",
               "ai-oplossingen.html","concept.html","cases.html","blog.html","over-ons.html","contact.html"]
-    entries = []  # (loc, {lang:loc})
+    entries = []  # (loc, {lang:loc}, lastmod)
     def loc(lang, page):
         pre = lp(lang)
         return f"{SITE}{pre}{'' if page=='index.html' else page}" if page=="index.html" else f"{SITE}{pre}{page}"
     for page in static:
         alts = {lg: (f"{SITE}{lp(lg)}" if page=="index.html" else f"{SITE}{lp(lg)}{page}") for lg in ACTIVE}
-        for lg in ACTIVE: entries.append((alts[lg], alts))
+        # Geen betrouwbare "laatst gewijzigd"-datum bekend voor statische pagina's
+        # (geen date-veld in de content, en de bestands-mtime zou bij elke
+        # regeneratie veranderen ook als de inhoud niet wijzigt) -- lastmod
+        # weglaten is correcter dan een gegokte datum meegeven.
+        for lg in ACTIVE: entries.append((alts[lg], alts, None))
     for s in all_sols["nl"]:
         alts = {lg: f"{SITE}{lp(lg)}ai-oplossingen/{s['slug']}.html" for lg in ACTIVE}
-        for lg in ACTIVE: entries.append((alts[lg], alts))
+        for lg in ACTIVE: entries.append((alts[lg], alts, None))
     for p in all_posts["nl"]:
         alts = {lg: f"{SITE}{lp(lg)}blog/{p['slug']}.html" for lg in ACTIVE}
-        for lg in ACTIVE: entries.append((alts[lg], alts))
+        for lg in ACTIVE: entries.append((alts[lg], alts, p.get("date_iso") or None))
     rows = []
     XH = 'xmlns:xhtml="http://www.w3.org/1999/xhtml"'
-    for loc_, alts in entries:
+    for loc_, alts, lastmod in entries:
         links = "".join(f'<xhtml:link rel="alternate" hreflang="{UI[lg]["code"]}" href="{alts[lg]}"/>' for lg in ACTIVE)
-        rows.append(f'  <url><loc>{loc_}</loc>{links}</url>')
+        lastmod_tag = f'<lastmod>{lastmod}</lastmod>' if lastmod else ''
+        rows.append(f'  <url><loc>{loc_}</loc>{lastmod_tag}{links}</url>')
     xml = f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" {XH}>\n' + "\n".join(rows) + "\n</urlset>\n"
     write(ROOT/"sitemap.xml", xml)
 
