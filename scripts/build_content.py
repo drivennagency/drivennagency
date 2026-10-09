@@ -598,8 +598,22 @@ def _breadcrumb_schema(t, lang):
     items = []
     pos = 1
     for hrefv, label in re.findall(r'<a href="([^"]+)">(.*?)</a>', inner):
-        items.append({"@type": "ListItem", "position": pos, "name": _strip_tags(label),
-                      "item": f"{SITE}{lp(lang)}" if hrefv == "index.html" else f"{SITE}{lp(lang)}{hrefv}"})
+        # hrefv is hier van 2 soorten, afhankelijk van hoe de pagina is opgebouwd:
+        # - statische pagina's: een kale relatieve link zonder taalprefix ("index.html")
+        # - AI-/servicepagina's (via de {L}-template): al een volledig, taal-
+        #   geprefixt absoluut pad ("/de/index.html"), vóór relativize_all draait.
+        # lp(lang) alleen ervoor plakken bij de kale vorm; bij de al-absolute vorm
+        # gaf dat een verdubbeld taalpad + dubbele slash.
+        if hrefv.startswith('/'):
+            # overal elders op de site (sitemap, canonical, ProfessionalService)
+            # verwijst de homepage naar het pad met trailing slash, nooit naar
+            # het losse bestand -- zelfde vorm aanhouden voor consistentie.
+            url = f"{SITE}{hrefv[:-len('index.html')]}" if hrefv.endswith('index.html') else f"{SITE}{hrefv}"
+        elif hrefv == "index.html":
+            url = f"{SITE}{lp(lang)}"
+        else:
+            url = f"{SITE}{lp(lang)}{hrefv}"
+        items.append({"@type": "ListItem", "position": pos, "name": _strip_tags(label), "item": url})
         pos += 1
     tail = _strip_tags(inner.rsplit('</a>', 1)[-1]).lstrip('/ ').strip()
     if tail:
