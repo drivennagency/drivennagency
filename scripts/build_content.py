@@ -542,6 +542,17 @@ def _strip_tags(s):
 
 FAQ_RE = re.compile(r'class="faq__q"[^>]*>(.*?)<span class="fq-plus"></span></button><div class="faq__a"><p>(.*?)</p>', re.S)
 
+def _collapse_blank_lines_in_head(t):
+    """Vouwt een reeks blanco regels in de <head> samen tot 1 newline. Eenmalige
+    opschoning van blanco regels die een eerdere, niet-idempotente versie van
+    fix_static_head/inject_seo_schema/inject_analytics bij elke regeneratie liet
+    staan (zie build-script-niet-idempotent-aandachtspunt) -- is daarna een no-op
+    zodra er geen opeenvolgende blanco regels meer zijn. Raakt bewust alleen de
+    <head>, nooit de <body>-inhoud."""
+    return re.sub(r'<head>.*?</head>',
+                  lambda m: re.sub(r'\n(?:[ \t]*\n)+', '\n', m.group(0)),
+                  t, count=1, flags=re.S)
+
 def fix_static_head(lang):
     """Zet op elke statische pagina een correcte canonical + hreflang-set (alleen
     ACTIVE talen, dus geen 404-verwijzingen). Draait niet op de gegenereerde
@@ -549,7 +560,7 @@ def fix_static_head(lang):
     base = outdir(lang)
     for p in base.glob("*.html"):
         key = p.name
-        t = read(p)
+        t = _collapse_blank_lines_in_head(read(p))
         canon = f"{SITE}{lp(lang)}" if key == "index.html" else f"{SITE}{lp(lang)}{key}"
         def href(lg):
             return f"{SITE}{lp(lg)}" if key == "index.html" else f"{SITE}{lp(lg)}{key}"
@@ -558,7 +569,7 @@ def fix_static_head(lang):
             links.append(f'<link rel="alternate" hreflang="{UI[lg]["code"]}" href="{href(lg)}">')
         links.append(f'<link rel="alternate" hreflang="x-default" href="{href("nl")}">')
         block = "<!--HEADLINKS-->" + "".join(links) + "<!--/HEADLINKS-->"
-        t = re.sub(r'<!--HEADLINKS-->.*?<!--/HEADLINKS-->', '', t, flags=re.S)
+        t = re.sub(r'[ \t]*<!--HEADLINKS-->.*?<!--/HEADLINKS-->\n?', '', t, flags=re.S)
         t = re.sub(r'\s*<link rel="canonical"[^>]*>', '', t)
         t = re.sub(r'\s*<link rel="alternate" hreflang="[^"]*"[^>]*>', '', t)
         t = t.replace('</head>', '  ' + block + '\n</head>', 1)
@@ -615,8 +626,8 @@ def inject_seo_schema(lang):
         if (base/sub).exists():
             pages += list((base/sub).glob("*.html"))
     for p in pages:
-        t = read(p)
-        t = re.sub(r'<!--SEOSCHEMA-->.*?<!--/SEOSCHEMA-->', '', t, flags=re.S)
+        t = _collapse_blank_lines_in_head(read(p))
+        t = re.sub(r'[ \t]*<!--SEOSCHEMA-->.*?<!--/SEOSCHEMA-->\n?', '', t, flags=re.S)
         blocks = [b for b in (_faq_schema(t, lang), _breadcrumb_schema(t, lang)) if b]
         if blocks:
             scripts = "".join('<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False) + '</script>' for b in blocks)
@@ -642,7 +653,7 @@ def inject_analytics(lang):
         cfg = 'window.DRIVENN_GA={id:%s,page:%s,lang:%s};' % (json.dumps(GA_ID), json.dumps(page_title), json.dumps(lang))
         block = ('<!--ANALYTICS--><script>' + cfg + '</script>'
                  '<script src="/js/consent.js" defer></script><!--/ANALYTICS-->')
-        t = re.sub(r'<!--ANALYTICS-->.*?<!--/ANALYTICS-->', '', t, flags=re.S)
+        t = re.sub(r'[ \t]*<!--ANALYTICS-->.*?<!--/ANALYTICS-->\n?', '', t, flags=re.S)
         t = t.replace('</head>', '  ' + block + '\n</head>', 1)
         # Zorg dat pagina's met een formulier ook js/form.js laden (Web3Forms).
         if 'data-form' in t and 'js/form.js' not in t:
