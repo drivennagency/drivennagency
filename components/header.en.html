@@ -1,15 +1,16 @@
+<a class="skip-link" href="#main">Skip to content</a>
 <header id="site-header">
   <div class="container">
-    <nav class="nav">
-      <a href="/eng/index.html" class="nav__logo" aria-label="Drivenn Agency, home">
+    <nav class="nav" aria-label="Main menu">
+      <a href="/eng/" class="nav__logo" aria-label="Drivenn Agency, home">
         <img src="/assets/logo/logo-transparant-wit.png" alt="Drivenn Agency" width="150" height="42" class="nav__logo-img">
       </a>
 
       <ul class="nav__links" role="list">
-        <li><a href="/eng/index.html" data-page="index">Home</a></li>
+        <li><a href="/eng/" data-page="index">Home</a></li>
         <li>
           <a href="/eng/websites.html" data-page="websites">Websites
-            <svg class="nav__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            <svg class="nav__caret" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </a>
           <div class="nav__dd">
             <a href="/eng/nieuwe-website.html">
@@ -38,27 +39,27 @@
       <div class="nav__right">
         <a href="/eng/concept.html" class="nav__cta">Free website concept</a>
         <div class="lang-switch" aria-label="Change language">
-          <button class="lang-switch__current" aria-expanded="false" aria-haspopup="listbox" type="button">
+          <button class="lang-switch__current" aria-expanded="false" aria-haspopup="true" aria-controls="lang-menu" type="button">
             <span class="flag-icon" aria-hidden="true"><svg viewBox="0 0 60 30"><clipPath id="en-c"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#en-c)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></span>
-            <span class="lang-switch__code">EN</span><span class="lang-switch__chevron">▾</span>
+            <span class="lang-switch__code">EN</span><span class="lang-switch__chevron" aria-hidden="true">▾</span>
           </button>
-          <ul class="lang-switch__menu" role="listbox">
-            <li role="option"><a href="/index.html" data-lang="nl" class="lang-switch__option"><span class="flag-icon"><svg viewBox="0 0 9 6"><rect width="9" height="2" fill="#AE1C28"/><rect y="2" width="9" height="2" fill="#FFF"/><rect y="4" width="9" height="2" fill="#21468B"/></svg></span><span>Nederlands</span></a></li>
-            <li role="option"><a href="/eng/index.html" data-lang="en" class="lang-switch__option active"><span class="flag-icon"><svg viewBox="0 0 60 30"><clipPath id="en-d"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#en-d)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></span><span>English</span></a></li>
-            <li role="option"><a href="/de/index.html" data-lang="de" class="lang-switch__option"><span class="flag-icon"><svg viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg></span><span>Deutsch</span></a></li>
+          <ul class="lang-switch__menu" id="lang-menu">
+            <li><a href="/" data-lang="nl" lang="nl" hreflang="nl" class="lang-switch__option"><span class="flag-icon"><svg viewBox="0 0 9 6"><rect width="9" height="2" fill="#AE1C28"/><rect y="2" width="9" height="2" fill="#FFF"/><rect y="4" width="9" height="2" fill="#21468B"/></svg></span><span>Nederlands</span></a></li>
+            <li><a href="/eng/" data-lang="en" lang="en" hreflang="en" class="lang-switch__option active" aria-current="true"><span class="flag-icon"><svg viewBox="0 0 60 30"><clipPath id="en-d"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#en-d)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></span><span>English</span></a></li>
+            <li><a href="/de/" data-lang="de" lang="de" hreflang="de" class="lang-switch__option"><span class="flag-icon"><svg viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg></span><span>Deutsch</span></a></li>
           </ul>
         </div>
-        <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="nav__burger" type="button" aria-controls="mobile-menu" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </nav>
   </div>
 </header>
 
-<div class="mobile-overlay" role="dialog" aria-modal="true" aria-label="Menu">
-  <button class="mobile-overlay__close" aria-label="Close menu">✕</button>
-  <nav>
+<div class="mobile-overlay" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mobile-overlay__close" type="button" aria-label="Close menu">✕</button>
+  <nav aria-label="Mobile menu">
     <ul role="list">
-      <li><a href="/eng/index.html">Home</a></li>
+      <li><a href="/eng/">Home</a></li>
       <li><a href="/eng/websites.html">Websites</a>
         <div class="m-sub">
           <a href="/eng/nieuwe-website.html">New website</a>

@@ -1,11 +1,11 @@
 /* ============================================================
-   GRATIS CONCEPT FORMULIER, S. van Wijk Solutions
+   GRATIS CONCEPT FORMULIER, Drivenn Agency
    - Bedrijfstype zoekbalk met autocomplete
    - Paginavoorstel per branche (aangevinkt + reden)
    - Talen (uitgebreid + eigen invoer)
    - Kleuren (color picker + hex + EyeDropper)
    - Pakketten (dynamisch toevoegen)
-   - Formspree submit met nette opmaak
+   - Verzenden via Web3Forms met nette opmaak
 ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
@@ -1013,10 +1013,20 @@ document.addEventListener('DOMContentLoaded', function () {
       'Kleur 1 hoofdkleur','Kleur 2 ondersteunend','Kleur 3 extra','Paginas'
     ];
     rauweNamen.forEach(function (naam) {
-      form.querySelectorAll('[name="' + naam + '"]').forEach(function (el) { el.disabled = true; });
+      form.querySelectorAll('[name="' + naam + '"]').forEach(function (el) {
+        if (!el.disabled) { el.disabled = true; el.setAttribute('data-bundel-uit', ''); }
+      });
     });
     // Contact-elementen wel als leesbare regel toevoegen
     // (contact staat niet in paginaBundels omdat het losse opzet heeft)
+  }
+
+  // Na een mislukte verzending moeten de losse velden weer te bewerken zijn
+  function herstelNaBundel() {
+    form.querySelectorAll('[data-bundel-uit]').forEach(function (el) {
+      el.disabled = false;
+      el.removeAttribute('data-bundel-uit');
+    });
   }
 
   form.querySelectorAll('.price-option').forEach(function (el) { el.addEventListener('change', calcPrijs); });
@@ -1051,10 +1061,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  var bezig = false;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var honey = form.querySelector('[name="_gotcha"]');
+    var honey = form.querySelector('[name="botcheck"]');
     if (honey && honey.value) return;
+    if (bezig) return;
     if (!validateStep(2)) return;
 
     // Zorg dat alle hidden velden up-to-date zijn
@@ -1069,12 +1081,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var subject = form.querySelector('[name="subject"]');
     var bn = (bedrijfInput && bedrijfInput.value.trim()) ? bedrijfInput.value.trim() : 'onbekend bedrijf';
     var bt = (hiddenBranche && hiddenBranche.value.trim()) ? hiddenBranche.value.trim() : '';
-    if (subject) subject.value = 'Nieuwe conceptaanvraag \u2014 ' + bn + (bt ? ' (' + bt + ')' : '');
+    if (subject) subject.value = 'Nieuwe conceptaanvraag: ' + bn + (bt ? ' (' + bt + ')' : '');
 
     var btn  = document.getElementById('submitBtn');
     var orig = btn.innerHTML;
     btn.textContent = 'Verzenden...';
     btn.disabled = true;
+    bezig = true;
+    var verzonden = false;
 
     fetch(form.action, {
       method: 'POST',
@@ -1082,6 +1096,7 @@ document.addEventListener('DOMContentLoaded', function () {
       headers: { 'Accept': 'application/json' }
     }).then(function (res) {
       if (res.ok) {
+        verzonden = true;
         if (typeof gtag === 'function') {
           gtag('event', 'generate_lead', {
             event_category: 'concept',
@@ -1109,8 +1124,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }).catch(function () {
       alert('Geen verbinding. Controleer je internet en probeer het opnieuw.');
     }).finally(function () {
+      bezig = false;
       btn.innerHTML = orig;
       btn.disabled = false;
+      if (!verzonden) herstelNaBundel();
     });
   });
 

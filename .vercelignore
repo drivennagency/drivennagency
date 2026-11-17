@@ -1,0 +1,7 @@
+# Bronbestanden die niet op de live website thuishoren (alleen nodig voor bouwen en testen).
+# De gegenereerde HTML-pagina's, /assets, /js, /api, /admin en /content blijven gewoon gepubliceerd.
+/scripts
+/components
+/tests
+/README.md
+/.github

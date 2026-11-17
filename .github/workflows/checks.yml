@@ -1,0 +1,26 @@
+name: Controles
+# Draait bij elke pull request: is alles opnieuw gebouwd, kloppen links/SEO en slagen de tests?
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Zijn de gegenereerde pagina's up-to-date?
+        run: python3 scripts/build_content.py --check
+      - name: Controleer de website (links, hreflang, structured data, sitemap)
+        run: python3 scripts/check_site.py
+      - name: Test het build-script
+        run: python3 -m unittest discover -s tests
+      - name: Test de API-functies
+        run: node --test tests/*.test.js
