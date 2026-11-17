@@ -84,8 +84,5 @@ Via het CMS op `/admin/` (inloggen met GitHub) of door een JSON-bestand toe te v
 
 1. **Betaalplatform**: de "Kopen"-knop op AI-detailpagina's linkt naar het contactformulier.
    Vervang die door een betaallink zodra Stripe of Mollie is ingericht.
-2. **LinkedIn**: de LinkedIn-link in de footer wijst nog naar linkedin.com in het algemeen.
-   Vul in `components/footer*.html` de bedrijfspagina in zodra die er is (en voeg hem toe aan
-   `SOCIAL_PROFILES` in het build-script, voor de structured data).
-3. **`pages.yml`**: deze handmatige GitHub Pages-workflow wordt niet meer gebruikt (de site
+2. **`pages.yml`**: deze handmatige GitHub Pages-workflow wordt niet meer gebruikt (de site
    draait op Vercel) en kan weg.
