@@ -482,6 +482,19 @@ def _load_json(folder):
     return items
 
 
+BLOG_SUMMARY = ("samenvatting", "summary", "zusammenfassung")
+BLOG_BODY = ("tekst", "text")
+
+
+def _first(d, keys):
+    """Eerste niet-lege waarde uit d voor een van de gegeven veldnamen."""
+    for k in keys:
+        v = d.get(k)
+        if v not in (None, "", []):
+            return v
+    return None
+
+
 def load_posts():
     posts = []
     for f, slug, d in _load_json("blog"):
@@ -494,19 +507,23 @@ def load_posts():
                 "updated": updated if DATE_RE.match(updated) and updated > date else date,
                 "image": _shared(d, "image", "") or "",
                 "reading": _shared(d, "reading_time_min", 4) or 4, "lang": {}}
+        nl = d.get(DEFAULT_LANG) or {}
         for lang in ACTIVE:
-            o = _localized(d, lang)
-            title = o.get("titel") or o.get("title") or ""
+            own = d.get(lang) or {}
+            # Blogs gebruiken per taal andere veldnamen (titel/title, samenvatting/summary/
+            # zusammenfassung, tekst/text). Eerst de eigen taal, pas daarna Nederlands als reserve.
+            def field(*keys):
+                return _first(own, keys) or _first(nl, keys) or ""
+            title = field("titel", "title")
             if not title:
                 raise BuildError(f"{name}: titel ontbreekt.")
-            own = d.get(lang) or {}
-            if lang != DEFAULT_LANG and not (own.get("tekst") or own.get("text")):
+            if lang != DEFAULT_LANG and not _first(own, BLOG_BODY):
                 warn(f"{name}: geen {lang}-vertaling van de tekst; de Nederlandse tekst wordt getoond.")
             post["lang"][lang] = {
                 "title": title,
-                "summary": o.get("samenvatting") or o.get("summary") or "",
-                "body": o.get("tekst") or o.get("text") or "",
-                "cat": o.get("category") or o.get("categorie") or _shared(d, "category", "") or "",
+                "summary": field(*BLOG_SUMMARY),
+                "body": field(*BLOG_BODY),
+                "cat": field("category", "categorie") or _shared(d, "category", "") or "",
             }
         posts.append(post)
     posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
@@ -543,10 +560,13 @@ def load_cases():
     for _f, slug, d in _load_json("cases"):
         case = {"slug": slug, "link": _shared(d, "link", "") or "", "image": _shared(d, "image", "") or "",
                 "cat": _shared(d, "categorie", "Website") or "Website", "lang": {}}
+        nl = d.get(DEFAULT_LANG) or {}
         for lang in ACTIVE:
-            o = _localized(d, lang)
-            case["lang"][lang] = {"title": o.get("titel") or o.get("title") or "",
-                                  "desc": o.get("beschrijving") or o.get("description") or ""}
+            own = d.get(lang) or {}
+            case["lang"][lang] = {
+                "title": _first(own, ("titel", "title")) or _first(nl, ("titel", "title")) or "",
+                "desc": _first(own, ("beschrijving", "description")) or _first(nl, ("beschrijving", "description")) or "",
+            }
         cases.append(case)
     return cases
 

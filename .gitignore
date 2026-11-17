@@ -1,0 +1,5 @@
+# Python- en systeembestanden die nooit in de repo horen
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
