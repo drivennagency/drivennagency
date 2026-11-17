@@ -1,147 +1,65 @@
 // Vercel serverless function: live Google Search Console-cijfers voor het Drivenn Agency dashboard.
-// build-trigger: forceer nieuwe Vercel-deploy na gemiste webhook
 // Geeft de top zoekwoorden (clicks/vertoningen/CTR/positie) van de laatste 28 dagen terug,
 // zodat nieuwe blogs beter kunnen aansluiten op waar mensen al naar zoeken.
 //
 // Vereiste environment variables (Vercel -> Settings -> Environment Variables):
 //   GOOGLE_SC_CLIENT_EMAIL  - het "client_email" veld uit het service-account JSON-keybestand
-//   GOOGLE_SC_PRIVATE_KEY   - de private key, bij voorkeur als EEN REGEL base64 (geen backslashes of
-//                             newlines, dus immuun voor plak-mangling in env-var UI's). Normale PEM
-//                             (met echte of \n-regeleinden) wordt ook herkend.
-//   GOOGLE_SC_SITE_URL      - de property-naam exact zoals die in Search Console staat,
+//   GOOGLE_SC_PRIVATE_KEY   - de private key, bij voorkeur als EEN REGEL base64 van het hele PEM-bestand
+//                             (normale PEM met echte of \n-regeleinden wordt ook herkend)
+//   GOOGLE_SC_SITE_URL      - de property-naam exact zoals in Search Console,
 //                             bv. "https://drivennagency.nl/" (URL-prefix) of "sc-domain:drivennagency.nl"
 //
-// Hoe dit werkt: het service-account tekent zelf een JWT (geen interactieve login nodig) en wisselt
-// die in voor een access token bij Google, zolang het service-account als gebruiker is toegevoegd
-// aan de Search Console-property (Instellingen -> Gebruikers en API-toegang -> Gebruiker toevoegen,
-// "Restricted" volstaat voor deze alleen-lezen koppeling).
+// Het service-account moet als gebruiker zijn toegevoegd aan de Search Console-property
+// (Instellingen -> Gebruikers en API-toegang -> Gebruiker toevoegen, "Beperkt" volstaat).
+//
+// Let op: de vorm van het antwoord wordt gebruikt door de wekelijkse blogroutine. Velden niet hernoemen.
 
-function base64url(buf) {
-  return buf.toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-}
+const { getAccessToken, sendJson, handleMethod } = require("./_lib/google");
 
-// Service-account private keys get mangled in all kinds of ways when they pass through an
-// env-var UI (real newlines dropped, backslash-n sequences double-escaped, wrapping quotes
-// left in, stray \r from Windows clipboards, trailing/leading whitespace). Normalize defensively
-// instead of assuming one specific encoding, and fail with a diagnostic (never the key itself).
-function normalizePrivateKey(raw) {
-  let key = raw.trim();
-  if ((key.startsWith('"') && key.endsWith('"')) || (key.startsWith("'") && key.endsWith("'"))) {
-    key = key.slice(1, -1).trim();
-  }
-  if (!key.includes("BEGIN PRIVATE KEY")) {
-    // Not recognizable as PEM text as-is -- try treating it as base64 of the whole PEM file.
-    // This is the recommended format: no backslashes/newlines/quotes means nothing for an
-    // env-var UI (or a copy/paste step) to mangle.
-    try {
-      const decoded = Buffer.from(key, "base64").toString("utf8");
-      if (decoded.includes("BEGIN PRIVATE KEY")) key = decoded;
-    } catch (e) {
-      // fall through -- diagnostic below will fire
-    }
-  }
-  key = key.replace(/\\+n/g, "\n"); // one or more literal backslashes followed by n -> real newline
-  key = key.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
-  key = key.trim() + "\n";
-  if (!key.includes("BEGIN PRIVATE KEY") || !key.includes("END PRIVATE KEY")) {
-    const preview = raw.trim().slice(0, 25).replace(/[^\x20-\x7e]/g, "?");
-    throw new Error(
-      `GOOGLE_SC_PRIVATE_KEY lijkt niet een geldige PEM-key of base64-key te zijn (${raw.length} tekens, begint met "${preview}..."). Verwacht tekst die begint met -----BEGIN PRIVATE KEY----- of de base64-vorm daarvan.`
-    );
-  }
-  return key;
-}
-
-async function getAccessToken(clientEmail, privateKeyRaw) {
-  const privateKey = normalizePrivateKey(privateKeyRaw);
-  const crypto = require("crypto");
-  const now = Math.floor(Date.now() / 1000);
-  const header = { alg: "RS256", typ: "JWT" };
-  const claims = {
-    iss: clientEmail,
-    scope: "https://www.googleapis.com/auth/webmasters.readonly",
-    aud: "https://oauth2.googleapis.com/token",
-    iat: now,
-    exp: now + 3600,
-  };
-  const signingInput =
-    base64url(Buffer.from(JSON.stringify(header))) + "." + base64url(Buffer.from(JSON.stringify(claims)));
-  let signature;
-  try {
-    signature = crypto.createSign("RSA-SHA256").update(signingInput).sign(privateKey);
-  } catch (signErr) {
-    const lineCount = privateKey.split("\n").length;
-    throw new Error(
-      `Ondertekenen met GOOGLE_SC_PRIVATE_KEY is mislukt (${privateKey.length} tekens, ${lineCount} regels, header/footer wel aanwezig): ${signErr.message}`
-    );
-  }
-  const jwt = signingInput + "." + base64url(signature);
-
-  const res = await fetch("https://oauth2.googleapis.com/token", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body:
-      "grant_type=" +
-      encodeURIComponent("urn:ietf:params:oauth:grant-type:jwt-bearer") +
-      "&assertion=" +
-      encodeURIComponent(jwt),
-  });
-  const data = await res.json();
-  if (!res.ok) {
-    throw new Error(data?.error_description || data?.error || `Token-aanvraag mislukt (${res.status})`);
-  }
-  return data.access_token;
-}
+const PERIOD_DAYS = 28;
+const CACHE_SECONDS = 3600;
 
 module.exports = async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
-  if (req.method === "OPTIONS") {
-    res.status(204).end();
-    return;
-  }
+  if (handleMethod(req, res)) return;
 
   const clientEmail = process.env.GOOGLE_SC_CLIENT_EMAIL;
   const privateKey = process.env.GOOGLE_SC_PRIVATE_KEY;
   const siteUrl = process.env.GOOGLE_SC_SITE_URL;
 
   if (!clientEmail || !privateKey || !siteUrl) {
-    res.status(200).json({
+    sendJson(req, res, 200, {
       configured: false,
       message:
         "Search Console-koppeling nog niet ingesteld. Voeg GOOGLE_SC_CLIENT_EMAIL, GOOGLE_SC_PRIVATE_KEY en GOOGLE_SC_SITE_URL toe in Vercel.",
       topQueries: [],
       updatedAt: new Date().toISOString(),
-    });
+    }, 0);
     return;
   }
 
   try {
-    const accessToken = await getAccessToken(clientEmail, privateKey);
+    const accessToken = await getAccessToken({
+      clientEmail,
+      privateKey,
+      scope: "https://www.googleapis.com/auth/webmasters.readonly",
+      varName: "GOOGLE_SC_PRIVATE_KEY",
+    });
 
     const end = new Date();
-    const start = new Date(end.getTime() - 28 * 24 * 60 * 60 * 1000);
-    const fmt = (d) => d.toISOString().slice(0, 10);
+    const start = new Date(end.getTime() - PERIOD_DAYS * 24 * 60 * 60 * 1000);
+    const day = (d) => d.toISOString().slice(0, 10);
 
     const queryRes = await fetch(
       `https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(siteUrl)}/searchAnalytics/query`,
       {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          startDate: fmt(start),
-          endDate: fmt(end),
-          dimensions: ["query"],
-          rowLimit: 25,
-        }),
+        headers: { Authorization: `Bearer ${accessToken}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ startDate: day(start), endDate: day(end), dimensions: ["query"], rowLimit: 25 }),
       }
     );
-    const queryData = await queryRes.json();
+    const queryData = await queryRes.json().catch(() => ({}));
     if (!queryRes.ok) {
-      throw new Error(queryData?.error?.message || `Search Console-query mislukt (${queryRes.status})`);
+      throw new Error((queryData.error && queryData.error.message) || `Search Console-query mislukt (${queryRes.status})`);
     }
 
     const topQueries = (queryData.rows || []).map((row) => ({
@@ -152,18 +70,18 @@ module.exports = async function handler(req, res) {
       position: Math.round(row.position * 10) / 10,
     }));
 
-    res.status(200).json({
+    sendJson(req, res, 200, {
       configured: true,
-      periodDays: 28,
+      periodDays: PERIOD_DAYS,
       topQueries,
       updatedAt: new Date().toISOString(),
-    });
+    }, CACHE_SECONDS);
   } catch (err) {
-    res.status(200).json({
+    sendJson(req, res, 200, {
       configured: true,
       error: err.message,
       topQueries: [],
       updatedAt: new Date().toISOString(),
-    });
+    }, 0);
   }
 };
