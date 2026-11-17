@@ -11,6 +11,7 @@ on:
       - 'assets/css/**'
       - 'js/**'
       - 'assets/images/uploads/**'
+      - 'assets/ai-oplossingsbanner/**'
       - '**.html'
   workflow_dispatch:
 permissions:
@@ -29,6 +30,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Maak WebP-versies van nieuwe afbeeldingen
+        run: |
+          pip install --quiet pillow
+          python3 scripts/optimize_images.py
       - name: Genereer statische pagina's
         run: python3 scripts/build_content.py
       - name: Controleer de website (links, hreflang, structured data, sitemap)

@@ -8,7 +8,7 @@
   <!--AUTO:HEAD-->
   <link rel="preload" href="/assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/open-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/style.css?v=fc7bbbd817">
+  <link rel="stylesheet" href="/assets/css/style.css?v=6eef17c3b2">
   <link rel="icon" href="/assets/images/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/icon-192.png">
@@ -36,6 +36,7 @@
   <meta name="twitter:title" content="Gratis websiteconcept aanvragen | Drivenn Agency">
   <meta name="twitter:description" content="Binnen 5 werkdagen een professioneel, vrijblijvend websiteconcept op maat.">
   <meta name="twitter:image" content="https://www.drivennagency.nl/assets/images/og-default.jpg">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://www.drivennagency.nl/concept.html", "url": "https://www.drivennagency.nl/concept.html", "name": "Gratis websiteconcept aanvragen", "inLanguage": "nl", "isPartOf": {"@id": "https://www.drivennagency.nl/#website"}, "description": "Vertel ons over je bedrijf en wensen. Binnen 5 werkdagen ontvang je een professioneel, vrijblijvend websiteconcept op maat in je inbox."}</script>
   <script>window.DRIVENN_GA={"id": "G-4VXJQRECQ6", "page": "Gratis websiteconcept – NL", "lang": "nl"};</script>
   <script src="/js/consent.js?v=44751b613d" defer></script>
   <!--/AUTO:HEAD-->
@@ -68,7 +69,7 @@
 .concept-step{display:flex;flex-direction:column;align-items:center;gap:9px;flex:1;position:relative;z-index:2;}
 .concept-step__num{width:40px;height:40px;border-radius:50%;background:var(--clr-white);border:2px solid var(--clr-border);color:var(--clr-muted);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.92rem;flex-shrink:0;transition:background .3s,color .3s,border-color .3s,box-shadow .3s;}
 .concept-step.active .concept-step__num{background:var(--clr-accent);border-color:var(--clr-accent);color:#fff;box-shadow:0 0 0 4px rgba(201,162,39,.15);}
-.concept-step.active .concept-step__label{color:var(--clr-accent);}
+.concept-step.active .concept-step__label{color:#86690C;}
 .concept-step.completed .concept-step__num{background:var(--clr-teal);border-color:var(--clr-teal);color:#fff;}
 .concept-step.completed .concept-step__label{color:var(--clr-heading);}
 .concept-step__label{font-size:.8rem;font-weight:600;color:var(--clr-muted);transition:color .3s;text-align:center;}
@@ -450,7 +451,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
                 <h2>Vertel ons over je bedrijf</h2>
                 <p class="step-subtitle">Hoe meer je deelt, hoe beter het concept aansluit op wat je echt nodig hebt.</p>
                 <div class="form-group">
-                  <label for="brancheZoek">Wat voor soort bedrijf heb je? <span style="color:#ef4444">*</span></label>
+                  <label for="brancheZoek">Wat voor soort bedrijf heb je? <span class="req" aria-hidden="true">*</span></label>
                   <div class="branche-search-wrap">
                     <input type="text" id="brancheZoek" placeholder="Begin te typen, bijv. kapper, bouwbedrijf, coach..." autocomplete="off">
                     <button type="button" class="branche-clear" id="brancheClear" aria-label="Wissen">&#10005;</button>
@@ -460,7 +461,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
                   <span class="form-hint">Staat je branche er niet bij? Typ dan gewoon hoe je het zelf zou omschrijven.</span>
                 </div>
                 <div class="form-group">
-                  <label>Type project <span style="color:#ef4444">*</span></label>
+                  <label>Type project <span class="req" aria-hidden="true">*</span></label>
                   <div class="concept-type-btns">
                     <label class="type-btn">
                       <input type="radio" name="Type project" value="Nieuwe website" required>
@@ -477,11 +478,11 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
                   <input type="url" id="c-url" name="Huidige website URL" placeholder="https://www.jouwsite.nl">
                 </div>
                 <div class="form-group">
-                  <label for="c-bedrijf">Bedrijfsnaam <span style="color:#ef4444">*</span></label>
+                  <label for="c-bedrijf">Bedrijfsnaam <span class="req" aria-hidden="true">*</span></label>
                   <input type="text" id="c-bedrijf" name="Bedrijfsnaam" placeholder="Jansen &amp; Zo" required autocomplete="organization">
                 </div>
                 <div class="form-group">
-                  <label for="c-doelgroep">Wie zijn jullie klanten? <span style="color:#ef4444">*</span></label>
+                  <label for="c-doelgroep">Wie zijn jullie klanten? <span class="req" aria-hidden="true">*</span></label>
                   <textarea id="c-doelgroep" name="Doelgroep" rows="3" placeholder="Bijv. particulieren in de regio, MKB-bedrijven, jonge gezinnen..." required></textarea>
                 </div>
                 <div class="form-group">
@@ -919,11 +920,11 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
                 <h2>Bijna klaar!</h2>
                 <p class="step-subtitle">Waar mogen we je gratis concept naartoe sturen?</p>
                 <div class="form-row">
-                  <div class="form-group"><label for="c-voornaam">Voornaam <span style="color:#ef4444">*</span></label><input type="text" id="c-voornaam" name="Voornaam" placeholder="Jan" required autocomplete="given-name"></div>
-                  <div class="form-group"><label for="c-achternaam">Achternaam <span style="color:#ef4444">*</span></label><input type="text" id="c-achternaam" name="Achternaam" placeholder="Jansen" required autocomplete="family-name"></div>
+                  <div class="form-group"><label for="c-voornaam">Voornaam <span class="req" aria-hidden="true">*</span></label><input type="text" id="c-voornaam" name="Voornaam" placeholder="Jan" required autocomplete="given-name"></div>
+                  <div class="form-group"><label for="c-achternaam">Achternaam <span class="req" aria-hidden="true">*</span></label><input type="text" id="c-achternaam" name="Achternaam" placeholder="Jansen" required autocomplete="family-name"></div>
                 </div>
-                <div class="form-group"><label for="c-email">E-mailadres <span style="color:#ef4444">*</span></label><input type="email" id="c-email" name="E-mailadres" placeholder="jan@jouwbedrijf.nl" required autocomplete="email"></div>
-                <div class="form-group"><label for="c-telefoon">Telefoonnummer <span style="color:#ef4444">*</span></label><input type="tel" id="c-telefoon" name="Telefoonnummer" placeholder="+31 6 00 000 000" required autocomplete="tel"></div>
+                <div class="form-group"><label for="c-email">E-mailadres <span class="req" aria-hidden="true">*</span></label><input type="email" id="c-email" name="E-mailadres" placeholder="jan@jouwbedrijf.nl" required autocomplete="email"></div>
+                <div class="form-group"><label for="c-telefoon">Telefoonnummer <span class="req" aria-hidden="true">*</span></label><input type="tel" id="c-telefoon" name="Telefoonnummer" placeholder="+31 6 00 000 000" required autocomplete="tel"></div>
                 <div class="form-group">
                   <label for="c-wensen">Aanvullende wensen <span class="form-optional">(optioneel)</span></label>
                   <textarea id="c-wensen" name="Aanvullende wensen" rows="4" placeholder="Bijv. een online afsprakensysteem, donkere stijl met groene accenten..."></textarea>
@@ -1009,7 +1010,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
         </div>
       </div>
       <div class="footer-col">
-        <h5>Websites</h5>
+        <h2 class="footer-title">Websites</h2>
         <ul>
           <li><a href="/nieuwe-website.html">Nieuwe website</a></li>
           <li><a href="/redesign.html">Redesign</a></li>
@@ -1019,7 +1020,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
         </ul>
       </div>
       <div class="footer-col">
-        <h5>AI &amp; meer</h5>
+        <h2 class="footer-title">AI &amp; meer</h2>
         <ul>
           <li><a href="/ai-oplossingen.html">AI-oplossingen</a></li>
           <li><a href="/cases.html">Cases</a></li>
@@ -1028,7 +1029,7 @@ input[type=color]{width:44px;height:44px;border:1.5px solid var(--clr-border);bo
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Contact</h5>
+        <h2 class="footer-title">Contact</h2>
         <ul>
           <li><a href="mailto:info@drivennagency.nl">info@drivennagency.nl</a></li>
           <li><a href="tel:+31681835935">+31 6 81 83 59 35</a></li>

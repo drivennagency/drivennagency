@@ -141,8 +141,14 @@ def main():
             err(f'<html lang="{pg.lang}"> verwacht "{expected_lang}"')
         if len(pg.titles) != 1 or not pg.titles[0]:
             err(f"{len(pg.titles)} <title>-elementen (verwacht 1, niet leeg)")
-        elif len(pg.titles[0]) > TITLE_WARN and not noindex:
-            warn(f"titel is {len(pg.titles[0])} tekens (> {TITLE_WARN}): {pg.titles[0]}")
+        elif not noindex:
+            # Google: geen harde limiet, wel afkapping. De merknaam hoort erbij, dus we kijken
+            # naar het beschrijvende deel vóór " | ".
+            core = pg.titles[0].split(" | ")[0]
+            if len(core) > TITLE_WARN:
+                warn(f"titel (zonder merknaam) is {len(core)} tekens (> {TITLE_WARN}): {pg.titles[0]}")
+            if pg.titles[0] != "Drivenn Agency" and "Drivenn Agency" not in pg.titles[0]:
+                warn(f"titel zonder merknaam: {pg.titles[0]}")
         if pg.h1 != 1:
             err(f"{pg.h1} <h1>-koppen (verwacht 1)")
         desc = pg.meta.get("description", [])

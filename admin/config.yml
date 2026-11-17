@@ -39,6 +39,7 @@ collections:
       - { name: date, label: "Datum", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", i18n: duplicate }
       - { name: category, label: "Categorie", widget: string, i18n: duplicate, hint: "Bijv. SEO, Branche, Tips" }
       - { name: image, label: "Afbeelding", widget: image, required: false, i18n: duplicate }
+      - { name: image_alt, label: "Beschrijving van de afbeelding (alt-tekst)", widget: string, required: false, i18n: true, hint: "Wat staat er op de foto? Bijv. Schilder aan het werk aan een gevel. Leeg = de titel wordt gebruikt." }
       - { name: reading_time_min, label: "Leestijd (minuten)", widget: number, required: false, default: 4, value_type: int, i18n: duplicate }
       - { name: titel, label: "Titel", widget: string, i18n: true }
       - { name: samenvatting, label: "Samenvatting", widget: text, i18n: true }
