@@ -1,7 +1,10 @@
 # Bronbestanden die niet op de live website thuishoren (alleen nodig voor bouwen en testen).
 # De gegenereerde HTML-pagina's, /assets, /js, /api, /admin en /content blijven gewoon gepubliceerd.
+# /.claude (Claude-skills) en het WebP-manifest zijn alleen voor ontwikkeling en de GitHub Action.
 /scripts
 /components
 /tests
 /README.md
 /.github
+/.claude
+/assets/images/webp-manifest.json
