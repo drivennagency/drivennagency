@@ -89,6 +89,45 @@ class Hulpfuncties(unittest.TestCase):
         self.assertLessEqual(len(bc.page_title(lang_title)), max(bc.TITLE_MAX, len(lang_title)))
 
 
+class SeoRegels(unittest.TestCase):
+    def test_merknaam_blijft_in_lange_titels(self):
+        lang = "Een heel lange titel die al ruim boven de vijfenzestig tekens uitkomt hoor"
+        self.assertEqual(bc.page_title(lang, "AI-oplossingen", bc.BRAND), f"{lang} | {bc.BRAND}")
+        self.assertEqual(bc.page_title("Kort", "AI-oplossingen", bc.BRAND), f"Kort | AI-oplossingen | {bc.BRAND}")
+
+    def test_tijdzone_zomer_en_winter(self):
+        self.assertEqual(bc.iso_datetime("2026-01-15"), "2026-01-15T00:00:00+01:00")
+        self.assertEqual(bc.iso_datetime("2026-03-29"), "2026-03-29T00:00:00+01:00")  # dag van de omschakeling
+        self.assertEqual(bc.iso_datetime("2026-03-30"), "2026-03-30T00:00:00+02:00")
+        self.assertEqual(bc.iso_datetime("2026-10-25"), "2026-10-25T00:00:00+02:00")  # nog zomertijd om 00:00
+        self.assertEqual(bc.iso_datetime("2026-10-26"), "2026-10-26T00:00:00+01:00")
+
+    def _types(self, rel):
+        src = (ROOT / rel).read_text(encoding="utf-8")
+        return [json.loads(b)["@type"] for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', src, re.S)]
+
+    def test_website_markup_alleen_op_hoofdhomepage(self):
+        self.assertIn("WebSite", self._types("index.html"))
+        self.assertNotIn("WebSite", self._types("eng/index.html"))
+        self.assertNotIn("WebSite", self._types("de/index.html"))
+
+    def test_elke_indexeerbare_pagina_heeft_webpage_node(self):
+        for rel in ["index.html", "contact.html", "eng/blog.html", "de/blog/seo-basis-mkb.html"]:
+            types = self._types(rel)
+            self.assertTrue({"WebPage", "ContactPage", "CollectionPage"} & set(types), rel)
+
+    def test_blogfoto_is_echte_afbeelding(self):
+        src = (ROOT / "blog" / "website-voor-horeca.html").read_text(encoding="utf-8")
+        self.assertIn('class="article-hero__img"', src)
+        self.assertNotIn("background-image:linear-gradient", src)
+
+    def test_webp_srcset(self):
+        self.assertIsNone(bc.webp_srcset("/bestaat/niet.jpg"))
+        srcset = bc.webp_srcset("/assets/images/uploads/horeca.jpg")
+        if srcset:  # alleen als optimize_images.py heeft gedraaid
+            self.assertIn("horeca.webp 800w", srcset)
+
+
 class Idempotent(unittest.TestCase):
     def test_build_is_up_to_date(self):
         """De pagina's in de repo moeten overeenkomen met wat het script nu zou maken."""

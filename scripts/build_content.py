@@ -27,6 +27,7 @@ Gebruik:
     python3 scripts/build_content.py           # bouwen
     python3 scripts/build_content.py --check   # alleen controleren of alles up-to-date is
 """
+import calendar
 import hashlib
 import html
 import json
@@ -97,7 +98,7 @@ UI = {
         "blog_cta_h": "Hulp nodig met jouw website of automatisering?",
         "blog_cta_p": "Vraag een gratis websiteconcept aan of laat ons meedenken over de juiste AI-oplossing.",
         "blog_cta_b1": "Gratis websiteconcept", "blog_cta_b2": "AI-oplossingen",
-        "blog_related": "Lees ook", "crumb_blog": "Blog",
+        "blog_related": "Lees ook", "crumb_blog": "Blog", "by": "Door", "updated": "Bijgewerkt",
         "home": "Home", "crumb_ai": "AI-oplossingen",
         "ai_what": "Wat het je oplevert", "ai_faq": "Veelgestelde vragen",
         "ai_workswith": "Werkt met", "ai_foryou": "Is dit iets voor jou?",
@@ -121,7 +122,7 @@ UI = {
         "blog_cta_h": "Need help with your website or automation?",
         "blog_cta_p": "Request a free website concept or let us help you find the right AI solution.",
         "blog_cta_b1": "Free concept", "blog_cta_b2": "AI solutions",
-        "blog_related": "Keep reading", "crumb_blog": "Blog",
+        "blog_related": "Keep reading", "crumb_blog": "Blog", "by": "By", "updated": "Updated",
         "home": "Home", "crumb_ai": "AI solutions",
         "ai_what": "What it saves you", "ai_faq": "Frequently asked questions",
         "ai_workswith": "Works with", "ai_foryou": "Is this for you?",
@@ -145,7 +146,7 @@ UI = {
         "blog_cta_h": "Hilfe bei deiner Website oder Automatisierung?",
         "blog_cta_p": "Fordere ein kostenloses Website-Konzept an oder lass uns die passende KI-Lösung finden.",
         "blog_cta_b1": "Kostenloses Konzept", "blog_cta_b2": "KI-Lösungen",
-        "blog_related": "Weiterlesen", "crumb_blog": "Blog",
+        "blog_related": "Weiterlesen", "crumb_blog": "Blog", "by": "Von", "updated": "Aktualisiert",
         "home": "Home", "crumb_ai": "KI-Lösungen",
         "ai_what": "Was es dir bringt", "ai_faq": "Häufig gestellte Fragen",
         "ai_workswith": "Funktioniert mit", "ai_foryou": "Ist das etwas für dich?",
@@ -341,8 +342,28 @@ def image_size(url_path):
     return _image_sizes[url_path]
 
 
-def img_tag(src, alt, cls=None, lazy=True):
-    """<img> met alt, afmetingen en (standaard) uitgesteld laden."""
+WEBP_WIDTHS = (640,)   # kleinere varianten die scripts/optimize_images.py maakt
+CARD_SIZES = "(max-width: 700px) 100vw, 400px"
+
+
+def webp_srcset(src):
+    """srcset met de WebP-varianten van een afbeelding, als scripts/optimize_images.py
+    die heeft gemaakt (naam.webp op ware grootte en naam-640w.webp). Anders None."""
+    if not src.startswith("/") or not src.lower().endswith((".jpg", ".jpeg", ".png")):
+        return None
+    base = src.rsplit(".", 1)[0]
+    size = image_size(src)
+    if not size or not (ROOT / (base + ".webp").lstrip("/")).is_file():
+        return None
+    parts = [f"{base}-{w}w.webp {w}w" for w in WEBP_WIDTHS
+             if w < size[0] and (ROOT / f"{base}-{w}w.webp".lstrip("/")).is_file()]
+    parts.append(f"{base}.webp {size[0]}w")
+    return ", ".join(parts)
+
+
+def img_tag(src, alt, cls=None, lazy=True, priority=False, sizes=None):
+    """<img> met alt, afmetingen en (standaard) uitgesteld laden. Bestaan er WebP-varianten,
+    dan in een <picture> zodat browsers het kleinste geschikte bestand kiezen."""
     attrs = [f'src="{esc(src)}"', f'alt="{esc(alt)}"']
     size = image_size(src) if src.startswith("/") else None
     if size:
@@ -351,7 +372,14 @@ def img_tag(src, alt, cls=None, lazy=True):
         attrs.append(f'class="{cls}"')
     if lazy:
         attrs += ['loading="lazy"', 'decoding="async"']
-    return "<img " + " ".join(attrs) + ">"
+    if priority:
+        attrs.append('fetchpriority="high"')
+    img = "<img " + " ".join(attrs) + ">"
+    srcset = webp_srcset(src)
+    if not srcset:
+        return img
+    return (f'<picture><source type="image/webp" srcset="{esc(srcset)}" sizes="{sizes or "100vw"}">'
+            f'{img}</picture>')
 
 
 # ---------------------------------------------------------------------------
@@ -432,11 +460,12 @@ def fmt_date(iso, lang):
 
 
 def page_title(*parts):
-    """'Titel | Rubriek | Drivenn Agency', maar zonder de achterste delen als het
-    geheel te lang wordt voor de zoekresultaten."""
+    """'Titel | Rubriek | Drivenn Agency'. Wordt het te lang voor de zoekresultaten,
+    dan vervalt eerst de rubriek; de merknaam aan het eind blijft altijd staan
+    (Google: zet de sitenaam aan het begin of eind van elke titel)."""
     parts = [p for p in parts if p]
-    while len(parts) > 1 and len(html.unescape(" | ".join(parts))) > TITLE_MAX:
-        parts.pop()
+    while len(parts) > 2 and len(html.unescape(" | ".join(parts))) > TITLE_MAX:
+        parts.pop(-2)
     return " | ".join(parts)
 
 
@@ -524,6 +553,7 @@ def load_posts():
                 "summary": field(*BLOG_SUMMARY),
                 "body": field(*BLOG_BODY),
                 "cat": field("category", "categorie") or _shared(d, "category", "") or "",
+                "image_alt": field("image_alt", "afbeelding_alt") or title,
             }
         posts.append(post)
     posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
@@ -577,7 +607,7 @@ def load_cases():
 def blog_card(post, lang):
     u, o = UI[lang], post["lang"][lang]
     search = esc((o["title"] + " " + o["summary"] + " " + o["cat"]).lower())
-    image = img_tag(post["image"], "") if post["image"] else ""
+    image = img_tag(post["image"], "", sizes=CARD_SIZES) if post["image"] else ""
     return f'''<a href="{page_url(lang, "blog/" + post["slug"] + ".html")}" class="card blog-card reveal" data-blog-card data-search="{search}">
   <div class="blog-card__img">{image}</div>
   <div class="card__body">
@@ -608,7 +638,7 @@ def ai_card(sol, lang):
     search = esc((o["title"] + " " + o["summary"] + " " + " ".join(sol["apps"]) + " " +
                   plain(cat).replace("&", "en") + " " + sol["categorie"]).lower())
     url = page_url(lang, "ai-oplossingen/" + sol["slug"] + ".html")
-    banner = img_tag(o["banner"], "") if o["banner"] else '<span class="ph">DRIVENN · AI</span>'
+    banner = img_tag(o["banner"], "", sizes=CARD_SIZES) if o["banner"] else '<span class="ph" aria-hidden="true">DRIVENN · AI</span>'
     soon = f'<span class="ai-card__soon">{u["ai_soon_short"]}</span>' if sol["binnenkort"] else ""
     label = esc(f'{plain(u["ai_view"])}: {o["title"]}')
     if sol["binnenkort"]:
@@ -631,7 +661,7 @@ def ai_card(sol, lang):
 
 def case_card(case, lang):
     u, o = UI[lang], case["lang"][lang]
-    image = img_tag(case["image"], "") if case["image"] else ""
+    image = img_tag(case["image"], "", sizes=CARD_SIZES) if case["image"] else ""
     return f'''<a href="{esc(case["link"] or "#")}" target="_blank" rel="noopener" class="card reveal">
   <div class="blog-card__img">{image}</div>
   <div class="card__body">
@@ -678,11 +708,16 @@ def related_posts(post, posts):
 def render_blog_page(post, posts, lang):
     u, o = UI[lang], post["lang"][lang]
     image = post["image"]
-    background = f",url('{image}')" if image else ""
     head_extra = ""
+    hero_img = ""
     if image:
-        head_extra = (f'  <link rel="preload" as="image" href="{esc(image)}" fetchpriority="high">\n'
-                      f'  <meta property="og:image" content="{SITE}{esc(image)}">\n')
+        head_extra = f'  <meta property="og:image" content="{SITE}{esc(image)}">\n'
+        hero_img = img_tag(image, o["image_alt"], cls="article-hero__img", lazy=False, priority=True,
+                           sizes="100vw")
+    updated = ""
+    if post["updated"] != post["date"]:
+        updated = (f'\n          <span>{u["updated"]} <time datetime="{post["updated"]}">'
+                   f'{fmt_date(post["updated"], lang)}</time></span>')
     related_html = ""
     related = related_posts(post, posts)
     if related:
@@ -695,13 +730,15 @@ def render_blog_page(post, posts, lang):
     </div>
   </section>'''
     main = f'''  <article>
-    <section class="article-hero" style="background-image:linear-gradient(rgba(10,26,48,.82),rgba(14,35,64,.9)){background};background-size:cover;background-position:center">
+    <section class="article-hero">
+      {hero_img}
       <div class="container">
         <a href="{page_url(lang, "blog.html")}" class="article-back">{ICON_ARROW_BACK} {u["blog_back"]}</a>
         <span class="article-hero__cat">{esc(o["cat"])}</span>
         <h1>{esc(o["title"])}</h1>
         <div class="article-hero__meta">
-          <span>{ICON_CAL} <time datetime="{post["date"]}">{fmt_date(post["date"], lang)}</time></span>
+          <span>{u["by"]}&nbsp;<a href="{page_url(lang, "over-ons.html")}" rel="author">{BRAND}</a></span>
+          <span>{ICON_CAL} <time datetime="{post["date"]}">{fmt_date(post["date"], lang)}</time></span>{updated}
           <span>{ICON_CLOCK} {post["reading"]} {u["min_read"]}</span>
         </div>
       </div>
@@ -732,7 +769,8 @@ def render_ai_page(sol, lang):
             f'<div class="faq__item"><button class="faq__q" type="button">{esc(q["v"])}<span class="fq-plus"></span></button>'
             f'<div class="faq__a"><p>{esc(q["a"])}</p></div></div>' for q in o["faq"])
         faq = f'<h2 style="margin-top:2.4rem">{u["ai_faq"]}</h2><div class="faq" style="margin:0">{items}</div>'
-    banner_block = img_tag(o["banner"], o["title"], cls="ai-detail__banner", lazy=False) if o["banner"] else ""
+    banner_block = (img_tag(o["banner"], o["title"], cls="ai-detail__banner", lazy=False, priority=True,
+                                 sizes="(max-width: 600px) 100vw, 520px") if o["banner"] else "")
     if sol["binnenkort"]:
         price_block = (f'<div style="text-align:center;margin-bottom:16px"><span class="ai-card__soon" '
                        f'style="position:static;display:inline-block">{u["ai_soon_badge"]}</span></div>')
@@ -804,8 +842,43 @@ def schema_organization(lang):
 
 
 def schema_website():
-    return {"@type": "WebSite", "@id": WEBSITE_ID, "name": BRAND, "url": SITE + "/",
+    """Alleen op de hoofd-homepage (Google: sitenaam-markup hoort niet op /eng/ of /de/)."""
+    return {"@type": "WebSite", "@id": WEBSITE_ID, "name": BRAND,
+            "alternateName": ["Drivenn", "drivennagency.nl"], "url": SITE + "/",
             "inLanguage": [LANGS[lg]["code"] for lg in ACTIVE], "publisher": {"@id": ORG_ID}}
+
+
+PAGE_TYPES = {"contact.html": "ContactPage", "over-ons.html": "AboutPage", "blog.html": "CollectionPage",
+              "ai-oplossingen.html": "CollectionPage", "cases.html": "CollectionPage"}
+
+
+def schema_webpage(rel, kind, name, description, lang, canon, image=None, breadcrumb=False):
+    """De pagina zelf: taal, onderdeel van de website, hoofdafbeelding en kruimelpad."""
+    data = {"@type": PAGE_TYPES.get(rel, "WebPage"), "@id": canon, "url": canon, "name": name,
+            "inLanguage": LANGS[lang]["code"], "isPartOf": {"@id": WEBSITE_ID}}
+    if description:
+        data["description"] = description
+    if kind == "home":
+        data["about"] = {"@id": ORG_ID}
+    if image:
+        size = image_size(image)
+        img = {"@type": "ImageObject", "url": SITE + image}
+        if size:
+            img.update(width=size[0], height=size[1])
+        data["primaryImageOfPage"] = img
+    if breadcrumb:
+        data["breadcrumb"] = {"@id": canon + "#breadcrumb"}
+    return data
+
+
+def iso_datetime(day):
+    """'2026-03-18' -> '2026-03-18T00:00:00+01:00': begin van die dag in Nederlandse tijd
+    (Google raadt aan een tijdzone mee te geven). Zomertijd: laatste zondag van maart
+    t/m de laatste zondag van oktober (om 00:00 is die dag nog zomertijd)."""
+    y, m, d = (int(x) for x in day.split("-"))
+    last_sunday = lambda month: max(w[calendar.SUNDAY] for w in calendar.monthcalendar(y, month))
+    summer = (3, last_sunday(3)) < (m, d) <= (10, last_sunday(10))
+    return f"{day}T00:00:00{'+02:00' if summer else '+01:00'}"
 
 
 _FAQ_ITEM_RE = re.compile(
@@ -855,9 +928,10 @@ def breadcrumb_from_page(body):
 def schema_blog_posting(post, lang, canon):
     o = post["lang"][lang]
     data = {
-        "@type": "BlogPosting", "mainEntityOfPage": {"@type": "WebPage", "@id": canon},
+        "@type": "BlogPosting", "@id": canon + "#article", "mainEntityOfPage": {"@id": canon},
+        "isPartOf": {"@id": canon},
         "headline": o["title"][:110], "description": o["summary"],
-        "datePublished": post["date"], "dateModified": post["updated"],
+        "datePublished": iso_datetime(post["date"]), "dateModified": iso_datetime(post["updated"]),
         "inLanguage": LANGS[lang]["code"],
         "author": {"@type": "Organization", "@id": ORG_ID, "name": BRAND, "url": SITE + "/"},
         "publisher": {"@type": "Organization", "@id": ORG_ID, "name": BRAND,
@@ -866,7 +940,11 @@ def schema_blog_posting(post, lang, canon):
     if o["cat"]:
         data["articleSection"] = o["cat"]
     if post["image"]:
-        data["image"] = [SITE + post["image"]]
+        size = image_size(post["image"])
+        img = {"@type": "ImageObject", "url": SITE + post["image"]}
+        if size:
+            img.update(width=size[0], height=size[1])
+        data["image"] = [img]
     return data
 
 
@@ -1042,8 +1120,8 @@ def build_head(head, page, body):
         lines.append(f'<meta property="og:image:alt" content="{image_alt}">')
         if kind == "blog":
             post = page["post"]
-            lines += [f'<meta property="article:published_time" content="{post["date"]}">',
-                      f'<meta property="article:modified_time" content="{post["updated"]}">']
+            lines += [f'<meta property="article:published_time" content="{iso_datetime(post["date"])}">',
+                      f'<meta property="article:modified_time" content="{iso_datetime(post["updated"])}">']
             if post["lang"][lang]["cat"]:
                 lines.append(f'<meta property="article:section" content="{esc(post["lang"][lang]["cat"])}">')
         lines += ['<meta name="twitter:card" content="summary_large_image">',
@@ -1053,15 +1131,29 @@ def build_head(head, page, body):
 
         schemas = []
         if kind == "home":
-            schemas += [schema_organization(lang), schema_website()]
+            schemas.append(schema_organization(lang))
+            if lang == DEFAULT_LANG:
+                schemas.append(schema_website())
         if kind == "blog":
             post = page["post"]
-            schemas.append(schema_blog_posting(post, lang, canon))
-            schemas.append(schema_breadcrumb([(UI[lang]["home"], page_url(lang, "index.html")),
-                                              (UI[lang]["crumb_blog"], page_url(lang, "blog.html")),
-                                              (post["lang"][lang]["title"], None)]))
+            crumbs = schema_breadcrumb([(UI[lang]["home"], page_url(lang, "index.html")),
+                                        (UI[lang]["crumb_blog"], page_url(lang, "blog.html")),
+                                        (post["lang"][lang]["title"], None)])
         else:
-            schemas.append(breadcrumb_from_page(body))
+            crumbs = breadcrumb_from_page(body)
+        if crumbs:
+            crumbs = {"@id": canon + "#breadcrumb", **crumbs}
+        main_image = None
+        if kind == "blog":
+            main_image = page["post"]["image"] or None
+        elif kind == "ai":
+            main_image = page["solution"]["lang"][lang]["banner"] or None
+        schemas.append(schema_webpage(rel, kind, html.unescape(title.split(" | ")[0]).strip(),
+                                      html.unescape(description or ""), lang, canon,
+                                      image=main_image, breadcrumb=bool(crumbs)))
+        if kind == "blog":
+            schemas.append(schema_blog_posting(page["post"], lang, canon))
+        schemas.append(crumbs)
         if kind == "ai":
             schemas.append(schema_product(page["solution"], lang, canon))
         if kind == "static" and rel in SERVICE_PAGES:

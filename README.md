@@ -16,6 +16,7 @@ beheerd; een Python-script bouwt daar de pagina's van.
 | `js/` | `main.js` (menu, taalwissel, animaties, filters), `form.js` (formulieren via Web3Forms), `consent.js` (cookiebanner + Google Analytics met Consent Mode), `concept.js` (wizard voor het gratis websiteconcept). |
 | `api/` | Serverless functies op Vercel: CMS-login (`auth`, `callback`) en dashboardcijfers (`search-console-stats`, `analytics-stats`, `social-stats`). Gedeelde code staat in `api/_lib/` (wordt niet als endpoint gepubliceerd). |
 | `scripts/build_content.py` | Bouwt alle pagina's, kaarten, `<head>`, structured data en `sitemap.xml`. |
+| `scripts/optimize_images.py` | Maakt WebP-versies (+640 px) van content-afbeeldingen; de build zet ze in een `<picture>`. GitHub doet dit automatisch na een upload. |
 | `scripts/check_site.py` | Controleert de gebouwde site (links, ankers, canonical, hreflang, structured data, sitemap). |
 | `tests/` | Tests voor de API-functies (`node --test`) en het build-script (`unittest`). |
 | `vercel.json` | Beveiligings- en cacheheaders, redirects van `/index.html` naar `/`. |
@@ -24,6 +25,7 @@ beheerd; een Python-script bouwt daar de pagina's van.
 ## Werken aan de site
 
 ```bash
+python3 scripts/optimize_images.py        # WebP-versies van nieuwe foto's maken (vereist: pip install pillow)
 python3 scripts/build_content.py          # alles opnieuw bouwen
 python3 scripts/build_content.py --check  # alleen controleren of alles up-to-date is
 python3 scripts/check_site.py             # links, SEO en structured data controleren
